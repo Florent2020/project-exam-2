@@ -47,7 +47,7 @@ Week 7: Bug Fixing
 - Go through a final round of changes before going live with the website.
 - Write a report on your process and decisions for the project. Please use the report template provided.
 
-### Submission
+## Submission
 
 End of week 3: Functional specification, Gantt chart, style guide, and Adobe XD prototype
 End of week 7: Report with link to website, and all files in a compressed ZIP

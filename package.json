@@ -2,7 +2,7 @@
   "name": "project-exam-2-florent2020",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "dependencies":  {
     "@hookform/resolvers": "^2.5.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
