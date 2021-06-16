@@ -1,0 +1,38 @@
+.things--to--do {
+  position: relative;
+
+  & .things--to--do__subheading {
+    position: relative;
+    text-align: center;
+    margin: 30px 0 110px;
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 150px;
+      height: 2px;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #d7b600;
+    }
+  }
+
+  & .card-img,
+  .card-img-top {
+    height: 170px !important;
+  }
+
+  & .card-title {
+    font-size: 18px;
+  }
+
+  & .card-body {
+    padding: 15px !important;
+  }
+
+  & .card-link {
+    font-style: italic;
+    font-weight: 500;
+  }
+}

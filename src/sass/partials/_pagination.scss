@@ -1,0 +1,22 @@
+.pagination {
+  padding-left: 15px;
+}
+
+.page-item .active {
+  background-color: $colour-secondary;
+  width: 50px;
+  height: 50px;
+}
+
+.page-link {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  color: $colour-heading;
+  font-size: 23px;
+  font-weight: 600;
+
+  &:hover {
+    color: $colour-primary;
+  }
+}

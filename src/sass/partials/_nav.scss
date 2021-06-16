@@ -1,0 +1,49 @@
+.bg-dark {
+  background-color: $colour-header !important;
+}
+
+.nav-link {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  &:hover {
+    color: $colour-primary;
+  }
+
+  &.nav--logo {
+    padding-left: 0;
+  }
+
+  &.active {
+    background-color: $colour-primary;
+    padding: 6px 18px;
+    border-radius: 5px;
+    color: $colour-secondary;
+    font-weight: 700;
+
+    &:hover {
+      color: $colour-heading;
+    }
+  }
+}
+
+.nav--menu {
+  margin-left: auto;
+  display: table-caption;
+
+  & .container {
+    padding-left: 0;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .nav--menu {
+    display: block;
+
+    & .container {
+      padding-left: 25px;
+    }
+  }
+}

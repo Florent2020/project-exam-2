@@ -1,0 +1,117 @@
+.accommodation--list {
+  margin-bottom: 100px;
+}
+
+.accommodation--list__subheading {
+  text-align: center;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 150px;
+    height: 2px;
+    background-color: $colour-primary;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 40px;
+  }
+}
+
+.card {
+  border-radius: 10px !important;
+  box-shadow: 0 0 10px $colour-secondary;
+  border: none;
+  margin-bottom: 30px;
+}
+
+.card-img,
+.card-img-top {
+  height: 230px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.pages {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px 0 0;
+
+  & .card-title {
+    padding: 15px 15px 0;
+    margin-bottom: 0;
+  }
+
+  & .card-text {
+    padding: 0 15px 15px;
+    margin-bottom: 0;
+
+    & .accommodation--button {
+      position: relative;
+
+      & button::before {
+        display: block;
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 38px;
+        left: 0;
+        bottom: -11px;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+        background-color: $colour-secondary;
+      }
+    }
+  }
+
+  & .type {
+    position: absolute;
+    padding: 7px 12px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: rgba(38, 38, 38, 0.6);
+    border-top-left-radius: 10px;
+  }
+
+  & .trips {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    background-color: $colour-heading;
+    opacity: 0.6;
+    padding: 4px 7px;
+    border: 1px solid $colour-secondary;
+    border-radius: 5px;
+
+    & i {
+      color: $colour-secondary;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  & .location {
+    font-size: 10px;
+
+    & i {
+      font-size: 9px;
+      margin-right: 5px;
+    }
+  }
+
+  & .stay {
+    font-size: 10px;
+    margin-bottom: 2px !important;
+  }
+
+  & .price {
+    font-size: 19px;
+    font-weight: 600;
+  }
+  & .accommodation--button button {
+    width: 100%;
+  }
+}

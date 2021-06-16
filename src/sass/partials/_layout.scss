@@ -1,0 +1,133 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  font-family: $body-font-family;
+  // background-color: $colour-bg;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.row {
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1 {
+  font-family: $heading-font-family;
+  letter-spacing: 1.6px;
+}
+
+h2 {
+  font-family: $SubHeading-font-family;
+}
+
+h5 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+p {
+  line-height: 1.2;
+}
+
+button,
+.btn-primary {
+  background-color: $colour-primary;
+  border-color: $colour-primary;
+  text-transform: uppercase;
+  color: $colour-secondary;
+  font-weight: 600;
+}
+
+button:hover,
+.btn-primary:hover,
+button:focus,
+.btn-primary:focus {
+  background-color: rgba(215, 182, 0, 0.8);
+  border-color: $colour-heading;
+  color: $colour-heading;
+  // transition: all 0.3s;
+}
+
+// button {
+//   font-family: "Orbitron", sans-serif;
+//   text-transform: uppercase;
+//   width: 200px;
+//   padding: 15px 10px;
+//   font-size: 15px;
+//   font-weight: bold;
+//   color: #fff;
+//   background: transparent;
+//   border-radius: 10px;
+//   border: 3px solid #fff;
+//   cursor: pointer;
+//   outline: none;
+// }
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.wrapper {
+  flex: 1 0 auto;
+  padding-bottom: 70px;
+}
+
+.bg {
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.logo {
+  width: 80px;
+}
+
+// @media (min-width: $tablet-width) {
+//   footer .footer {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: left;
+//     padding: 20px 0;
+
+//     & .footer__item--social-media {
+//       text-align: left;
+//       padding: 0;
+//     }
+
+//     & .footer__item--email {
+//       padding: 0;
+//     }
+//   }
+// }

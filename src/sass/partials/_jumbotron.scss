@@ -1,0 +1,59 @@
+.jumbotron {
+  padding: 0 !important;
+  position: relative;
+  background-size: cover;
+  background-position: bottom;
+  height: 360px;
+}
+
+.shadow--banner {
+  background-color: #262626;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.8;
+}
+
+.shadow--text {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translatey(-50%);
+
+  & h1 {
+    color: $colour-heading;
+    font-size: 26px;
+  }
+  & p {
+    color: $colour-heading;
+    width: 330px;
+    margin: 30px 0;
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .jumbotron {
+    height: 550px;
+  }
+
+  .shadow--banner {
+    width: 50%;
+  }
+
+  .shadow--text {
+    width: 34%;
+  }
+
+  .shadow--text h1 {
+    font-size: 35px;
+  }
+
+  .shadow--text p {
+    font-size: 17px;
+    margin: 40px 0;
+  }
+}
