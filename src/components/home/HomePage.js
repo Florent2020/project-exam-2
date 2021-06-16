@@ -1,6 +1,5 @@
 import JumbotronPage from "./Jumbotron";
 import AccommodationPart from "./AccommodationPart";
-// import AccommodationList from "./AccommodationList";
 import axios from "axios";
 import { BASE_URL } from "../../constants/api";
 import { useState, useEffect } from "react";

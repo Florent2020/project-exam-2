@@ -11,7 +11,7 @@ function Footer() {
                 <div className="logo--footer">
                     <Card.Img variant="top" src={logo} alt="logo" className="logo" />
                 </div>
-                <div className="accommodation--footer">
+                <div  className="accommodation--footer">
                     <Nav.Link href="#">Hotels</Nav.Link>
                     <Nav.Link eventKey="#">B&B's</Nav.Link>
                     <Nav.Link eventKey="#">Guesthouses</Nav.Link>

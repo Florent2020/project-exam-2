@@ -14,7 +14,6 @@ function Nav() {
 		window.localStorage.clear();
 	}
 
-
 	return (
 		<nav className="nav--menu">
 			<div className="container">

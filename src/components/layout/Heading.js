@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from  "prop-types";
 
 function Heading({ content }) {
 	return <h1>{content}</h1>;

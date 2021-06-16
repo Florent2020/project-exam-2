@@ -5,5 +5,5 @@ export default function ValidationError({ children }) {
 }
 
 ValidationError.proptTypes = {
-    children: PropTypes.node.isRequired
+    children:  PropTypes.node.isRequired
 };

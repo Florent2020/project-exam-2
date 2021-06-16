@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 function JumbotronPage() {
     return (
         <Jumbotron style={{ backgroundImage: `url(${Banner})` }}>
-                <div className="shadow--banner"></div>
+                <div  className="shadow--banner"></div>
                 <Container>
                     <div className="shadow--text">
                         <Heading content="World Class Accommodation!" />

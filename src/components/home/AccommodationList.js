@@ -20,7 +20,7 @@
 //     // const url3 = BASE_URL + `/guesthouses`;
 
 
-// 	useEffect(function () {
+// 	useEffect(function ()  {
 
 // 		async function getHotel() {
 // 			try {

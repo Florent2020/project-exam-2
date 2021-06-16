@@ -6,7 +6,7 @@ function AccommodationList() {
     return (
         <div className="accommodation--list">
             <Container>
-                <div  className="accommodation--list__subheading">
+                <div className="accommodation--list__subheading">
                     <SubHeading content="List of Hotels, B&B's, Guesthouses " />
                 </div>
 

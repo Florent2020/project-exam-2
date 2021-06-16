@@ -15,7 +15,7 @@ function Pagination({ hotelsPerPage, totalHotels, paginate })  {
                 {pageNumbers.map(number =>  (
 
                     <li key={number} className="page-item">
-                        <NavLink to="#"  onClick={() => paginate(number)} className="page-link">
+                        <NavLink to="#" onClick={() => paginate(number)} className="page-link">
                             {number}
                         </NavLink>
                     </li>

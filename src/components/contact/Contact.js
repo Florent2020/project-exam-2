@@ -3,7 +3,7 @@ import Heading from "../layout/Heading";
 function Contact() {
     return (
             <>
-                <Heading  content="Contact Form" />
+                <Heading   content="Contact Form" />
             </>
 
     );

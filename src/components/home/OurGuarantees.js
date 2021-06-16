@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 function OurGuarantees() {
     return (
         <div className="our--guarantees">
-            <SubHeading content="Our guarantees" />
+            <SubHeading  content="Our guarantees" />
             <Container>
                 <Row>
                     <Col xs={12} md={4}>

@@ -11,7 +11,7 @@ function Hotels({hotels}) {
             {hotels.map((hotel) => {
 
             return (
-                <>
+                 <>
                         <Col xs={12} md={4}>
                             <Card key={hotel.id} >
                                 <p  className="type">{hotel.type}</p>

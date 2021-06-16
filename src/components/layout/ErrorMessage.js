@@ -6,7 +6,7 @@ export default function ErrorMessage({ message }) {
 }
 
 ErrorMessage.propTypes = {
-	message: PropTypes.string.isRequired,
+	message:  PropTypes.string.isRequired,
 };
 
 ErrorMessage.defaultProps = {

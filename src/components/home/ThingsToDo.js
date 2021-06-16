@@ -13,7 +13,7 @@ function ThingsToDo() {
     return (
         <div className="things--to--do">
             <div  className="things--to--do__subheading">
-                <SubHeading content="Things to do in Bergen!" />
+                <SubHeading  content="Things to do in Bergen!" />
             </div>
             <Container>
                 <Row>

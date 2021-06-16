@@ -36,7 +36,6 @@ export default function LoginForm() {
 		setSubmitting(true);
 		setLoginError(null);
 
-		// console.log(data);
 		console.log(auth);
 
 		try {
