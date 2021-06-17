@@ -1,6 +1,6 @@
 import React from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
-import Banner from "../../images/banner.png";
+import Banner from "../../images/Banner.png";
 import Container from "react-bootstrap/Container";
 import Heading from "../layout/Heading";
 import Button from "react-bootstrap/Button";
