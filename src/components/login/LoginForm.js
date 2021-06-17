@@ -9,7 +9,6 @@ import { BASE_URL, TOKEN_PATH } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
 const url = BASE_URL + TOKEN_PATH;
@@ -52,7 +51,7 @@ export default function LoginForm() {
 	}
 
 		return (
-			<Container>
+			<div>
 				{loginError && <Alert variant="danger">Username or Password is wrong!!!</Alert>}
 				<Form onSubmit={handleSubmit(onSubmit)}>
 					<fieldset disabled={submitting}>
@@ -68,6 +67,6 @@ export default function LoginForm() {
 						<Button variant="info" type="submit">{submitting ? "Logging" : "Login"}</Button>
 					</fieldset>
 				</Form>
-			</Container>
+			</div>
 	);
 }

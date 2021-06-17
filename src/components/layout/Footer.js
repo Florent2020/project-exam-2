@@ -19,13 +19,13 @@ function Footer() {
                 </div>
                 <div className="social--media">
                     <Nav.Link href="#">
-                        <i class="fab fa-facebook-f"></i>
+                        <i className="fab fa-facebook-f"></i>
                     </Nav.Link>
                     <Nav.Link eventKey="#">
-                        <i class="fab fa-twitter"></i>
+                        <i className="fab fa-twitter"></i>
                     </Nav.Link>
                     <Nav.Link eventKey="#">
-                        <i class="fab fa-instagram"></i>
+                        <i className="fab fa-instagram"></i>
                     </Nav.Link>
                 </div>
                 <div className="develop_author">

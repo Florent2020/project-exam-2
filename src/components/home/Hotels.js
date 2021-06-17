@@ -24,10 +24,8 @@ function Hotels({hotels}) {
                                         <p  className="location"><i className="fas fa-map-marker-alt"></i>{hotel.location}</p>
                                         <p  className="stay">{hotel.stay}</p>
                                         <p  className="price">NOK {hotel.price}</p>
-
-                                        <Link to="#" className="accommodation--button" ><Button variant="primary">View More!</Button></Link>
                                     </Card.Text>
-
+                                    <Link to="#" className="accommodation--button" ><Button variant="primary">View More!</Button></Link>
                             </Card>
                         </Col>
                     {/* <Pagination hotelsPerPage={hotelsPerPage} totalHotels={hotels.length} paginate={paginate} /> */}

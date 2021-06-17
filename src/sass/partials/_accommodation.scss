@@ -1,5 +1,6 @@
 .accommodation--list {
   margin-bottom: 100px;
+  padding-top: 30px;
 }
 
 .accommodation--list__subheading {
@@ -14,7 +15,7 @@
     background-color: $colour-primary;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 40px;
+    margin-top: 30px;
   }
 }
 
@@ -37,31 +38,19 @@
   flex-wrap: wrap;
   margin: 30px 0 0;
 
+  & .col-md-4.col-12 {
+    display: flex;
+  }
+
   & .card-title {
     padding: 15px 15px 0;
     margin-bottom: 0;
   }
 
   & .card-text {
-    padding: 0 15px 15px;
+    padding: 0 15px;
     margin-bottom: 0;
-
-    & .accommodation--button {
-      position: relative;
-
-      & button::before {
-        display: block;
-        content: "";
-        position: absolute;
-        width: 30px;
-        height: 38px;
-        left: 0;
-        bottom: -11px;
-        border-bottom-left-radius: 5px;
-        border-top-left-radius: 5px;
-        background-color: $colour-secondary;
-      }
-    }
+    flex: 1;
   }
 
   & .type {
@@ -111,7 +100,27 @@
     font-size: 19px;
     font-weight: 600;
   }
+
+  & .accommodation--button {
+    position: relative;
+    padding: 0 15px 20px;
+  }
   & .accommodation--button button {
     width: 100%;
+    position: relative;
+    padding: 0.6rem 0.75rem !important;
+
+    &::before {
+      display: block;
+      content: "";
+      position: absolute;
+      width: 35px;
+      height: 45px;
+      left: -1px;
+      bottom: -1px;
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+      background-color: $colour-secondary;
+    }
   }
 }

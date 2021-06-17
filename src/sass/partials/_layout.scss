@@ -61,7 +61,8 @@ p {
 }
 
 button,
-.btn-primary {
+.btn-primary,
+.btn-info {
   background-color: $colour-primary;
   border-color: $colour-primary;
   text-transform: uppercase;
@@ -72,7 +73,9 @@ button,
 button:hover,
 .btn-primary:hover,
 button:focus,
-.btn-primary:focus {
+.btn-primary:focus,
+.btn-info:hover,
+.btn-info:focus {
   background-color: rgba(215, 182, 0, 0.8);
   border-color: $colour-heading;
   color: $colour-heading;
@@ -102,7 +105,6 @@ button:focus,
 
 .wrapper {
   flex: 1 0 auto;
-  padding-bottom: 70px;
 }
 
 .bg {

@@ -7,13 +7,15 @@ import Logo from "./images/logo_.png";
 import Image from "react-bootstrap/Image";
 import bg from "./images/bg_texture1.png";
 import { AuthProvider } from "./context/AuthContext";
-import "./sass/style.scss";
+
 import HomePage from "./components/home/HomePage"
 import Nav from "./components/layout/Nav";
+import InfoHeader from "./components/layout/InfoHeader";
 import AdminPage from "./components/admin/AdminPage";
 import Contact from "./components/contact/Contact";
 import LoginPage from "./components/login/LoginPage";
 import Footer from "./components/layout/Footer";
+import "./sass/style.scss";
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
 
                         <Router>
                             <div className="header">
+                                <InfoHeader />
                                 <Navbar bg="dark"  variant="dark" expand="lg">
                                     <Container>
                                         <NavLink to="/" className="nav--logo">

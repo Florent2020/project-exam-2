@@ -12,7 +12,7 @@ function OurGuarantees() {
             <Container>
                 <Row>
                     <Col xs={12} md={4}>
-                        <i className="fas fa-sign-language"></i><span>Best deals</span>
+                        <i className="fas fa-tags"></i><span>Best deals</span>
                     </Col>
                     <Col xs={12} md={4}>
                         <i className="fas fa-phone"></i><span>24/7 service</span>

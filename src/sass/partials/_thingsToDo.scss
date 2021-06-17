@@ -1,6 +1,10 @@
 .things--to--do {
   position: relative;
 
+  & .col-lg-3 {
+    display: flex;
+  }
+
   & .things--to--do__subheading {
     position: relative;
     text-align: center;
@@ -11,7 +15,7 @@
       content: "";
       width: 150px;
       height: 2px;
-      top: 80px;
+      top: 81px;
       left: 50%;
       transform: translateX(-50%);
       background-color: #d7b600;
@@ -29,6 +33,12 @@
 
   & .card-body {
     padding: 15px !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .card-text {
+    flex: 1;
   }
 
   & .card-link {
