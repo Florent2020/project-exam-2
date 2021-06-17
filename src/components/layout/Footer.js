@@ -1,6 +1,6 @@
 import React from 'react';
 import FooterImage from "../../images/footer_image.jpg";
-import logo from "../../images/Logo.png";
+import logo from "../../images/logo_.png";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 
