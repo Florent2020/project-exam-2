@@ -4,10 +4,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import image1 from "../../images/bergen-1.jpg";
-import image2 from "../../images/bergen-2.jpg";
-import image3 from "../../images/bergen-3.jpg";
-import image4 from "../../images/bergen-4.jpg";
+import image1 from "../../images/bergen_1.jpg";
+import image2 from "../../images/bergen_2.jpg";
+import image3 from "../../images/bergen_3.jpg";
+import image4 from "../../images/bergen_4.jpg";
 
 function ThingsToDo() {
     return (
