@@ -1,3 +1,13 @@
+.header {
+  position: relative;
+}
+
+#header {
+  position: fixed;
+  width: 100%;
+  z-index: 999999;
+}
+
 .bg-dark {
   background-color: $colour-header !important;
 }

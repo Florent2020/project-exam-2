@@ -1,3 +1,4 @@
+import React from 'react';
 import Heading from "../layout/Heading";
 import { NavLink } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
@@ -6,13 +7,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import bg from "../../images/bg_form.png";
 
-export default function AdminPage() {
-	return (
-		<div className="admin" style={{ backgroundImage: `url(${bg})` }}>
+function AddAdmin() {
+    return (
+        <div className="admin" style={{ backgroundImage: `url(${bg})` }}>
 			<Row>
 				<Col sm={12} md={4}>
 					{/* <Nav className="flex-column">
-					<div className="dashboard">
+                    <div className="dashboard">
 							<i className="fas fa-tachometer-alt"></i>
 							Dashboard
 						</div>
@@ -45,7 +46,7 @@ export default function AdminPage() {
 				</Col>
 				<Col sm={12} md={7}>
 					<Container>
-						<Heading  content="Admin" />
+						<Heading  content="Add" />
 					</Container>
 				</Col>
                 <Col sm={12} md={1}>
@@ -53,5 +54,7 @@ export default function AdminPage() {
 				</Col>
 			</Row>
 		</div>
-	);
+    )
 }
+
+export default AddAdmin

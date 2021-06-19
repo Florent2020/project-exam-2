@@ -3,7 +3,7 @@ import AccommodationPart from "./AccommodationPart";
 import axios from "axios";
 import { BASE_URL } from "../../constants/api";
 import { useState, useEffect } from "react";
-import Hotels from "./Hotels";
+import AccommodationList from "./AccommodationList";
 import Pagination from "./Pagination";
 import Spinner from 'react-bootstrap/Spinner';
 import OurGuarantees from "./OurGuarantees";
@@ -16,11 +16,11 @@ import Container from 'react-bootstrap/Container';
 
 function HomePage() {
 
-    const [hotels, setHotels] = useState([]);
+    const [accommodations, setAccommodations] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [hotelsPerPage] = useState(3);
+    const [accommodationsPerPage] = useState(3);
 
 	const url1 = BASE_URL + `/hotels`;
     // const url2 = BASE_URL + `/bbs`;
@@ -33,7 +33,7 @@ function HomePage() {
 			try {
 				const response = await axios.get(url1);
 				console.log("response", response);
-				setHotels(response.data);
+				setAccommodations(response.data);
 			} catch (error) {
 				console.log(error);
 				setError(error.toString());
@@ -54,9 +54,9 @@ function HomePage() {
 
 	if (error) return <div>{}</div>;
 
-    const indexOfLastHotel = currentPage * hotelsPerPage;
-    const indexOfFirstHotel = indexOfLastHotel - hotelsPerPage;
-    const currentHotels = hotels.slice(indexOfFirstHotel, indexOfLastHotel);
+    const indexOfLastAccommodation = currentPage * accommodationsPerPage;
+    const indexOfFirstAccommodation = indexOfLastAccommodation - accommodationsPerPage;
+    const currentAccommodations = accommodations.slice(indexOfFirstAccommodation, indexOfLastAccommodation);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -66,14 +66,14 @@ function HomePage() {
                 <AccommodationPart />
                 <Container>
                     <Pagination
-                            hotelsPerPage={hotelsPerPage}
-                            totalHotels={hotels.length}
+                            accommodationsPerPage={accommodationsPerPage}
+                            totalAccommodations={accommodations.length}
                             paginate={paginate}
                         />
-                    <Hotels hotels={currentHotels} />
+                    <AccommodationList accommodations={currentAccommodations} />
                     <Pagination
-                        hotelsPerPage={hotelsPerPage}
-                        totalHotels={hotels.length}
+                        accommodationsPerPage={accommodationsPerPage}
+                        totalAccommodations={accommodations.length}
                         paginate={paginate}
                     />
                 </Container>

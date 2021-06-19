@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 
-function Pagination({ hotelsPerPage, totalHotels, paginate })  {
+function Pagination({ accommodationsPerPage, totalAccommodations, paginate })  {
 
     const pageNumbers = [];
 
-    for (let i = 1; i <= Math.ceil(totalHotels / hotelsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(totalAccommodations / accommodationsPerPage); i++) {
         pageNumbers.push(i);
     }
 

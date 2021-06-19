@@ -1,0 +1,101 @@
+.detail--page {
+  position: relative;
+
+  & .banner__detail--page {
+    position: relative;
+
+    & h1 {
+      position: absolute;
+      font-family: $SubHeading-font-family;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 999;
+      color: #fff;
+    }
+
+    .shadow {
+      background-color: $colour-secondary;
+      position: absolute;
+      width: 630px;
+      height: 100px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.5;
+      z-index: 10;
+      border: 1px solid #a2a1a1;
+    }
+  }
+
+  & .carousel img {
+    height: 600px !important;
+    object-fit: cover;
+  }
+
+  & .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+
+  & .carousel-indicators li {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid $colour-secondary;
+  }
+
+  & .details--info {
+    background: $colour-heading;
+    padding: 25px;
+    margin: 70px 0;
+    box-shadow: 0 3px 10px;
+    border-radius: 5px;
+
+    & h2 {
+      font-family: $heading-font-family;
+      font-size: 30px;
+      letter-spacing: 2px;
+    }
+
+    & h6 {
+      font-size: 13px;
+    }
+
+    & i {
+      margin-right: 10px;
+      color: $colour-secondary;
+    }
+
+    & .description {
+      margin: 50px 0 30px;
+      font-weight: 500;
+    }
+
+    & .fa-utensils {
+      font-size: 16px;
+    }
+
+    & .fa-wifi {
+      font-size: 12px;
+    }
+
+    & .fa-parking {
+      font-size: 17px;
+    }
+
+    & .stay {
+      margin-top: 50px;
+    }
+
+    & .price {
+      margin-bottom: 20px;
+      font-size: 27px;
+      font-weight: 700;
+    }
+
+    & button {
+      border-left: 30px solid $colour-secondary;
+    }
+  }
+}

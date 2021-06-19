@@ -17,7 +17,7 @@
 }
 
 .shadow--text {
-  width: 100%;
+  // width: 100%;
   position: absolute;
   top: 50%;
   transform: translatey(-50%);
@@ -25,7 +25,9 @@
   & h1 {
     color: $colour-heading;
     font-size: 26px;
+    max-width: 100%;
   }
+
   & p {
     color: $colour-heading;
     width: auto;
