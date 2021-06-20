@@ -20,6 +20,10 @@ import OverviewAdmin from "./components/admin/OverviewAdmin";
 import AddAdmin from "./components/admin/AddAdmin";
 import MessagesAdmin from "./components/admin/MessagesAdmin";
 import EnquiriesAdmin from "./components/admin/EnquiriesAdmin";
+import AdminHotels from "./components/admin/hotels/AdminHotels";
+import EditHotel from "./components/admin/hotels/Edit"
+import AdminBBs from "./components/admin/BBs/AdminBBs";
+import AdminGuesthouses from "./components/admin/guesthouses/AdminGuesthouses";
 import Footer from "./components/layout/Footer";
 import "./sass/style.scss";
 
@@ -62,7 +66,7 @@ function App() {
                                     <Route path="/login">
                                         <LoginPage />
                                     </Route>
-                                    <Route path="/admin" exact>
+                                    <Route path="/admin/dashboard" exact>
                                         <AdminPage />
                                     </Route>
                                     <Route path="/admin/overview">
@@ -77,6 +81,19 @@ function App() {
                                     <Route path="/admin/enquiries">
                                         <EnquiriesAdmin />
                                     </Route>
+                                    <Route path="/admin/hotels">
+                                        <AdminHotels />
+                                    </Route>
+                                    <Route path="/admin/edit/:id">
+                                        <EditHotel />
+                                    </Route>
+                                    <Route path="/admin/BBs">
+                                        <AdminBBs />
+                                    </Route>
+                                    <Route path="/admin/guesthouses">
+                                        <AdminGuesthouses />
+                                    </Route>
+
                                 </Switch>
                         </Router>
                     </div>

@@ -50,6 +50,36 @@
       min-height: 100vh;
     }
   }
+
+  & .accommodations--admin {
+    background-color: rgba(38, 38, 38, 0.8);
+    color: $colour-heading;
+    margin-top: 80px;
+    border-radius: 5px;
+    padding: 40px 30px 120px;
+
+    & h1 {
+      margin-bottom: 30px;
+    }
+
+    & .linkk {
+      background-color: #272b30;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 30px;
+      font-size: 14px;
+      box-shadow: 0 0px 2px #c0c0c0;
+      border-radius: 5px;
+      font-family: $SubHeading-font-family;
+
+      & a {
+        text-transform: uppercase;
+        color: $colour-heading;
+        font-weight: 500;
+        letter-spacing: 1.2px;
+      }
+    }
+  }
 }
 
 .nav-links.dashboard {
@@ -60,27 +90,21 @@
   flex-direction: column;
   background: $colour-header;
   width: 250px;
-  color: #fff;
+  color: $colour-heading;
   min-height: 100vh;
+  z-index: 9999;
 
   & a {
-    color: #fff;
+    color: $colour-heading;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;
     padding: 7px 18px;
     border-bottom: 1px solid $colour-primary;
-  }
 
-  & .dashboard {
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1px;
-    font-size: 22px;
-    padding: 12px 18px;
-    border-bottom: 1px solid $colour-primary;
-    border-top: 1px solid $colour-primary;
+    &:first-of-type {
+      border-top: 1px solid $colour-primary;
+    }
   }
 
   & a.active {
@@ -105,5 +129,41 @@
 
   & .fa-envelope-open {
     margin-right: 23px;
+  }
+}
+
+// Hotels page on Admin
+
+.hotels--admin {
+  max-width: 900px;
+  padding: 60px 0;
+
+  & h1 {
+    margin-bottom: 40px;
+    color: $colour-heading;
+    font-family: $SubHeading-font-family;
+  }
+
+  & .col-sm-12,
+  .col-md-6,
+  .col-lg-4 {
+    display: grid;
+  }
+
+  & .card-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .card-title {
+    flex: 1 0 auto;
+  }
+
+  & .accommodation--button {
+    flex-shrink: 0;
+  }
+
+  & button {
+    width: 100%;
   }
 }

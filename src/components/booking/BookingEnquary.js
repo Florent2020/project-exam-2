@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import bg from "../../images/bg_form.png";
+import { Card } from 'react-bootstrap';
 
 function Booking() {
     return (
@@ -14,7 +15,7 @@ function Booking() {
                     <Row>
                         <Col xs={12} md={5} className="booking__bg--left">
                             <SubHeading content='Book now at "Hotel Name"' />
-                            <div>Please fill out the form to book your accommodation!</div>
+                            <Card.Text>Please fill out the form to book your accommodation!</Card.Text>
                         </Col>
                         <Col xs={12} md={7} className="booking__bg--right">
                             <div className="booking__logo">

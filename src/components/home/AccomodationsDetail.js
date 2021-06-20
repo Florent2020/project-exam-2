@@ -11,8 +11,9 @@ import Button from "react-bootstrap/Button";
 import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Card from 'react-bootstrap/Card'
 
-export default function EditPost() {
+export default function AccommodationDetail() {
 	const [accommodation, setAccommodation] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -26,7 +27,7 @@ export default function EditPost() {
 
 	useEffect(
 		function () {
-			async function getPost() {
+			async function getDetail() {
 
 				try {
 					const response = await axios.get(url);
@@ -40,7 +41,7 @@ export default function EditPost() {
 				}
 
 			}
-			getPost();
+			getDetail();
 
 		},
 		// eslint-disable-next-line
@@ -95,16 +96,16 @@ export default function EditPost() {
             <Container>
                 <div className="details--info">
                     <h2>{accommodation.name}</h2>
-                    <h6  className="location"><i className="fas fa-map-marker-alt"></i>{accommodation.location}</h6>
-                    <h5 className="description">{accommodation.description}</h5>
+                    <Card.Text  className="location"><i className="fas fa-map-marker-alt"></i>{accommodation.location}</Card.Text>
+                    <Card.Text className="description">{accommodation.description}</Card.Text>
                     <Row>
                         <Col xs={12} md={6}>
-                            <h6 className="breakfast"><i className="fas fa-utensils"></i>{accommodation.breakfast}</h6>
-                            <h6 className="wifi"><i className="fas fa-wifi"></i>{accommodation.wifi}</h6>
-                            <h6 className="parking"><i className="fas fa-parking"></i>{accommodation.parking}</h6>
-                            <h6 className="fitness"><i className="fas fa-dumbbell"></i>{accommodation.fitness}</h6>
-                            <h6 className="stay">{accommodation.stay}</h6>
-                            <h4 className="price">NOK {accommodation.price}</h4>
+                            <Card.Text className="breakfast"><i className="fas fa-utensils"></i>{accommodation.breakfast}</Card.Text>
+                            <Card.Text className="wifi"><i className="fas fa-wifi"></i>{accommodation.wifi}</Card.Text>
+                            <Card.Text className="parking"><i className="fas fa-parking"></i>{accommodation.parking}</Card.Text>
+                            <Card.Text className="fitness"><i className="fas fa-dumbbell"></i>{accommodation.fitness}</Card.Text>
+                            <Card.Text className="stay">{accommodation.stay}</Card.Text>
+                            <Card.Text className="price">NOK {accommodation.price}</Card.Text>
                             <Link to={`/booking/booking`} className="accommodation--button" ><Button variant="primary">Book Now!</Button></Link>
                         </Col>
                         <Col xs={12} md={6}>

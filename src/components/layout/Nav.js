@@ -20,13 +20,19 @@ function Nav() {
 
 				{auth ? (
 					<>
-						<NavLink to="/admin" className="nav-link">Admin</NavLink>
+						<NavLink to="/admin/dashboard" className="nav-link">Admin</NavLink>
 						<Button variant="info" type="submit" className="logout--button" onClick={logout}>Log out</Button>
 						<div className="nav-links dashboard">
-							<div className="dashboard">
+							{/* <div className="dashboard">
+								<i className="fas fa-tachometer-alt"></i>
+								<NavLink to="/admin/dashboard">
+								Dashboard
+								</NavLink>
+							</div> */}
+							<NavLink to="/admin/dashboard">
 								<i className="fas fa-tachometer-alt"></i>
 								Dashboard
-							</div>
+							</NavLink>
 							<NavLink to="/admin/overview" activeClassName="active">
 								<i className="fas fa-hotel"></i>
 								Overview

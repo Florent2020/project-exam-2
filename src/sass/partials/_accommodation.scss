@@ -84,6 +84,7 @@
 
   & .location {
     font-size: 10px;
+    margin-bottom: 30px;
 
     & i {
       font-size: 9px;
@@ -97,8 +98,9 @@
   }
 
   & .price {
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 600;
+    margin-bottom: 15px;
   }
 
   & .accommodation--button {
