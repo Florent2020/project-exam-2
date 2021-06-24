@@ -77,9 +77,30 @@ button:focus,
 .btn-info:hover,
 .btn-info:focus {
   background-color: rgba(215, 182, 0, 0.8);
-  border-color: $colour-heading;
+  // border-color: $colour-heading;
   color: $colour-heading;
   // transition: all 0.3s;
+}
+
+input:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-image: none !important;
+  color: -internal-light-dark(white) !important;
+}
+
+input.search--input__search {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  position: relative;
+  border-left: 6px solid #d7b600;
+  padding: 9px 10px;
+  width: 300px;
+  margin-left: 15px;
+  margin-bottom: 30px;
+
+  color: #fff;
 }
 
 // button {

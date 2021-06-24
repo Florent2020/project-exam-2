@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 // import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import { BASE_URL } from "../../constants/api";
+// import { BASE_URL } from "../../constants/api";
 import Button from "react-bootstrap/Button";
 
 function AccommodationList({accommodations}) {
@@ -16,7 +16,9 @@ function AccommodationList({accommodations}) {
                             <Card >
                             <Card.Text className="type">{accommodation.type}</Card.Text>
                             <Card.Text className="trips"><i className="far fa-heart"></i></Card.Text>
-                                <Card.Img variant="top" src={`${BASE_URL}${accommodation.image[0].url}`} />
+                                                          {/* Here you need to change */}
+                                <Card.Img variant="top" src={accommodation.image_url} />
+                {/* Here you need to change -> now its getting the url from strapi, not the uploaded file */}
                                     <Card.Title>
                                         <h5>{accommodation.name}</h5>
                                     </Card.Title>

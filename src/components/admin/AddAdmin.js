@@ -3,58 +3,239 @@ import Heading from "../layout/Heading";
 // import { NavLink } from "react-router-dom";
 // import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import bg from "../../images/bg_form.png";
+// import Button from 'react-bootstrap/Button';
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import ValidationForm from "../../components/forms/ValidationError";
+import useAxios from "../../hooks/UseAxios";
+import { BASE_URL } from "../../constants/api";
 
-function AddAdmin() {
+
+// import Media from "./media/Media";
+
+// const url = BASE_URL + TOKEN_PATH;
+// console.log(url);
+
+
+const schema = yup.object().shape({
+	name: yup.string().required("Name is required"),
+	description: yup.string().required("Description is required"),
+	image_url: yup.string().required("Image is required"),
+	image_url2: yup.string().required("Image is required"),
+});
+
+function AddAccommodation() {
+
+	const [submitting, setSubmitting] = useState(false);
+	const [serverError, setServerError] = useState(null);
+	// const [state, setState] = useState([]);
+
+
+	const url = BASE_URL + `/hotels`;
+	// const url2 = BASE_URL + `/uploads`;
+
+	const history = useHistory();
+	const http = useAxios();
+
+	const { register, handleSubmit, formState: { errors } } = useForm({
+		resolver: yupResolver(schema),
+	});
+
+	async function onSubmit(data) {
+		// event.preventDefault();
+
+		setSubmitting(true);
+		setServerError(null);
+
+		try {
+			const response = await http.post(url, data);
+			console.log("response", response.data);
+			history.push("/admin/hotels");
+		} catch (error) {
+			console.log("error", error);
+			setServerError(error.toString());
+		} finally {
+			setSubmitting(false);
+		}
+	}
+
     return (
-        <div className="admin" style={{ backgroundImage: `url(${bg})` }}>
-			<Row>
-				<Col sm={12} md={4}>
-					{/* <Nav className="flex-column">
-                    <div className="dashboard">
-							<i className="fas fa-tachometer-alt"></i>
-							Dashboard
-						</div>
-						<NavLink to="/admin/overview" activeClassName="active">
-							<i className="fas fa-hotel"></i>
-							Overview
-						</NavLink>
-						<NavLink to="/admin/add" activeClassName="active">
-							<i className="fas fa-plus-square"></i>
-							Add
-						</NavLink>
-						<NavLink to="/admin/messages" activeClassName="active">
-							<i className="fas fa-envelope-open"></i>
-							Messages
-						</NavLink>
-						<NavLink to="/admin/enquiries" activeClassName="active">
-							<i className="fas fa-calendar-alt"></i>
-							Enquiries
-						</NavLink>
-					</Nav> */}
+        <div className="admin add--admin" style={{ backgroundImage: `url(${bg})` }}>
+			<Container  className="hotels--admin add--page">
 
-{/* <div className="nav-links">
-							<NavLink activeClassName="active" to="/admin/dashboard"><p>Dashboard </p><i class="fas fa-tachometer-alt"></i></NavLink>
-							<NavLink activeClassName="active" to="/admin/establishments"><p>Overview </p><i className="fas fa-hotel"></i></NavLink>
-							<NavLink activeClassName="active" to="/admin/add"><p>Add </p><i className="fas fa-plus-square"></i></NavLink>
-							<NavLink activeClassName="active" to="/admin/messages"><p>Messages </p><i className="fas fa-envelope-open"></i></NavLink>
-							<NavLink activeClassName="active" to="/admin/enquiries"><p>Enquiries </p><i className="fas fa-calendar-check"></i></NavLink>
+						<Heading  content="Add page" />
 
-						</div> */}
-				</Col>
-				<Col sm={12} md={7}>
-					<Container>
-						<Heading  content="Add" />
-					</Container>
-				</Col>
-                <Col sm={12} md={1}>
+						<form onSubmit={handleSubmit(onSubmit)}>
+							{serverError && <ValidationForm>{serverError}</ValidationForm>}
+							<fieldset disabled={submitting}>
 
-				</Col>
-			</Row>
+								<Form.Row>
+                                    <Col>
+                                    <Col className="add--line">
+                                        <Form.Group>
+                                            <Form.Label>Hotel</Form.Label>
+                                            <Form.Control name="name" defaultValue={submitting.name} placeholder="Hotel name" {...register("name")} />
+                                            {errors.name && <ValidationForm>{errors.name.message}</ValidationForm>}
+                                        </Form.Group>
+                                    </Col>
+
+                                    <Col className="add--line">
+                                        <Form.Group>
+                                            <Form.Label>Price</Form.Label>
+                                            <Form.Control type="number" name="price" defaultValue={submitting.price} placeholder="Price" {...register("price")} />
+                                            {errors.price && <ValidationForm>{errors.price.message}</ValidationForm>}
+                                        </Form.Group>
+                                    </Col>
+
+                                    <Col className="add--line">
+                                        <Form.Group>
+                                            <Form.Label>Type of accommodation</Form.Label>
+                                            <Form.Control name="type" defaultValue={submitting.type} placeholder="Type" {...register("type")} />
+                                            {errors.type && <ValidationForm>{errors.type.message}</ValidationForm>}
+                                        </Form.Group>
+                                    </Col>
+                                    </Col>
+
+                                    <Col sm={12} md={6}>
+                                        <Form.Group>
+                                            <Form.Label>Description</Form.Label>
+                                            <Form.Control name="description" defaultValue={submitting.description} placeholder="Description" {...register("description")} as="textarea" rows={8} />
+                                            {errors.description && <ValidationForm>{errors.description.message}</ValidationForm>}
+                                        </Form.Group>
+                                    </Col>
+                                </Form.Row>
+
+
+                                <Form.Row>
+									<Col>
+										<Form.Group>
+											<Form.Label>Location</Form.Label>
+											<Form.Control name="location" defaultValue={submitting.location} placeholder="Location" {...register("location")} />
+											{errors.location && <ValidationForm>{errors.location.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+
+									<Col>
+										<Form.Group >
+											<Form.Label>Phone</Form.Label>
+											<Form.Control type="number" name="phone" defaultValue={submitting.phone} placeholder="Phone" {...register("phone")} />
+											{errors.phone && <ValidationForm>{errors.phone.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+                                </Form.Row>
+
+                                <Form.Row>
+									<Col>
+										<Form.Group>
+											<Form.Label>Breakfast</Form.Label>
+											<Form.Control name="breakfast" defaultValue={submitting.breakfast} placeholder="Breakfast"  />
+											{errors.breakfast && <ValidationForm>{errors.breakfast.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+
+									<Col>
+										<Form.Group >
+											<Form.Label>Wifi</Form.Label>
+											<Form.Control name="wifi" defaultValue={submitting.wifi} placeholder="Wifi" />
+											{errors.wifi && <ValidationForm>{errors.wifi.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+                                </Form.Row>
+
+                                <Form.Row>
+									<Col>
+										<Form.Group>
+											<Form.Label>Stay</Form.Label>
+											<Form.Control name="stay" defaultValue={submitting.stay} placeholder="Stay"  />
+											{errors.stay && <ValidationForm>{errors.stay.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+
+									<Col>
+										<Form.Group>
+											<Form.Label>Parking</Form.Label>
+											<Form.Control name="parking" defaultValue={submitting.parking} placeholder="Parking"  />
+											{errors.parking && <ValidationForm>{errors.parking.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+                                </Form.Row>
+
+                                <Form.Row>
+									<Col>
+										<Form.Group>
+											<Form.Label>Star</Form.Label>
+											<Form.Control name="star" defaultValue={submitting.star} placeholder="Star"  />
+											{errors.star && <ValidationForm>{errors.star.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+
+									<Col>
+										<Form.Group>
+											<Form.Label>Cancellation</Form.Label>
+											<Form.Control name="cancellation" defaultValue={submitting.cancellation} placeholder="Cancellation" />
+											{errors.cancellation && <ValidationForm>{errors.cancellation.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+                                </Form.Row>
+
+                                <Form.Row>
+									<Col>
+										<Form.Group >
+											<Form.Label>Fitness</Form.Label>
+											<Form.Control name="fitness" defaultValue={submitting.fitness} placeholder="Fitness"  />
+											{errors.fitness && <ValidationForm>{errors.fitness.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+
+									<Col>
+										<Form.Group>
+											<Form.Label>Image 1</Form.Label>
+											<Form.Control name="image" defaultValue={submitting.image_url} placeholder="Image 1" {...register("image_url")} />
+											{errors.image_url && <ValidationForm>{errors.image_url.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+                                </Form.Row>
+
+                                <Form.Row>
+									<Col>
+										<Form.Group>
+											<Form.Label>Image 2</Form.Label>
+											<Form.Control name="image" defaultValue={submitting.image_url2} placeholder="Image 2" {...register("image_url2")} />
+											{errors.image_url2 && <ValidationForm>{errors.image_url2.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+
+									<Col>
+										<Form.Group>
+											<Form.Label>Image 3</Form.Label>
+											<Form.Control name="image" defaultValue={submitting.image_url3} placeholder="Image 3" {...register("image_url3")} />
+											{errors.image_url3 && <ValidationForm>{errors.image_url3.message}</ValidationForm>}
+										</Form.Group>
+									</Col>
+                                </Form.Row>
+
+                                {/* <Button variant="info"  name="add">
+								<i className="fas fa-plus-square"></i>
+                                    {submitting ? "Submitting..." : "Submit"}
+                                </Button> */}
+
+
+								<button><i className="fas fa-plus-square"></i>{submitting ? "Submitting..." : "Submit"}</button>
+
+							</fieldset>
+						</form>
+			</Container>
 		</div>
     )
 }
 
-export default AddAdmin
+export default AddAccommodation
+
+
+

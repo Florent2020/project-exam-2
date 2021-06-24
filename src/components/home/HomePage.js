@@ -4,14 +4,13 @@ import axios from "axios";
 import { BASE_URL } from "../../constants/api";
 import { useState, useEffect } from "react";
 import AccommodationList from "./AccommodationList";
+// import Search from "../search/SearchTerm";
 import Pagination from "./Pagination";
 import Spinner from 'react-bootstrap/Spinner';
 import OurGuarantees from "./OurGuarantees";
 import ThingsToDo from "./ThingsToDo";
-
-
-
 import Container from 'react-bootstrap/Container';
+// import SearchTerm from "../search/SearchTerm";
 // import Row from 'react-bootstrap/Row';
 
 function HomePage() {
@@ -21,6 +20,7 @@ function HomePage() {
 	const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [accommodationsPerPage] = useState(3);
+    // const [names, setNames] = useState([]);
 
 	const url1 = BASE_URL + `/hotels`;
     // const url2 = BASE_URL + `/bbs`;
@@ -30,6 +30,7 @@ function HomePage() {
 	useEffect(function () {
 
 		async function getHotel() {
+
 			try {
 				const response = await axios.get(url1);
 				console.log("response", response);
@@ -59,22 +60,29 @@ function HomePage() {
     const currentAccommodations = accommodations.slice(indexOfFirstAccommodation, indexOfLastAccommodation);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
+   //console.log(currentPage);
+
+
 
     return (
             <>
                 <JumbotronPage />
                 <AccommodationPart />
                 <Container>
+                    {/* <Search accommodations={accommodations}/> */}
                     <Pagination
                             accommodationsPerPage={accommodationsPerPage}
                             totalAccommodations={accommodations.length}
                             paginate={paginate}
+                            pageIndex={currentPage}
                         />
                     <AccommodationList accommodations={currentAccommodations} />
                     <Pagination
                         accommodationsPerPage={accommodationsPerPage}
                         totalAccommodations={accommodations.length}
                         paginate={paginate}
+                        pageIndex={currentPage}
+
                     />
                 </Container>
                 <OurGuarantees />

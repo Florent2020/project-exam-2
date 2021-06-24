@@ -71,23 +71,25 @@ export default function AccommodationDetail() {
                 <Carousel activeIndex={index} onSelect={handleSelect}>
                     <Carousel.Item>
                         <img
-                        className="d-flex justify-content-top w-100"
-                        src={`${BASE_URL}${accommodation.image[0].url}`}
-                        alt={accommodation.image.alternativeText}
-                        />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                    <img
-                        className="d-flex justify-content-top w-100"
-                        src={`${BASE_URL}${accommodation.image[1].url}`}
-                        alt={accommodation.image.alternativeText}
+                            className="d-flex justify-content-top w-100"
+                            src={accommodation.image_url}
+                            alt={accommodation.name}
                         />
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
                             className="d-flex justify-content-top w-100"
-                            src={`${BASE_URL}${accommodation.image[2].url}`}
-                            alt={accommodation.image.alternativeText}
+                            src={accommodation.image_url2}
+                            // alt={accommodation.image.alternativeText}
+                            alt={accommodation.name}
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-flex justify-content-top w-100"
+                            src={accommodation.image_url3}
+                            // alt={accommodation.image.alternativeText}
+                            alt={accommodation.name}
                         />
                     </Carousel.Item>
                     </Carousel>
@@ -106,7 +108,7 @@ export default function AccommodationDetail() {
                             <Card.Text className="fitness"><i className="fas fa-dumbbell"></i>{accommodation.fitness}</Card.Text>
                             <Card.Text className="stay">{accommodation.stay}</Card.Text>
                             <Card.Text className="price">NOK {accommodation.price}</Card.Text>
-                            <Link to={`/booking/booking`} className="accommodation--button" ><Button variant="primary">Book Now!</Button></Link>
+                            <Link to={`/booking/booking/${accommodation.id}`} className="accommodation--button" ><Button variant="primary">Book Now!</Button></Link>
                         </Col>
                         <Col xs={12} md={6}>
                            MAP

@@ -17,8 +17,9 @@ import AdminPage from "./components/admin/AdminPage";
 import Contact from "./components/contact/Contact";
 import LoginPage from "./components/login/LoginPage";
 import OverviewAdmin from "./components/admin/OverviewAdmin";
-import AddAdmin from "./components/admin/AddAdmin";
+import AddAccommodation from "./components/admin/AddAdmin";
 import MessagesAdmin from "./components/admin/MessagesAdmin";
+import MessagePage from "./components/admin/MessagePage"
 import EnquiriesAdmin from "./components/admin/EnquiriesAdmin";
 import AdminHotels from "./components/admin/hotels/AdminHotels";
 import EditHotel from "./components/admin/hotels/Edit"
@@ -73,10 +74,13 @@ function App() {
                                         <OverviewAdmin />
                                     </Route>
                                     <Route path="/admin/add">
-                                        <AddAdmin />
+                                        <AddAccommodation />
                                     </Route>
                                     <Route path="/admin/messages">
                                         <MessagesAdmin />
+                                    </Route>
+                                    <Route path="/admin/viewMessages/:id">
+                                        <MessagePage />
                                     </Route>
                                     <Route path="/admin/enquiries">
                                         <EnquiriesAdmin />

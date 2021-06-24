@@ -50,31 +50,31 @@ function AdminHotels() {
 
 
     return (
-        <div className="admin" style={{ backgroundImage: `url(${bg})` }}>
-					<Container className="hotels--admin">
-						<Heading  content="Hotels" />
-                        <Row>
-                                {hotels.map((hotel) => {
-                                    return (
+        	<div className="admin" style={{ backgroundImage: `url(${bg})` }}>
+				<Container className="hotels--admin">
+					<Heading  content="Hotels" />
+                    <Row>
+                        {hotels.map((hotel) => {
+                            return (
 
-                                                <Col sm={12} md={6} lg={4} key={hotel.id}>
-                                                    <Card >
-                                                            <Card.Img variant="top" src={`${BASE_URL}${hotel.image[0].url}`} />
-                                                            <Card.Body>
-                                                                <Card.Title>
-                                                                    <h5>{hotel.name}</h5>
-                                                                </Card.Title>
-                                                                <Link to={`/admin/edit/${hotel.id}`} className="accommodation--button" ><Button variant="primary"><i className="fas fa-edit"></i>Edit</Button></Link>
-                                                            </Card.Body>
-                                                    </Card>
-                                                </Col>
+                                <Col sm={12} md={6} lg={4} key={hotel.id}>
+                                    <Card >
+                                        <Card.Img variant="top" src={hotel.image_url} />
+                                        <Card.Body>
+                                        	<Card.Title>
+                                                <h5>{hotel.name}</h5>
+                                            </Card.Title>
+                                            <Link to={`/admin/edit/${hotel.id}`} className="accommodation--button" ><Button variant="primary"><i className="fas fa-edit"></i>Edit</Button></Link>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
 
-                                            );
-                                        })}
-                                        </Row>
-					</Container>
-		</div>
-    )
+                            );
+                        })}
+                    </Row>
+				</Container>
+			</div>
+    	)
 }
 
 export default AdminHotels

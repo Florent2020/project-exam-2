@@ -81,6 +81,12 @@
     }
   }
 }
+// input:-internal-autofill-selected {
+//   appearance: menulist-button;
+//   background-color: rgba(0, 0, 0, 0.5) !important;
+//   background-image: none !important;
+//   color: rgba(255, 255, 255, 0.7) !important;
+// }
 
 @media (min-width: $tablet-width) {
   .login {

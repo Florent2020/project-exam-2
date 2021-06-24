@@ -1,13 +1,13 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Pagination({ accommodationsPerPage, totalAccommodations, paginate })  {
+function Pagination({ accommodationsPerPage, totalAccommodations, paginate, pageIndex })  {
 
     const pageNumbers = [];
-
     for (let i = 1; i <= Math.ceil(totalAccommodations / accommodationsPerPage); i++) {
         pageNumbers.push(i);
     }
+
 
     return (
         <nav>
@@ -15,9 +15,10 @@ function Pagination({ accommodationsPerPage, totalAccommodations, paginate })  {
                 {pageNumbers.map(number =>  (
 
                     <li key={number} className="page-item">
-                        <NavLink to="#" onClick={() => paginate(number)} className="page-link">
+                        <Link to="#" onClick={() => paginate(number)}
+                        className={ number !== pageIndex? "page-link" : "page-link active"} >
                             {number}
-                        </NavLink>
+                        </Link>
                     </li>
                 ))}
             </ul>

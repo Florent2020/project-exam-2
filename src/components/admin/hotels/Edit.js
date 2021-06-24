@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 // import Card from 'react-bootstrap/Card';
@@ -9,7 +9,7 @@ import Heading from "../../layout/Heading";
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 // import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
+import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import bg from "../../../images/bg_form.png";
 import Alert from "react-bootstrap/Alert";
@@ -21,6 +21,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ValidationError from "../../forms/ValidationError";
 import useAxios from "../../../hooks/UseAxios";
+import DeleteAccommodation from "../Delete";
 
 const schema = yup.object().shape({
 	name: yup.string().required("Name is required"),
@@ -29,14 +30,13 @@ const schema = yup.object().shape({
 
 function EditHotel() {
     const [hotel, setHotel] = useState(null);
-	// const [loading, setLoading] = useState(true);
-	// const [error, setError] = useState(null);
-
     const [updated, setUpdated] = useState(false);
 	const [fetchingHotel, setFetchingHotel] = useState(true);
 	const [updatingHotel, setUpdatingHotel] = useState(false);
 	const [updateError, setUpdateError] = useState(null);
     const [fetchError, setFetchError] = useState(null);
+    // const [loading, setLoading] = useState(true);
+	// const [error, setError] = useState(null);
 
     const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(schema),
@@ -54,7 +54,7 @@ function EditHotel() {
 			try {
 				const response = await http.get(url);
 				console.log("response", response.data);
-				setHotel(response);
+				setHotel(response.data);
 			} catch (error) {
 				console.log(error);
 				setFetchError(error.toString());
@@ -97,32 +97,150 @@ function EditHotel() {
 
 
     return (
-        <div className="admin" style={{ backgroundImage: `url(${bg})` }}>
-					<Container className="hotels--admin">
-                        <Heading content="Edit Post" />
+        <div className="admin edit--admin" style={{ backgroundImage: `url(${bg})` }}>
+					<Container className="hotels--admin edit--page">
+                        <Heading content="Edit Page" />
 
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            {/* {updated && <div className="success">The post was updated</div>} */}
                             {updated && <Alert variant="success">The Hotel was updated!</Alert>}
 
                             {updateError && <ValidationError>{updateError}</ValidationError>}
 
                             <fieldset disabled={updatingHotel}>
 
-                                <Form.Group>
-                                    <Form.Control name="name" defaultValue={hotel.name} placeholder="Hotel name" {...register("name")} />
-                                    {errors.name && <ValidationError>{errors.name.message}</ValidationError>}
-                                </Form.Group>
 
-                                <Form.Group>
-                                    <Form.Control name="description" defaultValue={hotel.description} placeholder="Description" {...register("description")} as="textarea" rows={6} />
-                                    {errors.description && <ValidationError>{errors.description.message}</ValidationError>}
-                                </Form.Group>
+                                <Form.Row>
+                                    <Col>
+                                    <Col className="edit--line">
+                                        <Form.Group>
+                                            <Form.Label>Hotel</Form.Label>
+                                            <Form.Control name="name" defaultValue={hotel.name} placeholder="Hotel name" {...register("name")} />
+                                            {errors.name && <ValidationError>{errors.name.message}</ValidationError>}
+                                        </Form.Group>
+                                    </Col>
+
+                                    <Col className="edit--line">
+                                        <Form.Group>
+                                            <Form.Label>Price</Form.Label>
+                                            <Form.Control type="number" name="price" defaultValue={hotel.price} placeholder="Price" {...register("price")} />
+                                            {errors.price && <ValidationError>{errors.price.message}</ValidationError>}
+                                        </Form.Group>
+                                    </Col>
+
+                                    <Col className="edit--line">
+                                        <Form.Group>
+                                            <Form.Label>Type of accommodation</Form.Label>
+                                            <Form.Control name="type" defaultValue={hotel.type} placeholder="Type" {...register("type")} />
+                                            {errors.type && <ValidationError>{errors.type.message}</ValidationError>}
+                                        </Form.Group>
+                                    </Col>
+                                    </Col>
+
+                                    <Col sm={12} md={6}>
+                                        <Form.Group>
+                                            <Form.Label>Description</Form.Label>
+                                            <Form.Control name="description" defaultValue={hotel.description} placeholder="Description" {...register("description")} as="textarea" rows={8} />
+                                            {errors.description && <ValidationError>{errors.description.message}</ValidationError>}
+                                        </Form.Group>
+                                    </Col>
+                                </Form.Row>
 
 
-                                <Button variant="info" type="submit">
+                                <Form.Row>
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Location</Form.Label>
+                                        <Form.Control name="location" defaultValue={hotel.location} placeholder="Location" {...register("location")} />
+                                        {errors.location && <ValidationError>{errors.location.message}</ValidationError>}
+                                    </Form.Group>
+
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Phone</Form.Label>
+                                        <Form.Control type="number" name="phone" defaultValue={hotel.phone} placeholder="Phone" {...register("phone")} />
+                                        {errors.phone && <ValidationError>{errors.phone.message}</ValidationError>}
+                                    </Form.Group>
+                                </Form.Row>
+
+                                <Form.Row>
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Breakfast</Form.Label>
+                                        <Form.Control name="breakfast" defaultValue={hotel.breakfast} placeholder="Breakfast" {...register("breakfast")} />
+                                        {errors.breakfast && <ValidationError>{errors.breakfast.message}</ValidationError>}
+                                    </Form.Group>
+
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Wifi</Form.Label>
+                                        <Form.Control name="wifi" defaultValue={hotel.wifi} placeholder="Wifi" {...register("wifi")}  />
+                                        {errors.wifi && <ValidationError>{errors.wifi.message}</ValidationError>}
+                                    </Form.Group>
+                                </Form.Row>
+
+                                <Form.Row>
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Stay</Form.Label>
+                                        <Form.Control name="stay" defaultValue={hotel.stay} placeholder="Stay" {...register("stay")} />
+                                        {errors.stay && <ValidationError>{errors.stay.message}</ValidationError>}
+                                    </Form.Group>
+
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Parking</Form.Label>
+                                        <Form.Control name="parking" defaultValue={hotel.parking} placeholder="Parking" {...register("parking")} />
+                                        {errors.parking && <ValidationError>{errors.parking.message}</ValidationError>}
+                                    </Form.Group>
+                                </Form.Row>
+
+                                <Form.Row>
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Star</Form.Label>
+                                        <Form.Control name="star" defaultValue={hotel.star} placeholder="Star" {...register("star")} />
+                                        {errors.star && <ValidationError>{errors.star.message}</ValidationError>}
+                                    </Form.Group>
+
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Cancellation</Form.Label>
+                                        <Form.Control name="cancellation" defaultValue={hotel.cancellation} placeholder="Cancellation" {...register("cancellation")} />
+                                        {errors.cancellation && <ValidationError>{errors.cancellation.message}</ValidationError>}
+                                    </Form.Group>
+                                </Form.Row>
+
+                                <Form.Row>
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Fitness</Form.Label>
+                                        <Form.Control name="fitness" defaultValue={hotel.fitness} placeholder="Fitness" {...register("fitness")} />
+                                        {errors.fitness && <ValidationError>{errors.fitness.message}</ValidationError>}
+                                    </Form.Group>
+
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Image 1</Form.Label>
+                                        <Form.Control name="image" defaultValue={hotel.image_url} placeholder="Image 1" {...register("image_url")} />
+                                        {errors.image_url && <ValidationError>{errors.image_url.message}</ValidationError>}
+                                    </Form.Group>
+                                </Form.Row>
+
+                                <Form.Row>
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Image 2</Form.Label>
+                                        <Form.Control name="image" defaultValue={hotel.image_url2} placeholder="Image 2" {...register("image_url2")} />
+                                        {errors.image_url2 && <ValidationError>{errors.image_url2.message}</ValidationError>}
+                                    </Form.Group>
+
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Image 3</Form.Label>
+                                        <Form.Control name="image" defaultValue={hotel.image_url3} placeholder="Image 3" {...register("image_url3")} />
+                                        {errors.image_url3 && <ValidationError>{errors.image_url3.message}</ValidationError>}
+                                    </Form.Group>
+                                </Form.Row>
+
+                                <Button variant="info" type="submit" name="update">
+                                    <i className="fas fa-sync-alt"></i>
                                     Update
                                 </Button>
+
+                                {/* <Button variant="warning" type="submit" name="delete">
+                                    <i className="fas fa-trash"></i>
+                                    Delete
+                                </Button> */}
+
+                                <DeleteAccommodation id={hotel.id} />
 
                             </fieldset>
                         </form>

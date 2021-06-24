@@ -55,12 +55,12 @@ function BookingForm() {
             {submitted && <Alert variant="success">Your submit was successful!</Alert>}
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group>
-                    <Form.Control placeholder="Full Name" {...register("full_name")} />
+                    <Form.Control type="text" placeholder="Full Name" {...register("full_name")} />
                     {errors.full_name && <ValidationError>{errors.full_name.message}</ValidationError>}
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Control placeholder="Email" {...register("email")} />
+                    <Form.Control type="text"  placeholder="Email" {...register("email")}/>
                     {errors.email && <ValidationError>{errors.email.message}</ValidationError>}
                 </Form.Group>
 

@@ -7,7 +7,9 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import ValidationError from "../forms/ValidationError";
-import { MINIMUM_FULL_NAME_CHARACTERS, MINIMUM_MESSAGE_VALUE, DEFAULT_VALUES } from "../../constants/registration";
+import { MINIMUM_FULL_NAME_CHARACTERS, MINIMUM_MESSAGE_VALUE } from "../../constants/registration";
+import { BASE_URL } from "../../constants/api";
+import axios from "axios";
 
 const schema = yup.object().shape({
 
@@ -30,29 +32,43 @@ const schema = yup.object().shape({
 function ContactForm() {
 
     const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+	const [serverError, setServerError] = useState(null);
+
+    const url = BASE_URL + `/messages`;
+
 
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors }
     } = useForm({
         resolver: yupResolver(schema)
     });
 
-    function onSubmit(data) {
-        console.log(data);
+    async function onSubmit(data) {
 
         setSubmitted(true);
+		setSubmitting(true);
+		setServerError(null);
 
-        reset(DEFAULT_VALUES);
-    }
+		try {
+			const response = await axios.post(url, data);
+			console.log("response", response.data);
+			// history.push("/admin/hotels");
+		} catch (error) {
+			console.log("error", error);
+			setServerError(error.toString());
+		} finally {
+			setSubmitting(false);
+		}
+	}
 
     // console.log(errors);
 
     return (
         <Container>
-            {submitted && <Alert variant="success">Your submit was successful!</Alert>}
+            {submitted && <Alert variant="success">Your message was successful!</Alert>}
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group>
                     <Form.Control placeholder="Full Name" {...register("full_name")} />
@@ -70,7 +86,7 @@ function ContactForm() {
                 </Form.Group>
 
                 <Button variant="info" type="submit">
-                    Submit
+                    Send
                 </Button>
             </Form>
         </Container>
