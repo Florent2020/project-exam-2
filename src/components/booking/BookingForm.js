@@ -7,7 +7,9 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import ValidationError from "../forms/ValidationError";
-import { MINIMUM_FULL_NAME_CHARACTERS, DEFAULT_VALUES } from "../../constants/registration";
+import { MINIMUM_FULL_NAME_CHARACTERS } from "../../constants/registration";
+import { BASE_URL } from "../../constants/api";
+import axios from "axios";
 
 const schema = yup.object().shape({
 
@@ -20,9 +22,11 @@ const schema = yup.object().shape({
         .required("Please enter an email address!")
         .email("Please enter a valid email address!"),
     checkIn: yup
-        .date(),
+        .string()
+        .required('Date is required'),
     checkOut: yup
-        .date(),
+        .string()
+        .required('Date is required'),
 
 });
 
@@ -30,23 +34,35 @@ const schema = yup.object().shape({
 function BookingForm() {
 
     const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+	const [serverError, setServerError] = useState(null);
 
+    const url = BASE_URL + `/enquiries`;
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors }
     } = useForm({
         resolver: yupResolver(schema)
     });
 
-    function onSubmit(data) {
-        console.log(data);
+    async function onSubmit(data) {
 
         setSubmitted(true);
+		setSubmitting(true);
+		setServerError(null);
 
-        reset(DEFAULT_VALUES);
-    }
+		try {
+			const response = await axios.post(url, data);
+			console.log("response", response.data);
+			// history.push("/admin/hotels");
+		} catch (error) {
+			console.log("error", error);
+			setServerError(error.toString());
+		} finally {
+			setSubmitting(false);
+		}
+	}
 
     // console.log(errors);
 
@@ -65,12 +81,12 @@ function BookingForm() {
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Control  placeholder="Check In" {...register("checkin")} type="date"  />
+                    <Form.Control  placeholder="Check In" {...register("checkIn")} type="date"  />
                     {errors.checkIn && <ValidationError>{errors.checkIn.message}</ValidationError>}
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Control  placeholder="Check Out" {...register("checkout")} type="date" />
+                    <Form.Control  placeholder="Check Out" {...register("checkOut")} type="date" />
                     {errors.checkOut && <ValidationError>{errors.checkOut.message}</ValidationError>}
                 </Form.Group>
 

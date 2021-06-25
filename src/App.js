@@ -19,7 +19,7 @@ import LoginPage from "./components/login/LoginPage";
 import OverviewAdmin from "./components/admin/OverviewAdmin";
 import AddAccommodation from "./components/admin/AddAdmin";
 import MessagesAdmin from "./components/admin/MessagesAdmin";
-import MessagePage from "./components/admin/MessagePage"
+import ViewMessages from "./components/admin/ViewMessages"
 import EnquiriesAdmin from "./components/admin/EnquiriesAdmin";
 import AdminHotels from "./components/admin/hotels/AdminHotels";
 import EditHotel from "./components/admin/hotels/Edit"
@@ -57,7 +57,7 @@ function App() {
                                     <Route path="/home/hotels/:id">
                                         <AccommodationsDetail />
                                     </Route>
-                                    <Route path="/booking/Booking">
+                                    <Route path="/hotel/booking">
                                         <BookingEnquiry />
                                     </Route>
 
@@ -80,7 +80,7 @@ function App() {
                                         <MessagesAdmin />
                                     </Route>
                                     <Route path="/admin/viewMessages/:id">
-                                        <MessagePage />
+                                        <ViewMessages />
                                     </Route>
                                     <Route path="/admin/enquiries">
                                         <EnquiriesAdmin />

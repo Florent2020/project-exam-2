@@ -108,7 +108,7 @@ export default function AccommodationDetail() {
                             <Card.Text className="fitness"><i className="fas fa-dumbbell"></i>{accommodation.fitness}</Card.Text>
                             <Card.Text className="stay">{accommodation.stay}</Card.Text>
                             <Card.Text className="price">NOK {accommodation.price}</Card.Text>
-                            <Link to={`/booking/booking/${accommodation.id}`} className="accommodation--button" ><Button variant="primary">Book Now!</Button></Link>
+                            <Link to={`/hotel/booking/${accommodation.id}`} className="accommodation--button" ><Button variant="primary">Book Now!</Button></Link>
                         </Col>
                         <Col xs={12} md={6}>
                            MAP

@@ -1,5 +1,10 @@
 import React from 'react';
+import { useState, useEffect } from "react";
 import Heading from "../layout/Heading";
+import { Link } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner';
+import axios from "axios";
+import { BASE_URL } from "../../constants/api";
 // import { NavLink } from "react-router-dom";
 // import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
@@ -8,52 +13,75 @@ import Col from 'react-bootstrap/Col';
 import bg from "../../images/bg_form.png";
 
 function EnquiriesAdmin() {
+
+	const [enquiries, setEnquiries] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+
+	const url = BASE_URL + `/enquiries`;
+
+
+	useEffect(function () {
+		async function getMessage() {
+			try {
+				const response = await axios.get(url);
+				console.log("response", response.data);
+				setEnquiries(response.data);
+			} catch (error) {
+				console.log(error);
+				setError(error.toString());
+			} finally {
+				setLoading(false);
+			}
+		}
+
+		getMessage();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	if (loading) return <div>
+		<Spinner animation="border" role="status" variant="success">
+			<span className="sr-only">Loading...</span>
+		</Spinner>
+	</div>;
+
+	if (error) return <div>{}</div>;
+
     return (
-        <div className="admin" style={{ backgroundImage: `url(${bg})` }}>
-			<Row>
-				<Col sm={12} md={4}>
-					{/* <Nav className="flex-column">
-                        <div className="dashboard">
-							<i className="fas fa-tachometer-alt"></i>
-							Dashboard
-						</div>
-						<NavLink to="/admin/overview" activeClassName="active">
-							<i className="fas fa-hotel"></i>
-							Overview
-						</NavLink>
-						<NavLink to="/admin/add" activeClassName="active">
-							<i className="fas fa-plus-square"></i>
-							Add
-						</NavLink>
-						<NavLink to="/admin/messages" activeClassName="active">
-							<i className="fas fa-envelope-open"></i>
-							Messages
-						</NavLink>
-						<NavLink to="/admin/enquiries" activeClassName="active">
-							<i className="fas fa-calendar-alt"></i>
-							Enquiries
-						</NavLink>
-					</Nav> */}
+		<div className="admin enquiries--admin" style={{ backgroundImage: `url(${bg})` }}>
+		<Container className="hotels--admin enquiries--page">
+			<Heading content="Enquiries Page" />
 
-{/* <div className="nav-links">
-							<NavLink activeClassName="active" to="/admin/dashboard"><p>Dashboard </p><i class="fas fa-tachometer-alt"></i></NavLink>
-							<NavLink activeClassName="active" to="/admin/establishments"><p>Overview </p><i className="fas fa-hotel"></i></NavLink>
-							<NavLink activeClassName="active" to="/admin/add"><p>Add </p><i className="fas fa-plus-square"></i></NavLink>
-							<NavLink activeClassName="active" to="/admin/messages"><p>Messages </p><i className="fas fa-envelope-open"></i></NavLink>
-							<NavLink activeClassName="active" to="/admin/enquiries"><p>Enquiries </p><i className="fas fa-calendar-check"></i></NavLink>
+			{enquiries.length === 0 && <p className="empty--enquiries">No enquiries!</p>}
+				<Row>
+					{enquiries.map((enquirie) => {
 
-						</div> */}
-				</Col>
-				<Col sm={12} md={7}>
-					<Container>
-						<Heading  content="Enquiries" />
-					</Container>
-				</Col>
-                <Col sm={12} md={1}>
+						const format = { year: 'numeric', month: 'short', day: 'numeric' };
+						const newFormat = new Intl.DateTimeFormat('en-GB', format);
+						const createdAt = new Date(enquirie.created_at);
+						const newCreatedAt = newFormat.format(createdAt);
+						return (
+							<>
+								<div className="enquirie--table" key={enquirie.id}>
+									<Link to={`/admin/viewEnquirie/${enquirie.id}`} className="enquirie--link">
+										<Col sm={12} md={3}>
 
-				</Col>
-			</Row>
-		</div>
+											<h5>{enquirie.full_name}</h5>
+										</Col>
+										<Col sm={12} md={7}>
+											<p>{enquirie.email}</p>
+										</Col>
+										<Col sm={12} md={2}>
+											<p>{newCreatedAt}</p>
+										</Col>
+									</Link>
+								</div>
+							</>
+						);
+					})}
+				</Row>
+		</Container>
+	</div>
     )
 }
 
