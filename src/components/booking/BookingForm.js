@@ -38,6 +38,7 @@ function BookingForm() {
 	const [serverError, setServerError] = useState(null);
 
     const url = BASE_URL + `/enquiries`;
+
     const {
         register,
         handleSubmit,

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown";
 
 function Nav() {
 	const [auth, setAuth] = useContext(AuthContext);
@@ -54,6 +55,7 @@ function Nav() {
 				) : (
 						<>
 						<NavLink to="/" exact className="nav-link">Home</NavLink>
+						<NavLink to="/accommodations" className="nav-link">Accommodations</NavLink>
 						<NavLink to="/contact" className="nav-link">Contact</NavLink>
 						<NavLink to="/login" className="nav-link">Login</NavLink>
 						</>

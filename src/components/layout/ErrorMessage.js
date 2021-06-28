@@ -10,5 +10,5 @@ ErrorMessage.propTypes = {
 };
 
 ErrorMessage.defaultProps = {
-	message: "An error occured",
+	message: "An error occured!",
 };

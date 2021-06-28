@@ -1,11 +1,11 @@
 import React from 'react';
-import Heading from "../layout/Heading";
+import Heading from "../../layout/Heading";
 // import { NavLink } from "react-router-dom";
 // import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import bg from "../../images/bg_form.png";
+import bg from "../../../images/bg_form.png";
 
 function OverviewAdmin() {
     return (

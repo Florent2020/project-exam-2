@@ -49,6 +49,7 @@ footer {
     &:hover,
     :focus {
       color: $colour-primary;
+      border: 1px solid $colour-primary;
     }
   }
 

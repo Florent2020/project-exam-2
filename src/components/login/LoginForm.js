@@ -25,9 +25,13 @@ export default function LoginForm() {
 
 	const history = useHistory();
 
-	const { register, handleSubmit, errors } = useForm({
-		resolver: yupResolver(schema),
-	});
+	const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm({
+        resolver: yupResolver(schema)
+    });
 
 	const [auth, setAuth] = useContext(AuthContext);
 

@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner';
 import axios from "axios";
-import { BASE_URL } from "../../constants/api";
-import Heading from "../layout/Heading";
+import { BASE_URL } from "../../../constants/api";
+import Heading from "../../layout/Heading";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // import Button from 'react-bootstrap/Button';
-import bg from "../../images/bg_form.png";
+import bg from "../../../images/bg_form.png";
 
 
 function MessagesAdmin() {
@@ -59,25 +59,21 @@ function MessagesAdmin() {
 								const newFormat = new Intl.DateTimeFormat('en-GB', format);
 								const createdAt = new Date(message.created_at);
 								const newCreatedAt = newFormat.format(createdAt);
+
 								return (
-									<>
+									<div className="messages--width">
 										<div className="messages--table" key={message.id}>
 											<Link to={`/admin/viewMessages/${message.id}`} className="message--link">
-												<Col sm={12} md={3}>
+												<Col sm={12} md={10}>
 
 													<h5>{message.full_name}</h5>
-												</Col>
-												<Col sm={12} md={7}>
-													<p>{message.message}</p>
 												</Col>
 												<Col sm={12} md={2}>
 													<p>{newCreatedAt}</p>
 												</Col>
 											</Link>
 										</div>
-
-
-									</>
+									</div>
 								);
 							})}
 						</Row>

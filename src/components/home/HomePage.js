@@ -4,9 +4,9 @@ import axios from "axios";
 import { BASE_URL } from "../../constants/api";
 import { useState, useEffect } from "react";
 import AccommodationList from "./AccommodationList";
-// import Search from "../search/SearchTerm";
+import ErrorMessage from "../layout/ErrorMessage";
+import Loader from "../layout/Loader"
 import Pagination from "./Pagination";
-import Spinner from 'react-bootstrap/Spinner';
 import OurGuarantees from "./OurGuarantees";
 import ThingsToDo from "./ThingsToDo";
 import Container from 'react-bootstrap/Container';
@@ -47,13 +47,13 @@ function HomePage() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-    if (loading) return <div>
-		<Spinner animation="border" role="status" variant="success">
-			<span className="sr-only">Loading...</span>
-		</Spinner>
-	</div>;
+    if (loading) {
+        return <Loader />;
+    }
 
-	if (error) return <div>{}</div>;
+    if (error) {
+        return <ErrorMessage message={`Error: ${error}`} />;
+    }
 
     const indexOfLastAccommodation = currentPage * accommodationsPerPage;
     const indexOfFirstAccommodation = indexOfLastAccommodation - accommodationsPerPage;

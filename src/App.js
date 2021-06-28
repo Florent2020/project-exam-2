@@ -14,16 +14,19 @@ import BookingEnquiry from "./components/booking/BookingEnquary";
 import Nav from "./components/layout/Nav";
 import InfoHeader from "./components/layout/InfoHeader";
 import AdminPage from "./components/admin/AdminPage";
+import Accommodations from "./components/accomodations/AccommodationsPage"
 import Contact from "./components/contact/Contact";
 import LoginPage from "./components/login/LoginPage";
-import OverviewAdmin from "./components/admin/OverviewAdmin";
-import AddAccommodation from "./components/admin/AddAdmin";
-import MessagesAdmin from "./components/admin/MessagesAdmin";
-import ViewMessages from "./components/admin/ViewMessages"
-import EnquiriesAdmin from "./components/admin/EnquiriesAdmin";
+import OverviewAdmin from "./components/admin/overview/OverviewAdmin";
+import AddAccommodation from "./components/admin/add/AddAdmin";
+import MessagesAdmin from "./components/admin/messages/MessagesAdmin";
+import ViewMessages from "./components/admin/messages/ViewMessages"
+import EnquiriesAdmin from "./components/admin/enquiries/EnquiriesAdmin";
+import ViewEnquiries from "./components/admin/enquiries/ViewEnquiries";
 import AdminHotels from "./components/admin/hotels/AdminHotels";
 import EditHotel from "./components/admin/hotels/Edit"
 import AdminBBs from "./components/admin/BBs/AdminBBs";
+import EditBBs from "./components/admin/BBs/EditPage"
 import AdminGuesthouses from "./components/admin/guesthouses/AdminGuesthouses";
 import Footer from "./components/layout/Footer";
 import "./sass/style.scss";
@@ -61,6 +64,9 @@ function App() {
                                         <BookingEnquiry />
                                     </Route>
 
+                                    <Route path="/accommodations">
+                                        <Accommodations />
+                                    </Route>
                                     <Route path="/contact">
                                         <Contact />
                                     </Route>
@@ -85,14 +91,20 @@ function App() {
                                     <Route path="/admin/enquiries">
                                         <EnquiriesAdmin />
                                     </Route>
+                                    <Route path="/admin/viewEnquiries/:id">
+                                        <ViewEnquiries />
+                                    </Route>
                                     <Route path="/admin/hotels">
                                         <AdminHotels />
                                     </Route>
-                                    <Route path="/admin/edit/:id">
+                                    <Route path="/admin/hotel/edit/:id">
                                         <EditHotel />
                                     </Route>
                                     <Route path="/admin/BBs">
                                         <AdminBBs />
+                                    </Route>
+                                    <Route path="/admin/BB/edit/:id">
+                                        <EditBBs />
                                     </Route>
                                     <Route path="/admin/guesthouses">
                                         <AdminGuesthouses />

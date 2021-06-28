@@ -3,14 +3,15 @@ import { useState, useEffect } from "react";
 // import Card from 'react-bootstrap/Card';
 import Spinner from 'react-bootstrap/Spinner';
 // import axios from "axios";
-import { BASE_URL } from "../../constants/api";
-import Heading from "../layout/Heading";
+import { BASE_URL } from "../../../constants/api";
+import Heading from "../../layout/Heading";
 import Container from 'react-bootstrap/Container';
 // import Form from 'react-bootstrap/Form';
 // import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import bg from "../../images/bg_form.png";
+import bg from "../../../images/bg_form.png";
 // import Alert from "react-bootstrap/Alert";
+import Nav from 'react-bootstrap/Nav'
 
 
 import { useParams } from "react-router-dom";
@@ -18,8 +19,8 @@ import { useForm } from "react-hook-form";
 // import * as yup from "yup";
 // import { yupResolver } from "@hookform/resolvers/yup";
 // import ValidationError from "../../forms/ValidationError";
-import useAxios from "../../hooks/UseAxios";
-import DeleteAccommodation from "./Delete";
+import useAxios from "../../../hooks/UseAxios";
+import DeleteMessages from "./DeleteMessage";
 
 // const schema = yup.object().shape({
 // 	name: yup.string().required("Name is required"),
@@ -91,32 +92,36 @@ function ViewMessages() {
 
 	if (fetchError) return <div>{}</div>;
 
+	// if (fetchingMessage) {
+    //     return <Loader />;
+    // }
+
+    // if (fetchError) {
+    //     return <ErrorMessage message={`Error: ${error}`} />;
+    // }
+
 
     return (
         <div className="admin view--message" style={{ backgroundImage: `url(${bg})` }}>
 					<Container className="hotels--admin view--message__page">
-                        <Heading content="Edit Page" />
+                        <Heading content="View Messages Page" />
 
                         <form onSubmit={handleSubmit(onSubmit)}>
 
+							<Nav.Link href="/admin/messages"><i className="fas fa-arrow-left"></i> Back to messages</Nav.Link>
+
                             <div>
-                                <h3>{message.full_name}</h3>
-                                <p>{message.email}</p>
-                                <p>{message.message}</p>
+                                <h3>From: {message.full_name}</h3>
+                                <h6><strong>Email:</strong> {message.email}</h6>
+                                <p><strong>Message:</strong> {message.message}</p>
                             </div>
 
+							<button className="reply--message" title="reply" href={`mailto:${message.email}`}>
+                            	<i className="fas fa-reply"></i>
+								Reply
+							</button>
 
-                                <Button variant="info" type="submit" name="update">
-                                    <i className="fas fa-sync-alt"></i>
-                                    Update
-                                </Button>
-
-                                {/* <Button variant="warning" type="submit" name="delete">
-                                    <i className="fas fa-trash"></i>
-                                    Delete
-                                </Button> */}
-
-                                <DeleteAccommodation id={message.id} />
+                            <DeleteMessages id={message.id} />
 
                         </form>
 					</Container>

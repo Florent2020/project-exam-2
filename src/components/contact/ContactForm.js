@@ -70,6 +70,7 @@ function ContactForm() {
         <Container>
             {submitted && <Alert variant="success">Your message was successful!</Alert>}
             <Form onSubmit={handleSubmit(onSubmit)}>
+
                 <Form.Group>
                     <Form.Control placeholder="Full Name" {...register("full_name")} />
                     {errors.full_name && <ValidationError>{errors.full_name.message}</ValidationError>}

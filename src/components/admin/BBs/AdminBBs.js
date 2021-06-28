@@ -15,7 +15,7 @@ import bg from "../../../images/bg_form.png";
 
 
 function AdminBBs() {
-    const [BBs, setBBs] = useState([]);
+    const [bbs, setBbs] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
@@ -27,7 +27,7 @@ function AdminBBs() {
 			try {
 				const response = await axios.get(url);
 				console.log("response", response);
-				setBBs(response.data);
+				setBbs(response.data);
 			} catch (error) {
 				console.log(error);
 				setError(error.toString());
@@ -54,17 +54,17 @@ function AdminBBs() {
 				<Container className="hotels--admin">
 					<Heading  content="B&B's" />
                     <Row>
-                        {BBs.map((bb) => {
+                        {bbs.map((bb) => {
                             return (
 
                                 <Col sm={12} md={6} lg={4} key={bb.id}>
                                     <Card >
-                                        <Card.Img variant="top" src={`${BASE_URL}${bb.image[0].url}`} />
+										<Card.Img variant="top" src={bb.image_url} />
                                         <Card.Body>
                                             <Card.Title>
                                                 <h5>{bb.name}</h5>
                                             </Card.Title>
-                                            <Link to={`/home/BBs/${bb.id}`} className="accommodation--button" ><Button variant="primary"><i className="fas fa-edit"></i>Edit</Button></Link>
+                                            <Link to={`/admin/BB/edit/${bb.id}`} className="accommodation--button" ><Button variant="primary"><i className="fas fa-edit"></i>Edit</Button></Link>
                                         </Card.Body>
                                     </Card>
                                 </Col>

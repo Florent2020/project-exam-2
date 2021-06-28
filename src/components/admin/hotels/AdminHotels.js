@@ -64,7 +64,7 @@ function AdminHotels() {
                                         	<Card.Title>
                                                 <h5>{hotel.name}</h5>
                                             </Card.Title>
-                                            <Link to={`/admin/edit/${hotel.id}`} className="accommodation--button" ><Button variant="primary"><i className="fas fa-edit"></i>Edit</Button></Link>
+                                            <Link to={`/admin/hotel/edit/${hotel.id}`} className="accommodation--button" ><Button variant="primary"><i className="fas fa-edit"></i>Edit</Button></Link>
                                         </Card.Body>
                                     </Card>
                                 </Col>
