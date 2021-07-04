@@ -8,26 +8,23 @@ import Image from "react-bootstrap/Image";
 import bg from "./images/bg_texture1.png";
 import { AuthProvider } from "./context/AuthContext";
 import HomePage from "./components/home/HomePage";
-import AccommodationsDetail from "./components/home/AccomodationsDetail";
+import AccommodationsDetail from "./components/home/AccommodationsDetail";
 // import BookingEnquiry from "./components/home/BookingEnquiry";
 import BookingEnquiry from "./components/booking/BookingEnquary";
 import Nav from "./components/layout/Nav";
 import InfoHeader from "./components/layout/InfoHeader";
 import AdminPage from "./components/admin/AdminPage";
-import Accommodations from "./components/accomodations/AccommodationsPage"
+import AccommodationsPage from "./components/accomodations/AccommodationsPage"
 import Contact from "./components/contact/Contact";
 import LoginPage from "./components/login/LoginPage";
 import OverviewAdmin from "./components/admin/overview/OverviewAdmin";
-import AddAccommodation from "./components/admin/add/AddAdmin";
+import AddAccommodation from "./components/admin/AddAdmin";
 import MessagesAdmin from "./components/admin/messages/MessagesAdmin";
 import ViewMessages from "./components/admin/messages/ViewMessages"
 import EnquiriesAdmin from "./components/admin/enquiries/EnquiriesAdmin";
 import ViewEnquiries from "./components/admin/enquiries/ViewEnquiries";
-import AdminHotels from "./components/admin/hotels/AdminHotels";
-import EditHotel from "./components/admin/hotels/Edit"
-import AdminBBs from "./components/admin/BBs/AdminBBs";
-import EditBBs from "./components/admin/BBs/EditPage"
-import AdminGuesthouses from "./components/admin/guesthouses/AdminGuesthouses";
+import AdminAccommodations from "./components/admin/AdminAccommodations";
+import EditAccommodation from "./components/admin/Edit"
 import Footer from "./components/layout/Footer";
 import "./sass/style.scss";
 
@@ -57,15 +54,15 @@ function App() {
                                     <Route path="/" exact>
                                         <HomePage />
                                     </Route>
-                                    <Route path="/home/hotels/:id">
+                                    <Route path="/accommodation/detail/:id">
                                         <AccommodationsDetail />
                                     </Route>
-                                    <Route path="/hotel/booking">
+                                    <Route path="/accommodation/booking/:id">
                                         <BookingEnquiry />
                                     </Route>
 
                                     <Route path="/accommodations">
-                                        <Accommodations />
+                                        <AccommodationsPage />
                                     </Route>
                                     <Route path="/contact">
                                         <Contact />
@@ -94,20 +91,11 @@ function App() {
                                     <Route path="/admin/viewEnquiries/:id">
                                         <ViewEnquiries />
                                     </Route>
-                                    <Route path="/admin/hotels">
-                                        <AdminHotels />
+                                    <Route path="/admin/accommodations">
+                                        <AdminAccommodations />
                                     </Route>
-                                    <Route path="/admin/hotel/edit/:id">
-                                        <EditHotel />
-                                    </Route>
-                                    <Route path="/admin/BBs">
-                                        <AdminBBs />
-                                    </Route>
-                                    <Route path="/admin/BB/edit/:id">
-                                        <EditBBs />
-                                    </Route>
-                                    <Route path="/admin/guesthouses">
-                                        <AdminGuesthouses />
+                                    <Route path="/admin/accommodation/edit/:id">
+                                        <EditAccommodation />
                                     </Route>
 
                                 </Switch>

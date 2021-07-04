@@ -71,6 +71,8 @@ function ContactForm() {
             {submitted && <Alert variant="success">Your message was successful!</Alert>}
             <Form onSubmit={handleSubmit(onSubmit)}>
 
+            <fieldset disabled={submitting}>
+
                 <Form.Group>
                     <Form.Control placeholder="Full Name" {...register("full_name")} />
                     {errors.full_name && <ValidationError>{errors.full_name.message}</ValidationError>}
@@ -89,6 +91,9 @@ function ContactForm() {
                 <Button variant="info" type="submit">
                     Send
                 </Button>
+
+            </fieldset>
+
             </Form>
         </Container>
     );

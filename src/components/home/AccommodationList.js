@@ -11,7 +11,7 @@ function AccommodationList({accommodations}) {
             {accommodations.map((accommodation) => {
 
             return (
-                 <div className="col-md-4 col-12" key={accommodation.id}>
+                 <div className="col-lg-4 col-md-6 col-12" key={accommodation.id}>
                             <Card >
                             <Card.Text className="type">{accommodation.type}</Card.Text>
                             <Card.Text className="trips"><i className="far fa-heart"></i></Card.Text>
@@ -22,7 +22,7 @@ function AccommodationList({accommodations}) {
                                     <Card.Text className="location"><i className="fas fa-map-marker-alt"></i>{accommodation.location}</Card.Text>
                                     <Card.Text className="stay">{accommodation.stay}</Card.Text>
                                     <Card.Text className="price">NOK {accommodation.price}</Card.Text>
-                                    <Link to={`/home/hotels/${accommodation.id}`} className="accommodation--button" ><Button variant="primary">View More!</Button></Link>
+                                    <Link to={`/accommodation/detail/${accommodation.id}`} className="accommodation--button" ><Button variant="primary">View More!</Button></Link>
                             </Card>
                 </div>
             );

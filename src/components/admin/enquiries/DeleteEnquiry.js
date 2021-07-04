@@ -34,6 +34,7 @@ export default function DeleteEnquiries({ id }) {
 		try {
 			await http.delete(url);
 			history.push("/admin/enquiries");
+      window.location.reload();
 		} catch (error) {
 			setError(error);
 		}

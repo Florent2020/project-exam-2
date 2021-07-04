@@ -15,7 +15,7 @@ const schema = yup.object().shape({
 
     full_name: yup
         .string()
-        .required("Please enter your first name!")
+        .required("Please enter your full name!")
         .min(MINIMUM_FULL_NAME_CHARACTERS, `Your first name must be at least ${MINIMUM_FULL_NAME_CHARACTERS} characters!`),
     email: yup
         .string()
@@ -31,7 +31,7 @@ const schema = yup.object().shape({
 });
 
 
-function BookingForm() {
+function BookingForm({accName}) {
 
     const [submitted, setSubmitted] = useState(false);
     const [submitting, setSubmitting] = useState(false);
@@ -48,6 +48,8 @@ function BookingForm() {
     });
 
     async function onSubmit(data) {
+
+        data.AccomodationName = accName;
 
         setSubmitted(true);
 		setSubmitting(true);
@@ -71,6 +73,14 @@ function BookingForm() {
         <Container>
             {submitted && <Alert variant="success">Your submit was successful!</Alert>}
             <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form.Group>
+                    <Form.Control type="text" hidden id="AccomodationName" placeholder="AccomodationName" {...register("AccomodationName")}
+                    value={accName}
+                    />
+
+                    {/* {errors.full_name && <ValidationError>{errors.full_name.message}</ValidationError>} */}
+                </Form.Group>
+
                 <Form.Group>
                     <Form.Control type="text" placeholder="Full Name" {...register("full_name")} />
                     {errors.full_name && <ValidationError>{errors.full_name.message}</ValidationError>}

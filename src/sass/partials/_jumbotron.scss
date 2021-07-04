@@ -62,4 +62,25 @@
     padding-right: 0;
   }
 }
-//
+// Jumbotron Accommodations page
+
+.accommodations--banner {
+  & h1 {
+    font-size: 50px;
+    margin: 10px 0 25px;
+  }
+
+  h2 {
+    color: $colour-heading;
+    line-height: 1;
+    font-size: 21px;
+    max-width: 300px;
+  }
+
+  p {
+    font-family: $SubHeading-font-family;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin: 0;
+  }
+}

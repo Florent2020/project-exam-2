@@ -1,5 +1,8 @@
 import React from 'react';
-// import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+ import { useState, useEffect } from "react";
+
+
 
 
 import Heading from "../layout/Heading";
@@ -10,58 +13,56 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import bg from "../../images/bg_form.png";
 import { Card } from 'react-bootstrap';
-// import axios from "axios";
-// import { BASE_URL } from "../../constants/api";
-// import { useParams } from "react-router-dom";
-
+import axios from "axios";
+import { BASE_URL } from "../../constants/api";
 
 function Booking() {
 
-    // let { id } = useParams();
+    const { id } = useParams();
+
+	const url = BASE_URL + `/accommodations/${id}`;
+
+    const emptyInit = {};
+    const [accommodation, setAccommodation] = useState(emptyInit);
+
+	useEffect(
+		function () {
+			async function getDetail() {
 
 
-	// const url = BASE_URL + `/hotels/${id}`;
+				try {
+					const response = await axios.get(url);
+					console.log("response", response.data);
+					setAccommodation(response.data);
+				} catch (error) {
+					// console.log(error);
+					// setError(error.toString());
+				} finally {
+					// setLoading(false);
+				}
 
-    // const emptyInit = any;
-    // const [accommodation, setAccommodation] = useState(emptyInit);
+			}
+			getDetail();
 
-	// useEffect(
-	// 	function () {
-	// 		async function getDetail() {
-
-	// 			try {
-	// 				const response = await axios.get(url);
-	// 				console.log("response", response.data);
-	// 				setAccommodation(response.data);
-	// 			} catch (error) {
-	// 				// console.log(error);
-	// 				// setError(error.toString());
-	// 			} finally {
-	// 				// setLoading(false);
-	// 			}
-
-	// 		}
-	// 		getDetail();
-
-	// 	},
-	// 	// eslint-disable-next-line
-	// 	[]
-	// );
+		},
+		// eslint-disable-next-line
+		[]
+	);
 
 
     return (
-        <div className="booking" style={{ backgroundImage: `url(${bg})` }}>
+            <div className="booking" style={{ backgroundImage: `url(${bg})` }}>
                 <Container className="booking__bg">
                     <Row>
                         <Col xs={12} md={5} className="booking__bg--left">
-                            <SubHeading content="Book now at  "  />
+                            <h2>Book now at "<span>{accommodation.name}</span> "</h2>
                             <Card.Text>Please fill out the form to book your accommodation!</Card.Text>
                         </Col>
                         <Col xs={12} md={7} className="booking__bg--right">
                             <div className="booking__logo">
                                 <Heading content="Booking Enquiry" />
                             </div>
-                            <BookingForm />
+                            <BookingForm  accName={accommodation.name}/>
                         </Col>
                     </Row>
                 </Container>

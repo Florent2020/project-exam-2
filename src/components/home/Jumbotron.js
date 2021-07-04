@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Banner from "../../images/banner_.png";
 import Container from "react-bootstrap/Container";
@@ -8,6 +9,7 @@ import Button from "react-bootstrap/Button";
 function JumbotronPage() {
     return (
         <Jumbotron style={{ backgroundImage: `url(${Banner})` }}>
+
                 <div  className="shadow--banner"></div>
                 <Container>
                     <div className="shadow--text">
@@ -16,11 +18,10 @@ function JumbotronPage() {
                             Discover Hotels, B&B's, Guesthouses that defines a new dimension of luxury!
                         </p>
                         <p>
-                            <Button variant="primary">Discover</Button>
+                           <Link to="./accommodations"><Button variant="primary">Discover</Button></Link>
                         </p>
                     </div>
                 </Container>
-
         </Jumbotron>
     )
 }

@@ -67,9 +67,9 @@ function EnquiriesAdmin() {
 						const newCreatedAt = newFormat.format(createdAt);
 
 						return (
-							<>
+							<div key={enquiry.id} className="enqyery--id" >
 								<Col sm={12} md={5} className="enquirie--table">
-									<div key={enquiry.id}>
+
 									<p className="sent">Sent: {newCreatedAt}</p>
 									<h5>From: {enquiry.full_name}</h5>
 									<p className="email">Email: {enquiry.email}</p>
@@ -78,9 +78,9 @@ function EnquiriesAdmin() {
 									<DeleteEnquiry id={enquiry.id} />
 									<Link to={`/admin/viewEnquiries/${enquiry.id}`} className="enquirie--link">View details</Link>
 									{/* <Button href={`/admin/viewEnquiries/${enquiry.id}`} className="enquirie--link" variant="info" type="submit">View details</Button> */}
-									</div>
+
 								</Col>
-							</>
+							</div>
 						);
 					})}
 				</Row>

@@ -18,14 +18,14 @@ export default function AdminPage() {
 					<Container>
 						<Heading  content="Admin page" />
 						<Row>
-							<Col sm={12} md={4}>
+							<Col sm={12} md={6}>
 								<div className="admin--hotels linkk">
-									<NavLink to="/admin/hotels">
-										Link to Hotels
+									<NavLink to="/admin/accommodations">
+										Link to Accommodations
 									</NavLink>
 								</div>
 							</Col>
-							<Col sm={12} md={4}>
+							{/* <Col sm={12} md={4}>
 								<div className="admin--BBs linkk">
 									<NavLink to="/admin/BBs">
 										Link to B&B's
@@ -38,7 +38,7 @@ export default function AdminPage() {
 										Link to Guesthouses
 									</NavLink>
 								</div>
-							</Col>
+							</Col> */}
 						</Row>
 					</Container>
 				</Col>

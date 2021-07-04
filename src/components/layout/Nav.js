@@ -2,12 +2,15 @@ import { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown";
 
 function Nav() {
 	const [auth, setAuth] = useContext(AuthContext);
 
 	const history = useHistory();
+
+	if(!auth) {
+		history.push("/");
+	}
 
 	function logout() {
 		setAuth(null);

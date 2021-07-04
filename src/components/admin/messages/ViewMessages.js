@@ -8,7 +8,7 @@ import Heading from "../../layout/Heading";
 import Container from 'react-bootstrap/Container';
 // import Form from 'react-bootstrap/Form';
 // import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import bg from "../../../images/bg_form.png";
 // import Alert from "react-bootstrap/Alert";
 import Nav from 'react-bootstrap/Nav'

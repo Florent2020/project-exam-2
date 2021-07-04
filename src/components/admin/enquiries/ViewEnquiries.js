@@ -3,10 +3,10 @@ import Spinner from 'react-bootstrap/Spinner';
 import { BASE_URL } from "../../../constants/api";
 import Heading from "../../layout/Heading";
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import bg from "../../../images/bg_form.png";
 import Nav from 'react-bootstrap/Nav';
-import DeleteEnquiries from "./DeleteEnquiry";
+// import DeleteEnquiries from "./DeleteEnquiry";
 
 
 import { useParams } from "react-router-dom";
@@ -34,7 +34,7 @@ function ViewEnquiries() {
 
 	let { id } = useParams();
 
-	const url = BASE_URL + `/hotels/${id}`;
+	const url = BASE_URL + `/enquiries/${id}`;
 
 
 	useEffect(function () {
@@ -94,7 +94,7 @@ function ViewEnquiries() {
 							<Nav.Link href="/admin/enquiries"><i className="fas fa-arrow-left"></i> Back to enquiries</Nav.Link>
 
                             <div>
-                                <h3>At Hotel: {hotels.name}</h3>
+                                <h3>At Hotel: {hotels.AccomodationName}</h3>
                             </div>
 
 							<button className="reply--message" title="reply" href={`mailto:${hotels.email}`}>
