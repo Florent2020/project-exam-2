@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import bg from "../../images/bg_form.png";
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -15,12 +15,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import ValidationForm from "../forms/ValidationError";
 import useAxios from "../../hooks/UseAxios";
 import { BASE_URL } from "../../constants/api";
-
-
-// import Media from "./media/Media";
-
-// const url = BASE_URL + TOKEN_PATH;
-// console.log(url);
 
 
 const schema = yup.object().shape({
@@ -34,7 +28,6 @@ function AddAccommodation() {
 
 	const [submitting, setSubmitting] = useState(false);
 	const [serverError, setServerError] = useState(null);
-	// const [state, setState] = useState([]);
 
 
 	const url = BASE_URL + `/accommodations`;

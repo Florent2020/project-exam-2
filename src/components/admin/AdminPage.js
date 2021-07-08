@@ -11,9 +11,7 @@ export default function AdminPage() {
 	return (
 		<div className="admin" style={{ backgroundImage: `url(${bg})` }}>
 			<Row>
-				<Col sm={12} md={3}>
 
-				</Col>
 				<Col sm={12} md={7} className="accommodations--admin">
 					<Container>
 						<Heading  content="Admin page" />

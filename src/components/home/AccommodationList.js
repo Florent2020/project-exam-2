@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 // import { BASE_URL } from "../../constants/api";
 import Button from "react-bootstrap/Button";
+import RatingStars from "./RatingStars"
 
 function AccommodationList({accommodations}) {
     return (
@@ -20,6 +21,7 @@ function AccommodationList({accommodations}) {
                                         <h5>{accommodation.name}</h5>
                                     </Card.Title>
                                     <Card.Text className="location"><i className="fas fa-map-marker-alt"></i>{accommodation.location}</Card.Text>
+                                    <RatingStars />
                                     <Card.Text className="stay">{accommodation.stay}</Card.Text>
                                     <Card.Text className="price">NOK {accommodation.price}</Card.Text>
                                     <Link to={`/accommodation/detail/${accommodation.id}`} className="accommodation--button" ><Button variant="primary">View More!</Button></Link>

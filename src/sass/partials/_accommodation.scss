@@ -69,7 +69,7 @@
     top: 4px;
     background-color: $colour-heading;
     opacity: 0.6;
-    padding: 4px 7px;
+    padding: 4px 7px !important;
     border: 1px solid $colour-secondary;
     border-radius: 5px;
 
@@ -84,7 +84,7 @@
 
   & .location {
     font-size: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 
     & i {
       font-size: 9px;

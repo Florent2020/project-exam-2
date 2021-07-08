@@ -64,11 +64,11 @@ function MessagesAdmin() {
 									<div className="messages--width">
 										<div className="messages--table" key={message.id}>
 											<Link to={`/admin/viewMessages/${message.id}`} className="message--link">
-												<Col sm={12} md={10}>
+												<Col sm={10} md={10}>
 
 													<h5>{message.full_name}</h5>
 												</Col>
-												<Col sm={12} md={2}>
+												<Col sm={2} md={2}>
 													<p>{newCreatedAt}</p>
 												</Col>
 											</Link>

@@ -9,22 +9,32 @@ $SubHeading-font-family: "Marcellus", serif;
 $body-font-family: "Montserrat", sans-serif;
 
 $tablet-width: 992px;
+$mobile-width: 768px;
 
 // MY TASK
 @import "~bootstrap/scss/bootstrap";
 @import "./partials/layout";
-// @import "./partials/typography";
+@import "./partials/typography";
 @import "./partials/nav";
 @import "./partials/infoHeader";
 @import "./partials/jumbotron";
 @import "./partials/accommodation";
 @import "./partials/accommodationDetails";
-@import "./partials/search";
+@import "./partials/accommodationPage/accommodations";
 @import "./partials/pagination";
 @import "./partials/ourGuarantees";
 @import "./partials/thingsToDo";
 @import "./partials/contactForm";
 @import "./partials/bookingEnquiry";
 @import "./partials/login";
-@import "./partials/admin";
+// @import "./partials/admin";
+// @import "./partials/admin/dashboard";
+@import "./partials/admin/dashboardMobile";
+@import "./partials/admin/overview";
+@import "./partials/admin/edit";
+@import "./partials/admin/add";
+@import "./partials/admin/messages";
+@import "./partials/admin/enquiries";
+@import "./partials/admin/deleteAlertButton";
 @import "./partials/footer";
+@import "./partials/stars";

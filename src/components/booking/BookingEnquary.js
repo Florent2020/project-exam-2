@@ -55,7 +55,7 @@ function Booking() {
                 <Container className="booking__bg">
                     <Row>
                         <Col xs={12} md={5} className="booking__bg--left">
-                            <h2>Book now at "<span>{accommodation.name}</span> "</h2>
+                            <h2>Book now at <span>"{accommodation.name}"</span></h2>
                             <Card.Text>Please fill out the form to book your accommodation!</Card.Text>
                         </Col>
                         <Col xs={12} md={7} className="booking__bg--right">

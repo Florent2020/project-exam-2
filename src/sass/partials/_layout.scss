@@ -22,7 +22,6 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
   font-family: $body-font-family;
-  // background-color: $colour-bg;
 }
 
 .container {
@@ -42,24 +41,6 @@ img {
   display: block;
 }
 
-h1 {
-  font-family: $heading-font-family;
-  letter-spacing: 1.6px;
-}
-
-h2 {
-  font-family: $SubHeading-font-family;
-}
-
-h5 {
-  font-size: 17px;
-  font-weight: 700;
-}
-
-p {
-  line-height: 1.2;
-}
-
 button,
 .btn-primary,
 .btn-info {
@@ -77,9 +58,7 @@ button:focus,
 .btn-info:hover,
 .btn-info:focus {
   background-color: rgba(215, 182, 0, 0.8);
-  // border-color: $colour-heading;
   color: $colour-secondary;
-  // transition: all 0.3s;
 }
 
 input:-internal-autofill-selected {
@@ -99,24 +78,8 @@ input.search--input__search {
   width: 300px;
   margin-left: 15px;
   margin-bottom: 30px;
-
   color: #fff;
 }
-
-// button {
-//   font-family: "Orbitron", sans-serif;
-//   text-transform: uppercase;
-//   width: 200px;
-//   padding: 15px 10px;
-//   font-size: 15px;
-//   font-weight: bold;
-//   color: #fff;
-//   background: transparent;
-//   border-radius: 10px;
-//   border: 3px solid #fff;
-//   cursor: pointer;
-//   outline: none;
-// }
 
 #root {
   display: flex;
@@ -133,19 +96,3 @@ input.search--input__search {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.logo {
-  width: 80px;
-}
-
-// @media (min-width: $tablet-width) {
-//   footer .footer {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: left;
-//     padding: 20px 0;
-
-//     & .footer__item--email {
-//       padding: 0;
-//     }
-//   }
-// }

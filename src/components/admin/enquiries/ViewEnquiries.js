@@ -20,7 +20,7 @@ import useAxios from "../../../hooks/UseAxios";
 
 function ViewEnquiries() {
     const [hotels, setHotels] = useState(null);
-    const [updated, setUpdated] = useState(false);
+    // const [updated, setUpdated] = useState(false);
 	const [fetchingHotels, setFetchingHotels] = useState(true);
 	const [updatingHotels, setUpdatingHotels] = useState(false);
 	const [updateError, setUpdateError] = useState(null);
@@ -59,14 +59,14 @@ function ViewEnquiries() {
     async function onSubmit(data) {
 		setUpdatingHotels(true);
 		setUpdateError(null);
-		setUpdated(false);
+		// setUpdated(false);
 
 		console.log(data);
 
 		try {
 			const response = await http.put(url, data);
 			console.log("response", response.data);
-			setUpdated(true);
+			// setUpdated(true);
 		} catch (error) {
 			console.log("error", error);
 			setUpdateError(error.toString());

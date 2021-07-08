@@ -38,8 +38,8 @@ function AccommodationList() {
 		}
 
 		getAccommodations();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+
+	}, [url]);
 
 	if (loading) return <div>
 		<Spinner animation="border" role="status" variant="success">
@@ -66,20 +66,41 @@ function AccommodationList() {
                         {filteredHotel.map((accommodation) => {
 
                             return (
-                                <div className="col-lg-4 col-md-6 col-12" key={accommodation.id}>
-                                            <Card >
-                                            <Card.Text className="type">{accommodation.type}</Card.Text>
+                                // <div className="col-lg-4 col-md-6 col-12" key={accommodation.id}>
+                                //             <Card >
+
+                                //             <Card.Text className="type">{accommodation.type}</Card.Text>
+                                //             <Card.Text className="trips"><i className="far fa-heart"></i></Card.Text>
+                                //                 <Card.Img variant="top" src={accommodation.image_url} />
+                                //                     <Card.Title>
+                                //                         <h5>{accommodation.name}</h5>
+                                //                     </Card.Title>
+                                //                     <Card.Text className="location"><i className="fas fa-map-marker-alt"></i>{accommodation.location}</Card.Text>
+                                //                     <Card.Text className="stay">{accommodation.stay}</Card.Text>
+                                //                     <Card.Text className="price">NOK {accommodation.price}</Card.Text>
+                                //                     <Link to={`/accommodation/detail/${accommodation.id}`} className="accommodation--button" ><Button variant="primary">View More!</Button></Link>
+                                //             </Card>
+                                // </div>
+
+								<div key={accommodation.id}>
+									<Card >
+										<div className="col-md-5 col-12">
+											<Card.Text className="type">{accommodation.type}</Card.Text>
                                             <Card.Text className="trips"><i className="far fa-heart"></i></Card.Text>
-                                                <Card.Img variant="top" src={accommodation.image_url} />
-                                                    <Card.Title>
-                                                        <h5>{accommodation.name}</h5>
-                                                    </Card.Title>
-                                                    <Card.Text className="location"><i className="fas fa-map-marker-alt"></i>{accommodation.location}</Card.Text>
-                                                    <Card.Text className="stay">{accommodation.stay}</Card.Text>
-                                                    <Card.Text className="price">NOK {accommodation.price}</Card.Text>
-                                                    <Link to={`/accommodation/detail/${accommodation.id}`} className="accommodation--button" ><Button variant="primary">View More!</Button></Link>
-                                            </Card>
-                                </div>
+                                            <Card.Img variant="top" src={accommodation.image_url} />
+										</div>
+										<div className="col-md-7 col-12">
+											<Card.Title>
+                                                <h5>{accommodation.name}</h5>
+                                            </Card.Title>
+                                            <Card.Text className="location"><i className="fas fa-map-marker-alt"></i>{accommodation.location}</Card.Text>
+                                        	<Card.Text className="description">{accommodation.description}</Card.Text>
+											<Card.Text className="stay">{accommodation.stay}</Card.Text>
+                                            <Card.Text className="price">NOK {accommodation.price}</Card.Text>
+                                            <Link to={`/accommodation/detail/${accommodation.id}`} className="accommodation--button" ><Button variant="primary">View More!</Button></Link>
+										</div>
+									</Card>
+								</div>
                             );
                         })}
                         </div>

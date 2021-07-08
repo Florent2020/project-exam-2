@@ -24,15 +24,30 @@ function Nav() {
 
 				{auth ? (
 					<>
-						<NavLink to="/admin/dashboard" className="nav-link">Admin</NavLink>
-						<Button variant="info" type="submit" className="logout--button" onClick={logout}>Log out</Button>
-						<div className="nav-links dashboard">
-							{/* <div className="dashboard">
+
+						{/* <div className="nav-links dashboard">
+							<NavLink to="/admin/dashboard">
 								<i className="fas fa-tachometer-alt"></i>
-								<NavLink to="/admin/dashboard">
 								Dashboard
-								</NavLink>
-							</div> */}
+							</NavLink>
+							<NavLink to="/admin/overview" activeClassName="active">
+								<i className="fas fa-hotel"></i>
+								Overview
+							</NavLink>
+							<NavLink to="/admin/add" activeClassName="active">
+								<i className="fas fa-plus-square"></i>
+								Add
+							</NavLink>
+							<NavLink to="/admin/messages" activeClassName="active">
+								<i className="fas fa-envelope-open"></i>
+								Messages
+							</NavLink>
+							<NavLink to="/admin/enquiries" activeClassName="active">
+								<i className="fas fa-calendar-alt"></i>
+								Enquiries
+							</NavLink>
+						</div> */}
+						<div className="nav-links dashboard--mobile">
 							<NavLink to="/admin/dashboard">
 								<i className="fas fa-tachometer-alt"></i>
 								Dashboard
@@ -54,6 +69,9 @@ function Nav() {
 								Enquiries
 							</NavLink>
 						</div>
+
+						{/* <NavLink to="/admin/dashboard" className="admin--mobile">Admin</NavLink> */}
+						<Button variant="info" type="submit" className="logout--button" onClick={logout}>Log out</Button>
 					</>
 				) : (
 						<>

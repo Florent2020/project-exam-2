@@ -1,0 +1,86 @@
+// Add page on Admin
+
+.add--admin {
+  padding: 0;
+
+  & .add--page {
+    background-color: rgba(38, 38, 38, 0.7);
+    padding: 20px;
+    border-radius: 5px;
+
+    & .add--line {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  & .form-label {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2px;
+  }
+
+  & .form-control {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    position: relative;
+    border-left: 3px solid #d7b600;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  & .form-row > .col,
+  .form-row > [class*="col-"] {
+    min-width: 100%;
+  }
+
+  & .btn-info {
+    width: 49%;
+    margin-right: 2%;
+
+    & i {
+      padding-right: 10px;
+    }
+  }
+
+  & button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & .fa-plus-square {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+
+  & .btn-warning {
+    width: 49%;
+    background-color: $colour-error;
+    color: $colour-heading;
+    font-weight: 600;
+    border-color: $colour-error;
+
+    &:hover {
+      background-color: rgba(197, 49, 49, 0.8);
+    }
+
+    & i {
+      padding-right: 10px;
+    }
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .add--admin {
+    padding: 70px 0;
+
+    & .add--page {
+      padding: 50px;
+    }
+
+    & .form-row > .col,
+    .form-row > [class*="col-"] {
+      min-width: 50%;
+    }
+  }
+}

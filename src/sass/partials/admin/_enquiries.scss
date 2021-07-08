@@ -1,0 +1,152 @@
+// Enquiries page on Admin
+
+.enquiries--admin {
+  padding: 0;
+
+  & .enquiries--page {
+    background-color: rgba(38, 38, 38, 0.7);
+    padding: 50px 20px;
+    border-radius: 5px;
+  }
+
+  & .enqyery--id {
+    width: 100%;
+    margin-right: 3%;
+  }
+
+  & .enquirie--table {
+    min-width: 100%;
+    background-color: #272b30;
+    margin-bottom: 10px;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 0 0px 2px #c0c0c0;
+    border-radius: 3px;
+    color: $colour-heading;
+
+    & div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & h5,
+    p {
+      margin-bottom: 10px;
+    }
+
+    & .sent,
+    .email {
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+
+  & .enquirie--link {
+    font-size: 15px;
+    margin-top: 24px;
+    background-color: $colour-primary;
+    color: #262626;
+    font-weight: 600;
+    padding: 5px 13px;
+    margin-left: auto;
+    border-radius: 3px;
+
+    // width: 140px;
+    // padding: 5px 13px;
+    // border-radius: 2px;
+    // outline: none;
+    // margin-right: 10px;
+    // font-size: 14px;
+    // border: 2px solid $colour-primary;
+    // margin-top: 40px;
+    // margin-left: auto;
+  }
+
+  & .empty--enquiries {
+    color: $colour-heading;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .enquiries--admin {
+    padding: 70px 0;
+
+    & .enquiries--page {
+      padding: 50px;
+    }
+
+    & .enqyery--id {
+      width: 47%;
+      margin-right: 3%;
+    }
+  }
+}
+
+// View Enquery page
+
+.view--enquiry {
+  padding: 0;
+
+  & .view--enquiry__page {
+    background-color: rgba(38, 38, 38, 0.7);
+    padding: 50px 20px;
+    border-radius: 5px;
+    min-height: 100vh;
+  }
+
+  & form {
+    background: #e4e4e4;
+    border-radius: 5px;
+    padding: 25px;
+
+    & a {
+      color: $colour-secondary;
+      font-size: 13px;
+      padding-left: 0;
+      font-style: italic;
+      margin-bottom: 20px;
+      text-transform: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+        color: $colour-error;
+      }
+    }
+
+    & div {
+      margin-bottom: 50px;
+    }
+
+    & button {
+      width: auto;
+      padding: 3px 13px;
+      border-radius: 4px;
+      outline: none;
+      margin-right: 10px;
+      font-size: 14px;
+      border: 2px solid $colour-primary;
+    }
+
+    & .delete--enquiry {
+      background-color: $colour-error;
+      border: 2px solid $colour-error;
+      color: $colour-heading;
+    }
+
+    & i {
+      margin-right: 5px;
+    }
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .view--enquiry {
+    padding: 70px 0;
+
+    & .view--enquiry__page {
+      padding: 50px;
+      min-height: auto;
+    }
+  }
+}

@@ -1,0 +1,161 @@
+.page {
+  h1 {
+    font-size: 40px !important;
+  }
+}
+
+.accommodations--page {
+  position: relative;
+
+  & .search--div {
+    background-color: $colour-secondary;
+    padding: 30px;
+    max-width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    position: absolute;
+    top: -82px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid $colour-primary;
+  }
+
+  & .form-group {
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  & .fa-search {
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    color: #495057;
+
+    &:focus {
+      color: $colour-heading;
+    }
+  }
+
+  & .form-control.search {
+    width: 300px;
+    border-radius: 0;
+    // background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    position: relative;
+    // border-left: 3px solid #d7b600;
+    border: 1px solid $colour-secondary;
+    padding-left: 30px;
+    background-color: transparent;
+  }
+
+  & .form-control:focus {
+    // color: #495057;
+    // background-color: #fff;
+    // border-color: #80bdff;
+    // outline: 0;
+    box-shadow: none;
+    background-color: $colour-heading;
+  }
+
+  & h2 {
+    padding-top: 50px;
+  }
+
+  & .row {
+    margin-left: 0;
+  }
+
+  & .card {
+    flex-direction: column;
+
+    & .type {
+      padding: 7px 12px !important;
+    }
+  }
+
+  & .col-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  & .col-md-7 {
+    padding: 20px;
+  }
+
+  & .card-img,
+  .card-img-top {
+    height: auto;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+  }
+
+  & h5 {
+    font-size: 20px;
+  }
+
+  & .card-title,
+  .card-text {
+    padding: 0;
+  }
+
+  & .description {
+    font-size: 15px;
+    margin: 20px 0;
+
+    display: flex;
+    flex-direction: column;
+    height: 38%;
+  }
+
+  & .accommodation--button {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+}
+
+@media (min-width: $mobile-width) {
+  .page {
+    h1 {
+      font-size: 50px !important;
+    }
+  }
+
+  .accommodations--page {
+    & .search--div {
+      max-width: 420px;
+    }
+    & .card {
+      flex-direction: row;
+    }
+
+    & .card-img,
+    .card-img-top {
+      height: 350px;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 10px;
+    }
+
+    & .pages .accommodation--button button {
+      width: 210px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (min-width: $mobile-width) and (max-width: $tablet-width) {
+  .accommodations--page {
+    .card-img,
+    .card-img-top {
+      height: auto;
+    }
+
+    .description {
+      display: none;
+    }
+  }
+}

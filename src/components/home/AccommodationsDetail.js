@@ -12,6 +12,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Card from 'react-bootstrap/Card'
+import Map from "./AloMap";
 
 export default function AccommodationDetail() {
 	const [accommodation, setAccommodation] = useState(null);
@@ -43,8 +44,8 @@ export default function AccommodationDetail() {
 			getDetail();
 
 		},
-		// eslint-disable-next-line
-		[]
+
+		[url]
 	);
 
     const [index, setIndex] = useState(0);
@@ -110,7 +111,7 @@ export default function AccommodationDetail() {
                             <Link to={`/accommodation/booking/${accommodation.id}`} className="accommodation--button" ><Button variant="primary">Book Now!</Button></Link>
                         </Col>
                         <Col xs={12} md={6}>
-                           MAP
+                           <Map />
                         </Col>
                     </Row>
                 </div>

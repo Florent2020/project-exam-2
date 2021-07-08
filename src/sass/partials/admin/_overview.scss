@@ -1,0 +1,50 @@
+// Hotels page on Admin
+
+.hotels--admin {
+  max-width: 950px;
+  padding: 60px 0;
+
+  .accommocations--body {
+    padding: 25px 25px 0px;
+    background-color: rgba(38, 38, 38, 0.7);
+    border-radius: 5px;
+  }
+
+  & h1 {
+    font-size: 35px;
+    margin-bottom: 40px;
+    color: $colour-heading;
+    font-family: $SubHeading-font-family;
+  }
+
+  & .col-sm-12,
+  .col-md-6,
+  .col-lg-4 {
+    display: grid;
+  }
+
+  & .card-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .card-title {
+    flex: 1 0 auto;
+  }
+
+  & .accommodation--button {
+    flex-shrink: 0;
+  }
+
+  & button {
+    width: 100%;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .hotels--admin {
+    & h1 {
+      font-size: 40px;
+    }
+  }
+}

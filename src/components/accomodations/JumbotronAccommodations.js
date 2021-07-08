@@ -7,7 +7,7 @@ import SubHeading from "../layout/SubHeading";
 
 function JumbotronAccommodations() {
     return (
-        <Jumbotron style={{ backgroundImage: `url(${Banner})` }}>
+        <Jumbotron className="page" style={{ backgroundImage: `url(${Banner})` }}>
             <div  className="shadow--banner"></div>
                 <Container>
 

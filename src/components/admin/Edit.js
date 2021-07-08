@@ -128,11 +128,24 @@ function EditHotel() {
                                     </Col>
 
                                     <Col className="edit--line">
-                                        <Form.Group>
+                                        {/* <Form.Group>
                                             <Form.Label>Type of accommodation</Form.Label>
                                             <Form.Control name="type" defaultValue={accommodation.type} placeholder="Type" {...register("type")} />
                                             {errors.type && <ValidationError>{errors.type.message}</ValidationError>}
+                                        </Form.Group> */}
+
+                                        <Form.Group>
+                                            <Form.Label>Type of accommodation</Form.Label>
+                                            {/* <Form.Control name="type" defaultValue={submitting.type} placeholder="Type" {...register("type")} /> */}
+                                            <Form.Control name="type" defaultValue={accommodation.type} placeholder="Select type"  {...register("type")}  as="select">
+												<option value="">Type</option>
+												<option value="Hotel">Hotel</option>
+												<option value="B&B's">B&B's</option>
+												<option value="Guesthouses">Guesthouses</option>
+											</Form.Control>
+											{errors.type && <ValidationError>{errors.type.message}</ValidationError>}
                                         </Form.Group>
+
                                     </Col>
                                     </Col>
 
@@ -189,11 +202,24 @@ function EditHotel() {
                                 </Form.Row>
 
                                 <Form.Row>
-                                    <Form.Group as={Col}>
+                                    {/* <Form.Group as={Col}>
                                         <Form.Label>Star</Form.Label>
                                         <Form.Control name="star" defaultValue={accommodation.star} placeholder="Star" {...register("star")} />
                                         {errors.star && <ValidationError>{errors.star.message}</ValidationError>}
+                                    </Form.Group> */}
+
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Select star</Form.Label>
+                                        {/* <Form.Control name="type" defaultValue={submitting.type} placeholder="Type" {...register("type")} /> */}
+                                        <Form.Control name="star" defaultValue={accommodation.star} placeholder="Select star"  {...register("star")}  as="select">
+											<option value="">Star</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</Form.Control>
+										{errors.type && <ValidationError>{errors.star.message}</ValidationError>}
                                     </Form.Group>
+
 
                                     <Form.Group as={Col}>
                                         <Form.Label>Cancellation</Form.Label>

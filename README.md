@@ -1,3 +1,5 @@
+https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places
+
 # Project Exam 2
 
 There are two options with this Project Exam.
