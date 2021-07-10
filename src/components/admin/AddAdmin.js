@@ -57,6 +57,8 @@ function AddAccommodation() {
 		}
 	}
 
+
+
     return (
         <div className="admin add--admin" style={{ backgroundImage: `url(${bg})` }}>
 			<Container  className="hotels--admin add--page">

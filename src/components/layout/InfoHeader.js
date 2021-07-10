@@ -1,6 +1,9 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import { NavLink} from "react-router-dom";
+// import moon from "../../images/moon.png";
+// import Image from 'react-bootstrap/Image';
+import DarkMode from "./DarkMode";
 
 function InfoHeader() {
     return (
@@ -19,10 +22,12 @@ function InfoHeader() {
                         <i className="far fa-heart"></i>
                         <NavLink to="/favorites" className="nav-link">Trips</NavLink>
                     </div>
-                    <div className="mode__link">
+                    {/* <div className="mode__link">
                         <i className="fas fa-sun"></i>
                         <NavLink to="/favorites" className="nav-link">Mode</NavLink>
-                    </div>
+                    </div> */}
+                    <DarkMode />
+
                 </nav>
             </Container>
         </div>

@@ -12,6 +12,7 @@ function SearchBox(props) {
                         placeholder={props.placeholder}
                         onChange = {props.handleChange}
                      />
+
             </Form.Group>
         </div>
     )

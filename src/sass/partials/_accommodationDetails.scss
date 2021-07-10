@@ -50,6 +50,25 @@
     margin: 70px 0;
     box-shadow: 0 3px 10px;
     border-radius: 5px;
+    color: $colour-secondary;
+
+    & .title--detail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      & .hotel--stars {
+        padding-left: 0;
+      }
+
+      & i {
+        font-size: 26px;
+        margin-left: 0;
+        color: $colour-primary;
+        font-size: 30px;
+      }
+    }
 
     & h2 {
       font-family: $heading-font-family;
@@ -126,6 +145,16 @@
 
     & .carousel img {
       height: 600px !important;
+    }
+
+    & .details--info {
+      & .title--detail {
+        flex-direction: row;
+
+        & i {
+          margin-left: 5px;
+        }
+      }
     }
   }
 }

@@ -1,15 +1,16 @@
 // Edit page on Admin
 
 .edit--admin {
-  padding: 70px 0;
+  // padding: 70px 0;
 
   & .edit--page {
     background-color: rgba(38, 38, 38, 0.7);
-    padding: 50px;
+    padding: 20px;
     border-radius: 5px;
 
     & .edit--line {
       padding-left: 0;
+      padding-right: 0;
     }
   }
 
@@ -53,6 +54,11 @@
   }
 }
 
+.form-row > .col,
+.form-row > [class*="col-"] {
+  min-width: 100%;
+}
+
 .form-control:focus {
   box-shadow: none;
 }
@@ -60,4 +66,17 @@
 div.form-error {
   color: $colour-error !important;
   font-weight: 600;
+}
+
+@media (min-width: $tablet-width) {
+  .edit--admin {
+    & .edit--page {
+      padding: 50px;
+    }
+  }
+
+  .form-row > .col,
+  .form-row > [class*="col-"] {
+    min-width: auto;
+  }
 }

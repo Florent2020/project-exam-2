@@ -31,7 +31,8 @@ import "./sass/style.scss";
 function App() {
   return (
         <AuthProvider>
-             <div className="bg" style={{ backgroundImage: `url(${bg})` }}>
+             <div className="bg">
+             {/* style={{ backgroundImage: `url(${bg})` }} */}
                 <div className="wrapper">
                         <Router>
                             <div className="header">

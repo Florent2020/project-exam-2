@@ -69,8 +69,8 @@ function HomePage() {
             <>
                 <JumbotronPage />
                 <AccommodationPart />
-                <Container>
-                    <Form.Group>
+                <Container className="home--container">
+                    <Form.Group className="search--home">
                         <i className="fas fa-search"></i>
                         <Form.Control
                             type="search"
@@ -103,3 +103,4 @@ function HomePage() {
 }
 
 export default HomePage;
+

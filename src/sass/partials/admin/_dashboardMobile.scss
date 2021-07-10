@@ -125,9 +125,11 @@
 .logout--button {
   padding: 4px 11px;
   margin-top: 5px;
+  margin-right: 15px;
   background-color: #579157;
   border-color: #579157;
   color: $colour-heading;
+  border-radius: 0;
 }
 
 @media (min-width: $tablet-width) {

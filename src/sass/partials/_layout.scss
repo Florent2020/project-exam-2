@@ -22,6 +22,18 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
   font-family: $body-font-family;
+  background: $light-background-color;
+  color: $light-text-color;
+}
+
+body.light {
+  background: url(../../images/bg_texture1.png);
+  color: $light-text-color;
+}
+
+body.dark {
+  background-color: $dark-background-color;
+  color: $dark-text-color;
 }
 
 .container {

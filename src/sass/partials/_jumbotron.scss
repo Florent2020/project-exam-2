@@ -36,6 +36,10 @@
     font-size: 14px;
     padding-right: 40px;
   }
+
+  & button {
+    border-radius: 0;
+  }
 }
 
 @media (min-width: $tablet-width) {

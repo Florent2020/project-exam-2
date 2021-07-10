@@ -6,7 +6,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import axios from "axios";
 import { BASE_URL } from "../../../constants/api";
 // import { NavLink } from "react-router-dom";
-// import Button from 'react-bootstrap/Button';
+import FormGroup from 'react-bootstrap/FormGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -75,8 +75,13 @@ function EnquiriesAdmin() {
 									<p className="email">Email: {enquiry.email}</p>
 									<p>Check In: {newCheckIn}</p>
 									<p>Check Out: {newCheckOut}</p>
-									<DeleteEnquiry id={enquiry.id} />
-									<Link to={`/admin/viewEnquiries/${enquiry.id}`} className="enquirie--link">View details</Link>
+									<FormGroup className="enquiries--buttons">
+										<DeleteEnquiry id={enquiry.id} />
+										<Link to={`/admin/viewEnquiries/${enquiry.id}`} className="enquirie--link">
+											<i className="fas fa-info-circle"></i>
+											View details
+										</Link>
+									</FormGroup>
 									{/* <Button href={`/admin/viewEnquiries/${enquiry.id}`} className="enquirie--link" variant="info" type="submit">View details</Button> */}
 
 								</Col>

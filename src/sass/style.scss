@@ -4,6 +4,12 @@ $colour-header: #002039;
 $colour-heading: #ffffff;
 $colour-error: #c53131;
 
+$light-background-color: #fff;
+$light-text-color: #000;
+
+$dark-background-color: #000;
+$dark-text-color: #fff;
+
 $heading-font-family: "Notable", sans-serif;
 $SubHeading-font-family: "Marcellus", serif;
 $body-font-family: "Montserrat", sans-serif;
@@ -17,10 +23,12 @@ $mobile-width: 768px;
 @import "./partials/typography";
 @import "./partials/nav";
 @import "./partials/infoHeader";
+@import "./partials/darkMode";
 @import "./partials/jumbotron";
 @import "./partials/accommodation";
 @import "./partials/accommodationDetails";
 @import "./partials/accommodationPage/accommodations";
+@import "./partials/searchHome";
 @import "./partials/pagination";
 @import "./partials/ourGuarantees";
 @import "./partials/thingsToDo";

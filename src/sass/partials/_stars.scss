@@ -1,40 +1,40 @@
-.container--stars {
-  //   padding: 16px;
-  //   margin: 16px auto;
-  margin-bottom: 15px;
+// .container--stars {
+//   //   padding: 16px;
+//   //   margin: 16px auto;
+//   margin-bottom: 15px;
 
-  & h1 {
-    font-size: 11px;
-  }
+//   & h1 {
+//     font-size: 11px;
+//   }
 
-  & .result {
-    text-align: center;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  }
+//   & .result {
+//     text-align: center;
+//     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//   }
 
-  & .stars {
-    // display: flex;
-    // justify-content: center;
-    // gap: 8px;
+//   & .stars {
+//     // display: flex;
+//     // justify-content: center;
+//     // gap: 8px;
 
-    display: flex;
-    justify-content: left;
-    grid-gap: 5px;
-    /* gap: 8px; */
-    padding-left: 15px;
-  }
+//     display: flex;
+//     justify-content: left;
+//     grid-gap: 5px;
+//     /* gap: 8px; */
+//     padding-left: 15px;
+//   }
 
-  & .star {
-    position: relative;
-    cursor: pointer;
-  }
+//   & .star {
+//     position: relative;
+//     cursor: pointer;
+//   }
 
-  & .stars_radio-input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    clip: rect(1px, 1px, 1px, 1px);
-  }
-}
+//   & .stars_radio-input {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 1px;
+//     height: 1px;
+//     clip: rect(1px, 1px, 1px, 1px);
+//   }
+// }
