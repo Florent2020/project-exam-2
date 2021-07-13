@@ -82,9 +82,20 @@
   }
 
   p {
-    font-family: $SubHeading-font-family;
+    font-family: $body-font-family;
     text-transform: uppercase;
     font-size: 13px;
     margin: 0;
+    color: $colour-primary;
+  }
+}
+
+body.dark {
+  .shadow--text h1 {
+    color: $colour-primary;
+  }
+
+  .shadow--text p {
+    font-weight: 100;
   }
 }

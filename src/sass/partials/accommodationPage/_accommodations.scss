@@ -8,23 +8,10 @@
   position: relative;
 
   & .search--div {
-    // background-color: $colour-secondary;
-    // padding: 30px;
-    // max-width: 320px;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // margin: 0 auto;
-    // position: absolute;
-    // top: -82px;
-    // left: 50%;
-    // transform: translateX(-50%);
-    // border: 2px solid $colour-primary;
-
-    background-color: #262626;
+    background-color: $colour-secondary;
     padding: 8px;
     max-width: 100%;
-    border-left: 6px solid #d7b600;
+    border-left: 6px solid $colour-primary;
     text-align: left;
     margin: 30px 0 20px;
   }
@@ -111,13 +98,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: auto;
+
+    & h2 {
+      font-size: 27px;
+    }
 
     & .hotel--stars {
       padding-left: 0;
     }
 
     & i {
-      font-size: 26px;
+      font-size: 23px;
       margin-left: 0;
     }
   }
@@ -168,6 +160,7 @@
 
     & .title--detail {
       flex-direction: row;
+      height: 40px;
 
       & i {
         margin-left: 5px;
@@ -179,6 +172,20 @@
       margin-bottom: 0;
     }
   }
+}
+
+body.dark {
+  .accommodations--page h2 {
+    color: $colour-primary;
+  }
+
+  .accommodations--page .card .type {
+    color: $colour-primary;
+  }
+
+  // .pages .price {
+  //   color: $colour-primary;
+  // }
 }
 
 // @media (min-width: $mobile-width) and (max-width: $tablet-width) {

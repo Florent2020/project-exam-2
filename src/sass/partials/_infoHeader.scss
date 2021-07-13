@@ -90,7 +90,7 @@ body.dark .info--header {
   // display: none;
 
   & .info__elem {
-    color: $colour-heading;
+    color: $colour-primary;
     transition: color 0.5s ease-out;
   }
 
@@ -98,7 +98,7 @@ body.dark .info--header {
   .nav--info .favorites__link a,
   .nav--info .mode__link i,
   .nav--info .mode__link a {
-    color: $colour-heading;
+    color: $colour-primary;
     transition: color 0.5s ease-out;
   }
 }

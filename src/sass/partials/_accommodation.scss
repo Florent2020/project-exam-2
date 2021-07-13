@@ -29,7 +29,7 @@
 
 body.dark .alo {
   background-color: rgb(0, 0, 0, 89%) !important;
-  box-shadow: 0 0 10px #626262;
+  box-shadow: 0 0 10px #353535;
   color: #fefefe;
   transition: background-color 0.5s ease-out;
 }
@@ -53,6 +53,10 @@ body.dark .alo {
   & .card-title {
     padding: 15px 15px 0;
     margin-bottom: 0;
+  }
+
+  & h5 {
+    font-size: 19px;
   }
 
   & .card-text {
@@ -116,9 +120,9 @@ body.dark .alo {
   }
 
   & .price {
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
   }
 
   & .accommodation--button {
@@ -141,5 +145,15 @@ body.dark .alo {
       bottom: -1px;
       background-color: $colour-secondary;
     }
+  }
+}
+
+body.dark {
+  .accommodation--list__subheading {
+    color: $colour-primary;
+  }
+
+  .pages .type {
+    color: $colour-primary;
   }
 }

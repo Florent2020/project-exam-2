@@ -33,4 +33,13 @@
   }
 }
 
-//
+body.dark {
+  .pagination .page-link {
+    color: $colour-primary;
+    border: 1px solid $colour-primary;
+  }
+
+  .pagination .page-item .active {
+    color: $colour-secondary;
+  }
+}

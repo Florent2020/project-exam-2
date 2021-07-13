@@ -57,12 +57,14 @@
   }
 
   & form {
-    background: #e4e4e4;
+    background: $colour-secondary;
     border-radius: 5px;
     padding: 25px;
+    box-shadow: 0 0px 2px #c0c0c0;
+    color: $colour-heading;
 
     & a {
-      color: $colour-secondary;
+      color: $colour-heading;
       font-size: 13px;
       padding-left: 0;
       font-style: italic;
