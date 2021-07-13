@@ -29,11 +29,13 @@ body {
 body.light {
   background: url(../../images/bg_texture1.png);
   color: $light-text-color;
+  transition: background 0.5s ease-out;
 }
 
 body.dark {
   background-color: $dark-background-color;
   color: $dark-text-color;
+  transition: background-color 0.5s ease-out;
 }
 
 .container {

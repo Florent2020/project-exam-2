@@ -20,7 +20,7 @@ function AccommodationList({ accommodations }) {
       {accommodations.map((accommodation) => {
         return (
           <div className="col-lg-4 col-md-6 col-12" key={accommodation.id}>
-            <Card>
+            <Card className="alo">
               <Card.Text className="type">{accommodation.type}</Card.Text>
               <Card.Text className="trips">
                 <i className="far fa-heart"></i>

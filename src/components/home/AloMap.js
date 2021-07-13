@@ -5,7 +5,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import MapStyles from "./MapStyles";
+// import MapStyles from "./MapStyles";
 
 const mapContainerStyle = {
   width: "100%",
@@ -41,15 +41,10 @@ const MapView = (props) => {
             console.log(e);
           }}
         >
-          <Marker position={center} title={props.hotelName} />
-          {/* <InfoWindow
-            position={{
-              lat: props.lat,
-              lng: props.lng,
-            }}
-          >
+          <Marker position={center} title={props.hotel} />
+          {/* <InfoWindow position={center}>
             <div>
-              <span>{"Hotel name goes here"}</span>
+              <h6>{props.hotelName}</h6>
             </div>
           </InfoWindow> */}
         </GoogleMap>

@@ -115,7 +115,21 @@
     }
 
     & button {
-      border-left: 30px solid $colour-secondary;
+      width: 210px;
+      position: relative;
+      padding: 0.6rem 0.75rem !important;
+      border-radius: 0;
+    }
+
+    & button::before {
+      display: block;
+      content: "";
+      position: absolute;
+      width: 35px;
+      height: 46px;
+      left: -1px;
+      bottom: -1px;
+      background-color: #262626;
     }
   }
 
@@ -158,3 +172,23 @@
     }
   }
 }
+
+body.dark .details--info {
+  background-color: rgb(0, 0, 0, 89%) !important;
+  box-shadow: 0 0 10px #626262;
+  color: #fefefe;
+  transition: background-color 0.5s ease-out;
+
+  & i {
+    color: #fefefe;
+    transition: color 0.5s ease-out;
+  }
+}
+
+// .details--info {
+//   background: $colour-heading;
+//   padding: 25px;
+//   margin: 70px 0;
+//   box-shadow: 0 3px 10px;
+//   border-radius: 5px;
+//   color: $colour-secondary;

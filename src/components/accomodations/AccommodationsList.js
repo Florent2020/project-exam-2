@@ -85,7 +85,7 @@ function AccommodationList() {
               // </div>
 
               <div key={accommodation.id}>
-                <Card>
+                <Card className="alo">
                   <div className="col-md-5 col-12">
                     <Card.Text className="type">{accommodation.type}</Card.Text>
                     <Card.Text className="trips">
