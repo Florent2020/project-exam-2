@@ -75,10 +75,11 @@
   }
 
   h2 {
+    font-family: $body-font-family;
     color: $colour-heading;
     line-height: 1;
     font-size: 21px;
-    max-width: 300px;
+    max-width: 320px;
   }
 
   p {
@@ -87,6 +88,12 @@
     font-size: 13px;
     margin: 0;
     color: $colour-primary;
+  }
+}
+
+body.light {
+  .shadow--text h1 {
+    transition: h1 0.5s ease-out;
   }
 }
 

@@ -1,10 +1,12 @@
 .info--header {
   background-color: $colour-primary;
-  display: none;
+  padding: 3px 0;
 
   & .container {
     display: flex;
     align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   & .info__elem {
@@ -13,15 +15,15 @@
   }
 
   & span {
-    font-size: 13px;
-    font-weight: 500;
-    margin-right: 25px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 14px;
   }
 
   & .nav--info {
     display: flex;
-    margin-right: 25px;
-    font-size: 14px;
+    // margin-right: 25px;
+    font-size: 12px;
     align-items: center;
 
     & .favorites__link,
@@ -41,48 +43,9 @@
   }
 }
 
-// .info--header.light {
-//   background-color: $colour-primary;
-//   display: none;
-
-//   & .container {
-//     display: flex;
-//     align-items: center;
-//   }
-
-//   & .info__elem {
-//     margin-right: auto;
-//     color: $colour-secondary;
-//   }
-
-//   & span {
-//     font-size: 13px;
-//     font-weight: 500;
-//     margin-right: 25px;
-//   }
-
-//   & .nav--info {
-//     display: flex;
-//     margin-right: 25px;
-//     font-size: 14px;
-//     align-items: center;
-
-//     & .favorites__link,
-//     .mode__link {
-//       display: flex;
-//       align-items: center;
-
-//       & i,
-//       a {
-//         color: $colour-secondary;
-//         padding-left: 5px;
-//         &:hover {
-//           color: $colour-heading;
-//         }
-//       }
-//     }
-//   }
-// }
+body.light .info--header {
+  transition: background-color 0.5s ease-out;
+}
 
 body.dark .info--header {
   background-color: rgba(0, 0, 0, 0.89) !important;
@@ -106,5 +69,20 @@ body.dark .info--header {
 @media (min-width: $tablet-width) {
   .info--header {
     display: block;
+
+    & .container {
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+
+    & span {
+      font-size: 13px;
+      margin-right: 25px;
+    }
+
+    & .nav--info {
+      margin-right: 25px;
+      font-size: 14px;
+    }
   }
 }

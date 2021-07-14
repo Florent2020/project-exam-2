@@ -2,14 +2,9 @@
   position: relative;
 }
 
-#header {
-  position: fixed;
-  width: 100%;
-  z-index: 999999;
-}
-
 .bg-dark {
-  background-color: $colour-header !important;
+  background-color: $dark-background-color !important;
+  border-top: 1px solid #2c2c2c;
 }
 
 .logo {
@@ -17,7 +12,7 @@
 }
 
 .nav-link {
-  color: #fff;
+  color: $colour-heading;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 1px;
@@ -36,7 +31,7 @@
     border-radius: 0;
     color: $colour-secondary;
     font-weight: 700;
-    width: max-content;
+    width: inherit;
 
     &:hover {
       color: $colour-heading;
@@ -46,6 +41,10 @@
 
 .navbar .container {
   display: contents;
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: $colour-primary;
 }
 
 .navbar-collapse {
@@ -74,6 +73,12 @@
 
     & .container {
       padding-left: 25px;
+    }
+  }
+
+  .nav-link {
+    &.active {
+      width: max-content;
     }
   }
 }

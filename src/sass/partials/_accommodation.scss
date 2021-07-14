@@ -21,6 +21,7 @@
 
 .card {
   border-radius: 10px !important;
+  background-color: $colour-heading;
   box-shadow: 0 0 10px $colour-secondary;
   border: none;
   margin-bottom: 30px;
@@ -30,7 +31,7 @@
 body.dark .alo {
   background-color: rgb(0, 0, 0, 89%) !important;
   box-shadow: 0 0 10px #353535;
-  color: #fefefe;
+  color: $colour-heading;
   transition: background-color 0.5s ease-out;
 }
 
@@ -140,9 +141,9 @@ body.dark .alo {
       content: "";
       position: absolute;
       width: 35px;
-      height: 46px;
-      left: -1px;
-      bottom: -1px;
+      height: 47px;
+      left: -2px;
+      bottom: -2px;
       background-color: $colour-secondary;
     }
   }
