@@ -26,6 +26,9 @@
     color: $colour-heading;
     font-size: 26px;
     max-width: 100%;
+    position: relative;
+    animation: top;
+    animation-duration: 1.5s;
   }
 
   & p {
@@ -35,10 +38,43 @@
     font-weight: 600;
     font-size: 14px;
     padding-right: 40px;
+    position: relative;
+    animation: left;
+    animation-duration: 1.5s;
   }
 
   & button {
     border-radius: 0;
+    position: relative;
+    animation: bottom;
+    animation-duration: 1.5s;
+  }
+}
+
+@keyframes top {
+  from {
+    top: -200px;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@keyframes left {
+  from {
+    left: -300px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes bottom {
+  from {
+    bottom: -200px;
+  }
+  to {
+    bottom: 0px;
   }
 }
 
@@ -72,22 +108,58 @@
   & h1 {
     font-size: 50px;
     margin: 10px 0 25px;
+    position: relative;
+    animation: accommodation-left;
+    animation-duration: 1.5s;
   }
 
-  h2 {
-    font-family: $body-font-family;
-    color: $colour-heading;
-    line-height: 1;
-    font-size: 21px;
-    max-width: 320px;
-  }
-
-  p {
+  h6 {
     font-family: $body-font-family;
     text-transform: uppercase;
     font-size: 13px;
     margin: 0;
     color: $colour-primary;
+    position: relative;
+    animation: accommodation-top;
+    animation-duration: 1.5s;
+  }
+
+  p {
+    font-family: $body-font-family;
+    color: $colour-heading;
+    line-height: 1;
+    font-size: 21px;
+    max-width: 350px;
+    position: relative;
+    animation: accommodation-bottom;
+    animation-duration: 1.5s;
+  }
+}
+
+@keyframes accommodation-top {
+  from {
+    top: -200px;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@keyframes accommodation-left {
+  from {
+    left: -300px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes accommodation-bottom {
+  from {
+    bottom: -200px;
+  }
+  to {
+    bottom: 0px;
   }
 }
 
@@ -105,4 +177,7 @@ body.dark {
   .shadow--text p {
     font-weight: 100;
   }
+}
+
+@media (min-width: $tablet-width) {
 }

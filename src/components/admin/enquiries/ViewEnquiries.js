@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from "react-bootstrap/Spinner";
 import { BASE_URL } from "../../../constants/api";
 import Heading from "../../layout/Heading";
-import Container from 'react-bootstrap/Container';
+import Container from "react-bootstrap/Container";
 // import Button from 'react-bootstrap/Button';
 import bg from "../../../images/bg_form.png";
-import Nav from 'react-bootstrap/Nav';
+import Nav from "react-bootstrap/Nav";
 // import DeleteEnquiries from "./DeleteEnquiry";
-
 
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -19,95 +18,124 @@ import useAxios from "../../../hooks/UseAxios";
 // });
 
 function ViewEnquiries() {
-    const [hotels, setHotels] = useState(null);
-    // const [updated, setUpdated] = useState(false);
-	const [fetchingHotels, setFetchingHotels] = useState(true);
-	const [updatingHotels, setUpdatingHotels] = useState(false);
-	const [updateError, setUpdateError] = useState(null);
-    const [fetchError, setFetchError] = useState(null);
-    // const [loading, setLoading] = useState(true);
-	// const [error, setError] = useState(null);
+  const [hotels, setHotels] = useState(null);
+  // const [updated, setUpdated] = useState(false);
+  const [fetchingHotels, setFetchingHotels] = useState(true);
+  const [updatingHotels, setUpdatingHotels] = useState(false);
+  const [updateError, setUpdateError] = useState(null);
+  const [fetchError, setFetchError] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
 
-    const { handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
 
-    const http = useAxios();
+  const http = useAxios();
 
-	let { id } = useParams();
+  let { id } = useParams();
 
-	const url = BASE_URL + `/enquiries/${id}`;
+  const url = BASE_URL + `/enquiries/${id}`;
 
+  useEffect(function () {
+    async function getEnquiry() {
+      try {
+        const response = await http.get(url);
+        console.log("response", response.data);
+        setHotels(response.data);
+      } catch (error) {
+        console.log(error);
+        setFetchError(error.toString());
+      } finally {
+        setFetchingHotels(false);
+      }
+    }
 
-	useEffect(function () {
-		async function getEnquiry() {
-			try {
-				const response = await http.get(url);
-				console.log("response", response.data);
-				setHotels(response.data);
-			} catch (error) {
-				console.log(error);
-				setFetchError(error.toString());
-			} finally {
-				setFetchingHotels(false);
-			}
-		}
+    getEnquiry();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-		getEnquiry();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+  async function onSubmit(data) {
+    setUpdatingHotels(true);
+    setUpdateError(null);
+    // setUpdated(false);
 
+    console.log(data);
 
-    async function onSubmit(data) {
-		setUpdatingHotels(true);
-		setUpdateError(null);
-		// setUpdated(false);
+    try {
+      const response = await http.put(url, data);
+      console.log("response", response.data);
+      // setUpdated(true);
+    } catch (error) {
+      console.log("error", error);
+      setUpdateError(error.toString());
+    } finally {
+      setUpdatingHotels(false);
+    }
+  }
 
-		console.log(data);
-
-		try {
-			const response = await http.put(url, data);
-			console.log("response", response.data);
-			// setUpdated(true);
-		} catch (error) {
-			console.log("error", error);
-			setUpdateError(error.toString());
-		} finally {
-			setUpdatingHotels(false);
-		}
-	}
-
-	if (fetchingHotels) return <div>
-		<Spinner animation="border" role="status" variant="success">
-			<span className="sr-only">Loading...</span>
-		</Spinner>
-	</div>;
-
-	if (fetchError) return <div>{}</div>;
-
-
+  if (fetchingHotels)
     return (
-        <div className="admin view--enquiry" style={{ backgroundImage: `url(${bg})` }}>
-					<Container className="hotels--admin view--enquiry__page">
-                        <Heading content="Enquiry Page" />
+      <div>
+        <Spinner animation="border" role="status" variant="success">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
 
-                        <form onSubmit={handleSubmit(onSubmit)}>
+  if (fetchError) return <div>{}</div>;
 
-							<Nav.Link href="/admin/enquiries"><i className="fas fa-arrow-left"></i> Back to enquiries</Nav.Link>
+  const format = { year: "numeric", month: "short", day: "numeric" };
+  const newFormat = new Intl.DateTimeFormat("en-GB", format);
+  const checkIn = new Date(hotels.checkIn);
+  const checkOut = new Date(hotels.checkOut);
+  const createdAt = new Date(hotels.created_at);
+  const newCheckIn = newFormat.format(checkIn);
+  const newCheckOut = newFormat.format(checkOut);
+  const newCreatedAt = newFormat.format(createdAt);
 
-                            <div>
-                                <h3>At Hotel: {hotels.AccomodationName}</h3>
-                            </div>
+  return (
+    <div
+      className="admin view--enquiry"
+      style={{ backgroundImage: `url(${bg})` }}
+    >
+      <Container className="hotels--admin view--enquiry__page">
+        <Heading content="Enquiry details" />
 
-							<button className="reply--message" title="reply" href={`mailto:${hotels.email}`}>
-                            	<i className="fas fa-reply"></i>
-								Reply
-							</button>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Nav.Link href="/admin/enquiries">
+            <i className="fas fa-arrow-left"></i> Back to enquiries page
+          </Nav.Link>
 
-							{/* <DeleteEnquiries id={hotels.id} /> */}
+          <div className="enquiry--detail">
+            <h4>
+              <span>{hotels.full_name}</span> made the reservation at the:
+              <br />
+              <span>"{hotels.AccomodationName}"</span>
+            </h4>
+            <h6>
+              Check In: <span>{newCheckIn}</span>
+            </h6>
+            <h6>
+              Check Out: <span>{newCheckOut}</span>
+            </h6>
+            <h6>
+              Sent at: <span>{newCreatedAt}</span>
+            </h6>
+          </div>
 
-                        </form>
-					</Container>
-		</div>
-    )
+          <button
+            className="reply--message"
+            title="reply"
+            href={`mailto:${hotels.email}`}
+          >
+            <i className="fas fa-reply"></i>
+            Reply
+          </button>
+
+          {/* <DeleteEnquiries id={hotels.id} /> */}
+        </form>
+      </Container>
+    </div>
+  );
 }
 
-export default ViewEnquiries
+export default ViewEnquiries;

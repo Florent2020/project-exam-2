@@ -143,7 +143,7 @@ export default function AccommodationDetail() {
                 <Button variant="primary">Book Now!</Button>
               </Link>
             </Col>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={6} className="map">
               <Map
                 lat={accommodation.lat}
                 lng={accommodation.lng}

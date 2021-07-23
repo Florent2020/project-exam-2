@@ -7,6 +7,10 @@
 .accommodations--page {
   position: relative;
 
+  & h2 {
+    font-size: 27px;
+  }
+
   & .search--div {
     background-color: $colour-secondary;
     padding: 8px;
@@ -142,6 +146,10 @@
   }
 
   .accommodations--page {
+    & h2 {
+      font-size: 32px;
+    }
+
     & .search--div {
       max-width: 420px;
     }
@@ -174,35 +182,13 @@
   }
 }
 
-// @media (min-width: $mobile-width) and (max-width: $tablet-width) {
-//   .accommodations--page .title--detail {
-//     height: 40px;
-//   }
-// }
-
 body.dark {
   .accommodations--page h2 {
     color: $colour-primary;
+    font-size: 27px;
   }
 
   .accommodations--page .card .type {
     color: $colour-primary;
   }
-
-  // .pages .price {
-  //   color: $colour-primary;
-  // }
 }
-
-// @media (min-width: $mobile-width) and (max-width: $tablet-width) {
-//   .accommodations--page {
-//     .card-img,
-//     .card-img-top {
-//       height: auto;
-//     }
-
-//     .description {
-//       display: none;
-//     }
-//   }
-// }

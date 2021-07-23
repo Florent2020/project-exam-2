@@ -7,23 +7,23 @@ import Heading from "../layout/Heading";
 import Button from "react-bootstrap/Button";
 
 function JumbotronPage() {
-    return (
-        <Jumbotron style={{ backgroundImage: `url(${Banner})` }}>
-
-                <div  className="shadow--banner"></div>
-                <Container>
-                    <div className="shadow--text">
-                        <Heading content="World Class Accommodation!" />
-                        <p>
-                            Discover Hotels, B&B's, Guesthouses that defines a new dimension of luxury!
-                        </p>
-                        <p>
-                           <Link to="./accommodations"><Button variant="primary">Discover</Button></Link>
-                        </p>
-                    </div>
-                </Container>
-        </Jumbotron>
-    )
+  return (
+    <Jumbotron style={{ backgroundImage: `url(${Banner})` }}>
+      <div className="shadow--banner"></div>
+      <Container>
+        <div className="shadow--text">
+          <Heading content="World Class Accommodation!" />
+          <p>
+            Discover Hotels, B&B's, Guesthouses that defines a new dimension of
+            luxury!
+          </p>
+          <Link to="./accommodations">
+            <Button variant="primary">Discover</Button>
+          </Link>
+        </div>
+      </Container>
+    </Jumbotron>
+  );
 }
 
 export default JumbotronPage;

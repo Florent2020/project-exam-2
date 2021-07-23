@@ -35,25 +35,9 @@
     }
 
     & .enquiries--buttons {
-      flex-direction: row;
+      flex-direction: column;
       margin-bottom: 0;
       margin-top: 20px;
-
-      & .delete--enquiry {
-        width: 49%;
-        height: 40px;
-        background-color: $colour-error;
-        border: 2px solid $colour-error;
-        color: $colour-heading;
-        font-size: 16px;
-        font-weight: 600;
-        text-transform: capitalize;
-        border-radius: 0;
-
-        & i {
-          margin-right: 5px;
-        }
-      }
     }
 
     & .sent,
@@ -63,31 +47,42 @@
     }
   }
 
-  & .enquirie--link {
+  & .delete--enquiry {
+    width: 100%;
+    height: 40px;
+    background-color: $colour-error;
+    border: 2px solid $colour-error;
+    color: $colour-heading;
     font-size: 16px;
-    background-color: $colour-primary;
-    color: $colour-secondary;
     font-weight: 600;
-    margin-left: auto;
+    text-transform: capitalize;
     border-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 49%;
+    margin-top: 10px;
 
     & i {
       margin-right: 5px;
     }
 
-    // width: 140px;
-    // padding: 5px 13px;
-    // border-radius: 2px;
-    // outline: none;
-    // margin-right: 10px;
-    // font-size: 14px;
-    // border: 2px solid $colour-primary;
-    // margin-top: 40px;
-    // margin-left: auto;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & .enquirie--link {
+    font-size: 16px;
+    background-color: $colour-primary;
+    color: $colour-secondary;
+    font-weight: 600;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+
+    & i {
+      margin-right: 5px;
+    }
   }
 
   & .empty--enquiries {
@@ -107,6 +102,24 @@
       width: 47%;
       margin-right: 3%;
     }
+
+    & .enquirie--table .enquiries--buttons {
+      flex-direction: row;
+    }
+
+    & .delete--enquiry {
+      width: 49%;
+      margin-top: 0;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    & .enquirie--link {
+      margin-right: auto;
+      width: 49%;
+    }
   }
 }
 
@@ -123,13 +136,13 @@
   }
 
   & form {
-    background: #e4e4e4;
+    background-color: $colour-secondary;
     border-radius: 5px;
-    padding: 25px;
-    color: $colour-secondary;
+    padding: 30px;
+    color: $colour-heading;
 
     & a {
-      color: $colour-secondary;
+      color: $colour-heading;
       font-size: 13px;
       padding-left: 0;
       font-style: italic;
@@ -147,9 +160,23 @@
       margin-bottom: 50px;
     }
 
+    & .enquiry--detail {
+      & h4 {
+        margin-bottom: 30px;
+      }
+
+      & h6 {
+        font-size: 14px;
+      }
+
+      & span {
+        font-weight: 600;
+      }
+    }
+
     & button {
       width: auto;
-      padding: 3px 13px;
+      padding: 5px 15px;
       border-radius: 0;
       outline: none;
       margin-right: 10px;

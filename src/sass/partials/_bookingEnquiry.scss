@@ -3,7 +3,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 100px 0;
+  padding: 0;
 
   & .container {
     padding-right: 0;
@@ -23,10 +23,11 @@
 
   & .booking__bg--left {
     background-color: $colour-primary;
+    color: $colour-secondary;
     margin-left: 0;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    padding: 70px 50px;
+    padding: 70px 25px;
 
     & h2 {
       margin-bottom: 40px;
@@ -96,6 +97,7 @@
     .btn-dark {
       padding: 6px;
       width: 100%;
+      border-radius: 0;
 
       &:hover,
       &:focus {
@@ -159,12 +161,7 @@
 
 @media (min-width: $tablet-width) {
   .booking {
-    //   padding-top: 100px;
-
-    // & .container {
-    //   padding-right: 0;
-    //   padding-left: 0;
-    // }
+    padding: 70px 0;
 
     & .booking__bg {
       width: 900px;
@@ -180,6 +177,7 @@
       border-bottom-left-radius: 5px;
       border-top-left-radius: 5px;
       font-weight: 500;
+      padding: 70px 50px;
     }
 
     .booking__bg--right {

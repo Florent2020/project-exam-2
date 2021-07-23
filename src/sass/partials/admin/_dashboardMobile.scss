@@ -71,7 +71,7 @@
 .nav-links.dashboard--mobile {
   display: flex;
   flex-direction: column;
-  background: $colour-header;
+  background-color: $dark-background-color !important;
   width: 100%;
   color: $colour-heading;
   z-index: 9999;
@@ -152,7 +152,7 @@
   .nav-links.dashboard--mobile {
     position: absolute;
     left: 0;
-    top: 82px;
+    top: 83px;
     width: 250px;
     min-height: 100vh;
   }
