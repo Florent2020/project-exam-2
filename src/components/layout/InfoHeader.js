@@ -1,20 +1,9 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import { NavLink } from "react-router-dom";
-// import moon from "../../images/moon.png";
-// import Image from 'react-bootstrap/Image';
+import { Link } from "react-router-dom";
 import DarkMode from "./DarkMode";
 
-import { useState } from "react";
-
-// import { useContext } from "react";
-// import AuthContext from "../../context/AuthContext";
-
 function InfoHeader() {
-  //   const { darkMode } = useContext(AuthContext);
-  //   const [auth, setAuth] = useContext(AuthContext);
-  //   const [darkMode, setdarkMode] = useContext(AuthContext);
-
   return (
     <div className="info--header">
       <Container>
@@ -29,14 +18,10 @@ function InfoHeader() {
         <nav className="nav--info">
           <div className="favorites__link">
             <i className="far fa-heart"></i>
-            <NavLink to="/favorites" className="nav-link">
+            <Link to="/favoriteTrips" className="nav-link">
               Trips
-            </NavLink>
+            </Link>
           </div>
-          {/* <div className="mode__link">
-                        <i className="fas fa-sun"></i>
-                        <NavLink to="/favorites" className="nav-link">Mode</NavLink>
-                    </div> */}
           <DarkMode />
         </nav>
       </Container>

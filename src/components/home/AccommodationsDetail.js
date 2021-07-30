@@ -13,7 +13,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import Star from "./Star";
-import Map from "./AloMap";
+import Map from "./Map";
 
 export default function AccommodationDetail() {
   const [accommodation, setAccommodation] = useState(null);

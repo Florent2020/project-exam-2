@@ -2,7 +2,7 @@ import JumbotronPage from "./Jumbotron";
 import AccommodationPart from "./AccommodationPart";
 import axios from "axios";
 import { BASE_URL } from "../../constants/api";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import AccommodationList from "./AccommodationList";
 import ErrorMessage from "../layout/ErrorMessage";
 import Loader from "../layout/Loader";
@@ -11,9 +11,9 @@ import OurGuarantees from "./OurGuarantees";
 import ThingsToDo from "./ThingsToDo";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import AuthContext from "../../context/AuthContext";
+import Button from "react-bootstrap/Button";
 
-function HomePage() {
+function HomePage({ favoriteTrips }) {
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -22,10 +22,6 @@ function HomePage() {
 
   const url = BASE_URL + `/accommodations`;
   const [searchByCriteria, setsearchByCriteria] = useState("");
-
-  //   const { darkMode } = useContext(AuthContext);
-  //   //   const [auth, setAuth] = useContext(AuthContext);
-  //   console.log(darkMode);
 
   useEffect(
     function () {
@@ -45,7 +41,7 @@ function HomePage() {
       getHotel();
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    [searchByCriteria]
+    [url, searchByCriteria]
   );
 
   if (loading) {
@@ -70,24 +66,25 @@ function HomePage() {
     setsearchByCriteria("/?_q=" + searchBy);
   };
 
-  // const  getHotelList  = async ({searchBy}) => {
-  //     setsearchByCriteria("/?_q=" + searchBy);
-  // }
-
   return (
     <>
       <JumbotronPage />
       <AccommodationPart />
       <Container className="home--container">
-        <Form.Group className="search--home">
-          <i className="fas fa-search"></i>
-          <Form.Control
-            type="search"
-            className="search"
-            placeholder="Search accommodation ..."
-            onChange={(e) => getHotelList({ searchBy: e.target.value })}
-          />
-        </Form.Group>
+        <div className="search--home">
+          <Form.Group>
+            <i className="fas fa-search"></i>
+            <Form.Control
+              type="search"
+              className="search"
+              placeholder="Search accommodation ..."
+              onChange={(e) => getHotelList({ searchBy: e.target.value })}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Search
+          </Button>
+        </div>
 
         <Pagination
           accommodationsPerPage={accommodationsPerPage}
@@ -95,7 +92,10 @@ function HomePage() {
           paginate={paginate}
           pageIndex={currentPage}
         />
-        <AccommodationList accommodations={currentAccommodations} />
+        <AccommodationList
+          accommodations={currentAccommodations}
+          favoriteTrips={favoriteTrips}
+        />
         <Pagination
           accommodationsPerPage={accommodationsPerPage}
           totalAccommodations={accommodations.length}

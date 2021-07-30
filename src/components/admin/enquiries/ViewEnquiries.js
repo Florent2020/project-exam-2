@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 // import Button from 'react-bootstrap/Button';
 import bg from "../../../images/bg_form.png";
 import Nav from "react-bootstrap/Nav";
-// import DeleteEnquiries from "./DeleteEnquiry";
+import DeleteEnquiries from "./DeleteEnquiry";
 
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -131,7 +131,7 @@ function ViewEnquiries() {
             Reply
           </button>
 
-          {/* <DeleteEnquiries id={hotels.id} /> */}
+          <DeleteEnquiries id={hotels.id} />
         </form>
       </Container>
     </div>

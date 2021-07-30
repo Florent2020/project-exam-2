@@ -1,7 +1,7 @@
 // Hotels page on Admin
 
 .hotels--admin {
-  max-width: 950px;
+  // max-width: 950px;
   padding: 0;
 
   .accommocations--body {
@@ -21,6 +21,12 @@
   .col-md-6,
   .col-lg-4 {
     display: grid;
+    margin-bottom: 30px;
+  }
+
+  & .admin--images {
+    height: 250px !important;
+    object-fit: cover;
   }
 
   & .card-body {
@@ -44,8 +50,13 @@
 
 @media (min-width: $tablet-width) {
   .hotels--admin {
+    max-width: 1100px;
     & h1 {
       font-size: 40px;
+    }
+
+    & .admin--images {
+      height: 200px !important;
     }
   }
 }

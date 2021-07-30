@@ -91,6 +91,7 @@
       margin-top: 10px;
       font-size: 14px;
       border: 2px solid $colour-primary;
+      text-transform: capitalize;
     }
 
     & .delete--message {
@@ -98,6 +99,10 @@
       border: 2px solid $colour-error;
       color: $colour-heading;
       border-radius: 0;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     & i {

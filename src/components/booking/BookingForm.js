@@ -12,106 +12,131 @@ import { BASE_URL } from "../../constants/api";
 import axios from "axios";
 
 const schema = yup.object().shape({
-
-    full_name: yup
-        .string()
-        .required("Please enter your full name!")
-        .min(MINIMUM_FULL_NAME_CHARACTERS, `Your first name must be at least ${MINIMUM_FULL_NAME_CHARACTERS} characters!`),
-    email: yup
-        .string()
-        .required("Please enter an email address!")
-        .email("Please enter a valid email address!"),
-    checkIn: yup
-        .string()
-        .required('Date is required'),
-    checkOut: yup
-        .string()
-        .required('Date is required'),
-
+  full_name: yup
+    .string()
+    .required("Please enter your full name!")
+    .min(
+      MINIMUM_FULL_NAME_CHARACTERS,
+      `Your first name must be at least ${MINIMUM_FULL_NAME_CHARACTERS} characters!`
+    ),
+  email: yup
+    .string()
+    .required("Please enter an email address!")
+    .email("Please enter a valid email address!"),
+  checkIn: yup.string().required("Date is required!"),
+  checkOut: yup.string().required("Date is required!"),
 });
 
+function BookingForm({ accName }) {
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [serverError, setServerError] = useState(null);
 
-function BookingForm({accName}) {
+  const url = BASE_URL + `/enquiries`;
 
-    const [submitted, setSubmitted] = useState(false);
-    const [submitting, setSubmitting] = useState(false);
-	const [serverError, setServerError] = useState(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-    const url = BASE_URL + `/enquiries`;
+  async function onSubmit(data) {
+    data.AccomodationName = accName;
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors }
-    } = useForm({
-        resolver: yupResolver(schema)
-    });
+    setSubmitted(true);
+    setSubmitting(true);
+    setServerError(null);
 
-    async function onSubmit(data) {
+    try {
+      const response = await axios.post(url, data);
+      console.log("response", response.data);
+      // history.push("/admin/hotels");
+    } catch (error) {
+      console.log("error", error);
+      setServerError(error.toString());
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
-        data.AccomodationName = accName;
+  // console.log(errors);
 
-        setSubmitted(true);
-		setSubmitting(true);
-		setServerError(null);
+  return (
+    <Container>
+      {submitted && (
+        <Alert variant="success">Your submit was successful!</Alert>
+      )}
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form.Group>
+          <Form.Control
+            type="text"
+            hidden
+            id="AccomodationName"
+            placeholder="AccomodationName"
+            {...register("AccomodationName")}
+            value={accName}
+          />
 
-		try {
-			const response = await axios.post(url, data);
-			console.log("response", response.data);
-			// history.push("/admin/hotels");
-		} catch (error) {
-			console.log("error", error);
-			setServerError(error.toString());
-		} finally {
-			setSubmitting(false);
-		}
-	}
+          {/* {errors.full_name && <ValidationError>{errors.full_name.message}</ValidationError>} */}
+        </Form.Group>
 
-    // console.log(errors);
+        <Form.Group>
+          <Form.Control
+            type="text"
+            placeholder="Full Name"
+            {...register("full_name")}
+          />
+          {errors.full_name && (
+            <ValidationError>{errors.full_name.message}</ValidationError>
+          )}
+        </Form.Group>
 
-    return (
-        <Container>
-            {submitted && <Alert variant="success">Your submit was successful!</Alert>}
-            <Form onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group>
-                    <Form.Control type="text" hidden id="AccomodationName" placeholder="AccomodationName" {...register("AccomodationName")}
-                    value={accName}
-                    />
+        <Form.Group>
+          <Form.Control
+            type="text"
+            placeholder="Email"
+            {...register("email")}
+          />
+          {errors.email && (
+            <ValidationError>{errors.email.message}</ValidationError>
+          )}
+        </Form.Group>
 
-                    {/* {errors.full_name && <ValidationError>{errors.full_name.message}</ValidationError>} */}
-                </Form.Group>
+        <Form.Group>
+          <Form.Control
+            placeholder="Check In"
+            {...register("checkIn")}
+            type="date"
+          />
+          {errors.checkIn && (
+            <ValidationError>{errors.checkIn.message}</ValidationError>
+          )}
+        </Form.Group>
 
-                <Form.Group>
-                    <Form.Control type="text" placeholder="Full Name" {...register("full_name")} />
-                    {errors.full_name && <ValidationError>{errors.full_name.message}</ValidationError>}
-                </Form.Group>
+        <Form.Group>
+          <Form.Control
+            placeholder="Check Out"
+            {...register("checkOut")}
+            type="date"
+          />
+          {errors.checkOut && (
+            <ValidationError>{errors.checkOut.message}</ValidationError>
+          )}
+        </Form.Group>
 
-                <Form.Group>
-                    <Form.Control type="text"  placeholder="Email" {...register("email")}/>
-                    {errors.email && <ValidationError>{errors.email.message}</ValidationError>}
-                </Form.Group>
-
-                <Form.Group>
-                    <Form.Control  placeholder="Check In" {...register("checkIn")} type="date"  />
-                    {errors.checkIn && <ValidationError>{errors.checkIn.message}</ValidationError>}
-                </Form.Group>
-
-                <Form.Group>
-                    <Form.Control  placeholder="Check Out" {...register("checkOut")} type="date" />
-                    {errors.checkOut && <ValidationError>{errors.checkOut.message}</ValidationError>}
-                </Form.Group>
-
-                <Form.Group>
-                    <Button variant="info" type="submit">
-                        Submit
-                    </Button>
-                    <Button variant="dark" type="reset" className="reset">
-                        Reset
-                    </Button>
-                </Form.Group>
-            </Form>
-        </Container>
-    );
+        <Form.Group>
+          <Button variant="info" type="submit">
+            Submit
+          </Button>
+          <Button variant="dark" type="reset" className="reset">
+            Reset
+          </Button>
+        </Form.Group>
+      </Form>
+    </Container>
+  );
 }
 
 export default BookingForm;

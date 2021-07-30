@@ -14,11 +14,23 @@
 }
 
 .react-confirm-alert-button-group > button:first-of-type {
-  background-color: darkgreen !important;
+  background-color: #579157 !important;
+  border: 1px solid #579157 !important;
+
+  &:hover {
+    text-decoration: underline;
+    color: $colour-heading;
+  }
 }
 
 .react-confirm-alert-button-group > button:last-of-type {
   background-color: $colour-error !important;
+  border: 1px solid $colour-error !important;
+
+  &:hover {
+    text-decoration: underline;
+    color: $colour-heading;
+  }
 }
 
 .react-confirm-alert-overlay {

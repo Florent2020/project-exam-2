@@ -17,10 +17,10 @@
 }
 
 .shadow--text {
-  // width: 100%;
   position: absolute;
   top: 50%;
   transform: translatey(-50%);
+  max-width: 350px;
 
   & h1 {
     color: $colour-heading;

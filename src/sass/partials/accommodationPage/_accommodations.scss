@@ -12,17 +12,18 @@
   }
 
   & .search--div {
-    background-color: $colour-secondary;
-    padding: 8px;
-    max-width: 100%;
-    border-left: 6px solid $colour-primary;
-    text-align: left;
-    margin: 30px 0 20px;
+    display: flex;
+    margin: 25px 0 5px;
   }
 
   & .form-group {
     margin-bottom: 0;
     position: relative;
+    background-color: $colour-secondary;
+    padding: 4px;
+    max-width: 100%;
+    border-left: 6px solid $colour-primary;
+    text-align: left;
   }
 
   & .fa-search {
@@ -30,8 +31,8 @@
     z-index: 99;
     top: 50%;
     transform: translateY(-50%);
-    left: 5px;
     color: #495057;
+    left: 10px;
 
     &:focus {
       color: $colour-heading;
@@ -41,32 +42,36 @@
   & .form-control.search {
     width: 100%;
     border-radius: 0;
-    // background-color: rgba(0, 0, 0, 0.5);
     border: none;
     position: relative;
-    // border-left: 3px solid #d7b600;
     border: 1px solid $colour-secondary;
-    padding-left: 30px;
+    padding-left: 35px;
     background-color: transparent;
   }
 
   & .form-control:focus {
-    // color: #495057;
-    // background-color: #fff;
-    // border-color: #80bdff;
-    // outline: 0;
     box-shadow: none;
     background-color: $colour-secondary;
     color: rgba(255, 255, 255, 0.7);
   }
 
-  // & h2 {
-  //   padding-top: 50px;
-  // }
+  & button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    text-transform: capitalize;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
 
   & .row {
     margin-left: 15px;
     margin-right: 0px;
+  }
+
+  & .accommodation--box {
+    margin-bottom: 30px;
   }
 
   & .card {
@@ -81,6 +86,8 @@
   & .col-12 {
     padding-left: 0;
     padding-right: 0;
+    // flex: 0 0 100%;
+    max-width: 100%;
   }
 
   & .col-md-7 {
@@ -94,6 +101,10 @@
     border-bottom-left-radius: 0;
   }
 
+  & .card-title {
+    margin-bottom: 10px;
+  }
+
   & h5 {
     font-size: 20px;
   }
@@ -104,8 +115,8 @@
     justify-content: space-between;
     height: auto;
 
-    & h2 {
-      font-size: 27px;
+    & h3 {
+      font-size: 22px;
     }
 
     & .hotel--stars {
@@ -113,8 +124,8 @@
     }
 
     & i {
-      font-size: 23px;
-      margin-left: 0;
+      font-size: 18px;
+      margin: 3px 1px;
     }
   }
 
@@ -138,7 +149,7 @@
   }
 }
 
-@media (min-width: $mobile-width) {
+@media (min-width: $tablet-width) {
   .page {
     h1 {
       font-size: 50px !important;
@@ -157,6 +168,11 @@
       flex-direction: row;
     }
 
+    & .col-md-5 {
+      flex: 0 0 41.6666666667%;
+      max-width: 41.6666666667%;
+    }
+
     & .card-img,
     .card-img-top {
       // height: 330px;
@@ -164,6 +180,10 @@
       border-bottom-left-radius: 10px;
       min-height: 400px;
       object-fit: cover;
+    }
+
+    & .card-title {
+      margin-bottom: 0;
     }
 
     & .title--detail {
@@ -185,10 +205,16 @@
 body.dark {
   .accommodations--page h2 {
     color: $colour-primary;
-    font-size: 27px;
+    font-size: 21px;
   }
 
   .accommodations--page .card .type {
     color: $colour-primary;
+  }
+
+  @media (min-width: $tablet-width) {
+    .accommodations--page h2 {
+      font-size: 27px;
+    }
   }
 }

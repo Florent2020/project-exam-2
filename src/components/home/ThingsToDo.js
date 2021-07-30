@@ -18,7 +18,7 @@ function ThingsToDo() {
       <Container>
         <Row>
           <Col xs={12} md={6} lg={3}>
-            <Card className="alo">
+            <Card className="dark--card">
               <Card.Img variant="top" src={image1} alt="Bergen" />
               <Card.Body>
                 <Card.Title>Marvel at colorful Bryggen</Card.Title>
@@ -37,7 +37,7 @@ function ThingsToDo() {
             </Card>
           </Col>
           <Col xs={12} md={6} lg={3}>
-            <Card className="alo">
+            <Card className="dark--card">
               <Card.Img variant="top" src={image2} alt="Bergen" />
               <Card.Body>
                 <Card.Title>Get out onto the water</Card.Title>
@@ -57,7 +57,7 @@ function ThingsToDo() {
             </Card>
           </Col>
           <Col xs={12} md={6} lg={3}>
-            <Card className="alo">
+            <Card className="dark--card">
               <Card.Img variant="top" src={image3} alt="Bergen" />
               <Card.Body>
                 <Card.Title>Visit the aquarium</Card.Title>
@@ -76,7 +76,7 @@ function ThingsToDo() {
             </Card>
           </Col>
           <Col xs={12} md={6} lg={3}>
-            <Card className="alo">
+            <Card className="dark--card">
               <Card.Img variant="top" src={image4} alt="Bergen" />
               <Card.Body>
                 <Card.Title>Enjoy panoramic views at Mount Fløyen</Card.Title>

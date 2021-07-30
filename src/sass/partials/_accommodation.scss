@@ -24,11 +24,13 @@
   background-color: $colour-heading;
   box-shadow: 0 0 10px $colour-secondary;
   border: none;
-  margin-bottom: 30px;
   color: $colour-secondary;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
-body.dark .alo {
+body.dark .dark--card {
   background-color: rgb(0, 0, 0, 89%) !important;
   box-shadow: 0 0 10px #353535;
   color: $colour-heading;
@@ -40,6 +42,7 @@ body.dark .alo {
   height: 230px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  object-fit: cover;
 }
 
 .pages {
@@ -49,6 +52,10 @@ body.dark .alo {
 
   & .col-md-4.col-12 {
     display: flex;
+  }
+
+  & > .col-lg-4.col-md-6.col-12 {
+    margin-bottom: 30px;
   }
 
   & .card-title {
@@ -130,6 +137,7 @@ body.dark .alo {
     position: relative;
     padding: 0 15px 20px;
   }
+
   & .accommodation--button button {
     width: 100%;
     position: relative;

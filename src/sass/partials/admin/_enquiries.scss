@@ -7,12 +7,22 @@
     background-color: rgba(38, 38, 38, 0.7);
     padding: 50px 20px;
     border-radius: 5px;
+
+    & .col-sm-12,
+    .col-md-6,
+    .col-lg-4 {
+      margin-bottom: 0;
+    }
+
+    & .enqyery--id {
+      padding-left: 0;
+    }
   }
 
-  & .enqyery--id {
-    width: 100%;
-    margin-right: 3%;
-  }
+  // & .enqyery--id {
+  //   width: 100%;
+  //   margin-right: 15px;
+  // }
 
   & .enquirie--table {
     min-width: 100%;
@@ -98,10 +108,10 @@
       padding: 50px;
     }
 
-    & .enqyery--id {
-      width: 47%;
-      margin-right: 3%;
-    }
+    // & .enqyery--id {
+    //   width: 47%;
+    //   margin-right: 3%;
+    // }
 
     & .enquirie--table .enquiries--buttons {
       flex-direction: row;
@@ -182,12 +192,21 @@
       margin-right: 10px;
       font-size: 14px;
       border: 2px solid $colour-primary;
+      text-transform: capitalize;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     & .delete--enquiry {
       background-color: $colour-error;
       border: 2px solid $colour-error;
       color: $colour-heading;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     & i {

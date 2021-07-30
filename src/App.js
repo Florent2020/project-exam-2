@@ -5,11 +5,9 @@ import Container from "react-bootstrap/Container";
 import NavLink from "react-bootstrap/NavLink";
 import Logo from "./images/logo_.png";
 import Image from "react-bootstrap/Image";
-import bg from "./images/bg_texture1.png";
 import { AuthProvider } from "./context/AuthContext";
 import HomePage from "./components/home/HomePage";
 import AccommodationsDetail from "./components/home/AccommodationsDetail";
-// import BookingEnquiry from "./components/home/BookingEnquiry";
 import BookingEnquiry from "./components/booking/BookingEnquary";
 import Nav from "./components/layout/Nav";
 import InfoHeader from "./components/layout/InfoHeader";
@@ -17,6 +15,7 @@ import AdminPage from "./components/admin/AdminPage";
 import AccommodationsPage from "./components/accomodations/AccommodationsPage";
 import Contact from "./components/contact/Contact";
 import LoginPage from "./components/login/LoginPage";
+import FavoriteTripsPage from "./components/home/TripsPage";
 import OverviewAdmin from "./components/admin/overview/OverviewAdmin";
 import AddAccommodation from "./components/admin/AddAdmin";
 import MessagesAdmin from "./components/admin/messages/MessagesAdmin";
@@ -32,14 +31,13 @@ function App() {
   return (
     <AuthProvider>
       <div className="bg">
-        {/* style={{ backgroundImage: `url(${bg})` }} */}
         <div className="wrapper">
           <Router>
             <div className="header">
               <InfoHeader />
               <Navbar bg="dark" variant="dark" expand="lg">
                 <Container>
-                  <NavLink to="/" className="nav--logo">
+                  <NavLink href="/" className="nav--logo">
                     <Navbar.Brand>
                       <Image src={Logo} className="logo" alt="logo" />
                     </Navbar.Brand>
@@ -70,6 +68,9 @@ function App() {
               </Route>
               <Route path="/login">
                 <LoginPage />
+              </Route>
+              <Route path="/favoriteTrips">
+                <FavoriteTripsPage />
               </Route>
               <Route path="/admin/dashboard" exact>
                 <AdminPage />
