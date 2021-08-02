@@ -17,14 +17,14 @@ import axios from "axios";
 const schema = yup.object().shape({
   full_name: yup
     .string()
-    .required("Please enter your first name!")
+    .required("Please enter your full name!")
     .min(
       MINIMUM_FULL_NAME_CHARACTERS,
       `Your first name must be at least ${MINIMUM_FULL_NAME_CHARACTERS} characters!`
     ),
   email: yup
     .string()
-    .required("Please enter an email address!")
+    .required("Please enter your email address!")
     .email("Please enter a valid email address!"),
   message: yup
     .string()

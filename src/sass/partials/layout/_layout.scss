@@ -27,7 +27,7 @@ body {
 }
 
 body.light {
-  background: url(../../images/bg_texture.jpg);
+  background: url(../../../images/bg_texture.jpg);
   color: $light-text-color;
   transition: background 0.5s ease-out;
   background-size: cover;

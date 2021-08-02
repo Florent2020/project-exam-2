@@ -15,62 +15,79 @@ const url = BASE_URL + TOKEN_PATH;
 console.log(url);
 
 const schema = yup.object().shape({
-	identifier: yup.string().required("Please enter your username"),
-	password: yup.string().required("Please enter your password"),
+  identifier: yup.string().required("Please enter your username!"),
+  password: yup.string().required("Please enter your password!"),
 });
 
 export default function LoginForm() {
-	const [submitting, setSubmitting] = useState(false);
-	const [loginError, setLoginError] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [loginError, setLoginError] = useState(null);
 
-	const history = useHistory();
+  const history = useHistory();
 
-	const {
-        register,
-        handleSubmit,
-        formState: { errors }
-    } = useForm({
-        resolver: yupResolver(schema)
-    });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-	const [auth, setAuth] = useContext(AuthContext);
+  const [auth, setAuth] = useContext(AuthContext);
 
-	async function onSubmit(data) {
-		setSubmitting(true);
-		setLoginError(null);
+  async function onSubmit(data) {
+    setSubmitting(true);
+    setLoginError(null);
 
-		console.log(auth);
+    console.log(auth);
 
-		try {
-			const response = await axios.post(url, data);
-			console.log("response", response.data);
-			setAuth(response.data);
-			history.push("/admin/dashboard");
-		} catch (error) {
-			console.log("error", error);
-			setLoginError(error.toString());
-		} finally {
-			setSubmitting(false);
-		}
-	}
+    try {
+      const response = await axios.post(url, data);
+      console.log("response", response.data);
+      setAuth(response.data);
+      history.push("/admin/dashboard");
+    } catch (error) {
+      console.log("error", error);
+      setLoginError(error.toString());
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
-		return (
-			<div>
-				{loginError && <Alert variant="danger">Username or Password is wrong!!!</Alert>}
-				<Form onSubmit={handleSubmit(onSubmit)}>
-					<fieldset disabled={submitting}>
-						<Form.Group>
-							<Form.Control name="identifier" placeholder="Username" {...register('identifier')} />
-							{(errors && errors.identifier) && <ValidationError>{errors.identifier.message}</ValidationError>}
-						</Form.Group>
+  return (
+    <div>
+      {loginError && (
+        <Alert variant="danger">Username or Password is wrong!!!</Alert>
+      )}
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <fieldset disabled={submitting}>
+          <Form.Group>
+            <Form.Control
+              name="identifier"
+              placeholder="Username"
+              {...register("identifier")}
+            />
+            {errors && errors.identifier && (
+              <ValidationError>{errors.identifier.message}</ValidationError>
+            )}
+          </Form.Group>
 
-						<Form.Group>
-							<Form.Control name="password" placeholder="Password" {...register('password')} type="password" />
-							{(errors && errors.password) && <ValidationError>{errors.password.message}</ValidationError>}
-						</Form.Group>
-						<Button variant="info" type="submit">{submitting ? "Logging" : "Login"}</Button>
-					</fieldset>
-				</Form>
-			</div>
-	);
+          <Form.Group>
+            <Form.Control
+              name="password"
+              placeholder="Password"
+              {...register("password")}
+              type="password"
+            />
+            {errors && errors.password && (
+              <ValidationError>{errors.password.message}</ValidationError>
+            )}
+          </Form.Group>
+          <Button variant="info" type="submit">
+            {submitting ? "Logging" : "Login"}
+          </Button>
+        </fieldset>
+      </Form>
+    </div>
+  );
 }
