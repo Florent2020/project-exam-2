@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
 import Heading from "../../layout/Heading";
 import { Link } from "react-router-dom";
@@ -47,61 +48,72 @@ function EnquiriesAdmin() {
   }
 
   return (
-    <div
-      className="admin enquiries--admin"
-      style={{ backgroundImage: `url(${bg})` }}
-    >
-      <Container className="hotels--admin enquiries--page">
-        <Heading content="Enquiries Page" />
+    <>
+      <Helmet>
+        <title>Enquiries Page | Holidaze!</title>
+        <meta name="description" content="Enquiries Page | Holidaze!" />
+      </Helmet>
 
-        {enquiries.length === 0 && (
-          <p className="empty--enquiries">No enquiry yet!</p>
-        )}
-        <Row>
-          {enquiries.map((enquiry) => {
-            const format = { year: "numeric", month: "short", day: "numeric" };
-            const newFormat = new Intl.DateTimeFormat("en-GB", format);
-            const checkIn = new Date(enquiry.checkIn);
-            const checkOut = new Date(enquiry.checkOut);
-            const createdAt = new Date(enquiry.created_at);
-            const newCheckIn = newFormat.format(checkIn);
-            const newCheckOut = newFormat.format(checkOut);
-            const newCreatedAt = newFormat.format(createdAt);
+      <div
+        className="admin enquiries--admin"
+        style={{ backgroundImage: `url(${bg})` }}
+      >
+        <Container className="hotels--admin enquiries--page">
+          <Heading content="Enquiries Page" />
 
-            return (
-              // <div  className="enqyery--id ">
-              <Col
-                sm={12}
-                md={6}
-                lg={4}
-                key={enquiry.id}
-                className="enqyery--id"
-              >
-                <Col sm={12} md={5} className="enquirie--table">
-                  <p className="sent">Sent: {newCreatedAt}</p>
-                  <h5>From: {enquiry.full_name}</h5>
-                  <p className="email">Email: {enquiry.email}</p>
-                  <p>Check In: {newCheckIn}</p>
-                  <p>Check Out: {newCheckOut}</p>
-                  <FormGroup className="enquiries--buttons">
-                    <Link
-                      to={`/admin/viewEnquiries/${enquiry.id}`}
-                      className="enquirie--link"
-                    >
-                      <i className="fas fa-info-circle"></i>
-                      View details
-                    </Link>
-                    <DeleteEnquiry id={enquiry.id} />
-                  </FormGroup>
-                  {/* <Button href={`/admin/viewEnquiries/${enquiry.id}`} className="enquirie--link" variant="info" type="submit">View details</Button> */}
+          {enquiries.length === 0 && (
+            <p className="empty--enquiries">No enquiry yet!</p>
+          )}
+          <Row>
+            {enquiries.map((enquiry) => {
+              const format = {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              };
+              const newFormat = new Intl.DateTimeFormat("en-GB", format);
+              const checkIn = new Date(enquiry.checkIn);
+              const checkOut = new Date(enquiry.checkOut);
+              const createdAt = new Date(enquiry.created_at);
+              const newCheckIn = newFormat.format(checkIn);
+              const newCheckOut = newFormat.format(checkOut);
+              const newCreatedAt = newFormat.format(createdAt);
+
+              return (
+                // <div  className="enqyery--id ">
+                <Col
+                  sm={12}
+                  md={6}
+                  lg={4}
+                  key={enquiry.id}
+                  className="enqyery--id"
+                >
+                  <Col sm={12} md={5} className="enquirie--table">
+                    <p className="sent">Sent: {newCreatedAt}</p>
+                    <h5>From: {enquiry.full_name}</h5>
+                    <p className="email">Email: {enquiry.email}</p>
+                    <p>Check In: {newCheckIn}</p>
+                    <p>Check Out: {newCheckOut}</p>
+                    <FormGroup className="enquiries--buttons">
+                      <Link
+                        to={`/admin/viewEnquiries/${enquiry.id}`}
+                        className="enquirie--link"
+                      >
+                        <i className="fas fa-info-circle"></i>
+                        View details
+                      </Link>
+                      <DeleteEnquiry id={enquiry.id} />
+                    </FormGroup>
+                    {/* <Button href={`/admin/viewEnquiries/${enquiry.id}`} className="enquirie--link" variant="info" type="submit">View details</Button> */}
+                  </Col>
                 </Col>
-              </Col>
-              // {/* </div> */}
-            );
-          })}
-        </Row>
-      </Container>
-    </div>
+                // {/* </div> */}
+              );
+            })}
+          </Row>
+        </Container>
+      </div>
+    </>
   );
 }
 

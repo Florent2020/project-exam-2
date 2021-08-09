@@ -84,7 +84,7 @@ function HomePage() {
     <>
       <Helmet>
         <title>
-          Holidaze.com | A website for Hotel Reservations from Luxury Hotels to
+          Holidaze | A website for Hotel Reservations from Luxury Hotels to
           Budget Accommodations
         </title>
         <meta

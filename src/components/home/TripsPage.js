@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import Container from "react-bootstrap/Container";
 import Heading from "../layout/Heading";
 import Button from "react-bootstrap/Button";
@@ -31,18 +32,26 @@ function FavoriteTripsPage() {
   };
 
   return (
-    <div className="favorites">
-      <Container>
-        <Heading content="Favorite Trips Page" />
-        {favourites.length === 0 && <div>No favourite accommodation yet!</div>}
-        <AccommodationList
-          accommodations={favourites}
-          favoriteTrips={removeFavouriteAccommodation}
-        >
-          <Button variant="primary">Remove</Button>
-        </AccommodationList>
-      </Container>
-    </div>
+    <>
+      <Helmet>
+        <title>Favorites Page | Holidaze!</title>
+        <meta name="description" content="Favorites Page | Holidaze!" />
+      </Helmet>
+      <div className="favorites">
+        <Container>
+          <Heading content="Favorite Trips Page" />
+          {favourites.length === 0 && (
+            <div>No favourite accommodation yet!</div>
+          )}
+          <AccommodationList
+            accommodations={favourites}
+            favoriteTrips={removeFavouriteAccommodation}
+          >
+            <Button variant="primary">Remove</Button>
+          </AccommodationList>
+        </Container>
+      </div>
+    </>
   );
 }
 

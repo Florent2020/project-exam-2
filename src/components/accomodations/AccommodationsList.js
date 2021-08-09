@@ -51,7 +51,7 @@ function AccommodationList(props) {
     return <ErrorMessage message={`Error: An error occured!`} />;
   }
 
-  const filteredHotel = accommodations.filter((item) =>
+  const filteredAccommodation = accommodations.filter((item) =>
     item.name.toLowerCase().includes(searchField.toLowerCase())
   );
 
@@ -76,7 +76,7 @@ function AccommodationList(props) {
       />
       <Row>
         <div className="pages">
-          {filteredHotel.map((accommodation) => {
+          {filteredAccommodation.map((accommodation) => {
             return (
               <div key={accommodation.id} className="accommodation--box">
                 <Card className="dark--card">

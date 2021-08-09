@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -45,44 +46,55 @@ function MessagesAdmin() {
   }
 
   return (
-    <div
-      className="admin messages--admin"
-      style={{ backgroundImage: `url(${bg})` }}
-    >
-      <Container className="hotels--admin messages--page">
-        <Heading content="Messages Page" />
+    <>
+      <Helmet>
+        <title>Messages Page | Holidaze!</title>
+        <meta name="description" content="Messages Page | Holidaze!" />
+      </Helmet>
 
-        {messages.length === 0 && (
-          <p className="empty--message">No message yet!</p>
-        )}
-        <Row>
-          {messages.map((message) => {
-            const format = { year: "numeric", month: "short", day: "numeric" };
-            const newFormat = new Intl.DateTimeFormat("en-GB", format);
-            const createdAt = new Date(message.created_at);
-            const newCreatedAt = newFormat.format(createdAt);
+      <div
+        className="admin messages--admin"
+        style={{ backgroundImage: `url(${bg})` }}
+      >
+        <Container className="hotels--admin messages--page">
+          <Heading content="Messages Page" />
 
-            return (
-              <div className="messages--width" key={message.id}>
-                <div className="messages--table">
-                  <Link
-                    to={`/admin/viewMessages/${message.id}`}
-                    className="message--link"
-                  >
-                    <Col sm={10} md={10}>
-                      <h5>{message.full_name}</h5>
-                    </Col>
-                    <Col sm={2} md={2}>
-                      <p>{newCreatedAt}</p>
-                    </Col>
-                  </Link>
+          {messages.length === 0 && (
+            <p className="empty--message">No message yet!</p>
+          )}
+          <Row>
+            {messages.map((message) => {
+              const format = {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              };
+              const newFormat = new Intl.DateTimeFormat("en-GB", format);
+              const createdAt = new Date(message.created_at);
+              const newCreatedAt = newFormat.format(createdAt);
+
+              return (
+                <div className="messages--width" key={message.id}>
+                  <div className="messages--table">
+                    <Link
+                      to={`/admin/viewMessages/${message.id}`}
+                      className="message--link"
+                    >
+                      <Col sm={10} md={10}>
+                        <h5>{message.full_name}</h5>
+                      </Col>
+                      <Col sm={2} md={2}>
+                        <p>{newCreatedAt}</p>
+                      </Col>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </Row>
-      </Container>
-    </div>
+              );
+            })}
+          </Row>
+        </Container>
+      </div>
+    </>
   );
 }
 

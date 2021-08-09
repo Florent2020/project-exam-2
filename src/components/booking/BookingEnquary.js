@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -53,26 +54,35 @@ function Booking() {
   }
 
   return (
-    <div className="booking" style={{ backgroundImage: `url(${bg})` }}>
-      <Container className="booking__bg">
-        <Row>
-          <Col xs={12} md={5} className="booking__bg--left">
-            <h2>
-              Book now at <span>"{accommodation.name}"</span>
-            </h2>
-            <Card.Text>
-              Please fill out the form to book your accommodation!
-            </Card.Text>
-          </Col>
-          <Col xs={12} md={7} className="booking__bg--right">
-            <div className="booking__logo">
-              <Heading content="Booking Enquiry" />
-            </div>
-            <BookingForm accName={accommodation.name} />
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <>
+      <Helmet>
+        <title>Book now at {accommodation.name}, Bergen | Holidaze!</title>
+        <meta
+          name="description"
+          content="Easy Way to Book Accommodations Online at Holidaze!"
+        />
+      </Helmet>
+      <div className="booking" style={{ backgroundImage: `url(${bg})` }}>
+        <Container className="booking__bg">
+          <Row>
+            <Col xs={12} md={5} className="booking__bg--left">
+              <h2>
+                Book now at <span>"{accommodation.name}"</span>
+              </h2>
+              <Card.Text>
+                Please fill out the form to book your accommodation!
+              </Card.Text>
+            </Col>
+            <Col xs={12} md={7} className="booking__bg--right">
+              <div className="booking__logo">
+                <Heading content="Booking Enquiry" />
+              </div>
+              <BookingForm accName={accommodation.name} />
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </>
   );
 }
 

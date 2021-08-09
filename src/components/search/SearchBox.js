@@ -14,7 +14,7 @@ function SearchBox(props) {
           onChange={props.handleChange}
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" className="search--button">
         Search
       </Button>
     </div>
