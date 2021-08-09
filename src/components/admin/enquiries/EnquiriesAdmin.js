@@ -2,16 +2,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Heading from "../../layout/Heading";
 import { Link } from "react-router-dom";
-import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 import { BASE_URL } from "../../../constants/api";
-// import { NavLink } from "react-router-dom";
 import FormGroup from "react-bootstrap/FormGroup";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import bg from "../../../images/bg_form.png";
 import DeleteEnquiry from "./DeleteEnquiry";
+import Loader from "../../layout/Loader";
+import ErrorMessage from "../../layout/ErrorMessage";
 
 function EnquiriesAdmin() {
   const [enquiries, setEnquiries] = useState([]);
@@ -38,16 +38,13 @@ function EnquiriesAdmin() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (loading)
-    return (
-      <div>
-        <Spinner animation="border" role="status" variant="success">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      </div>
-    );
+  if (loading) {
+    return <Loader />;
+  }
 
-  if (error) return <div>{}</div>;
+  if (error) {
+    return <ErrorMessage message={`Error: An error occured!`} />;
+  }
 
   return (
     <div
@@ -58,7 +55,7 @@ function EnquiriesAdmin() {
         <Heading content="Enquiries Page" />
 
         {enquiries.length === 0 && (
-          <p className="empty--enquiries">No enquiry!</p>
+          <p className="empty--enquiries">No enquiry yet!</p>
         )}
         <Row>
           {enquiries.map((enquiry) => {

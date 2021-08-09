@@ -13,6 +13,8 @@ import {
 } from "../../constants/registration";
 import { BASE_URL } from "../../constants/api";
 import axios from "axios";
+import ErrorMessage from "../layout/ErrorMessage";
+import Loader from "../layout/Loader";
 
 const schema = yup.object().shape({
   full_name: yup
@@ -67,7 +69,15 @@ function ContactForm() {
     }
   }
 
-  // console.log(errors);
+  console.log(serverError);
+
+  if (submitting) {
+    return <Loader />;
+  }
+
+  if (serverError) {
+    return <ErrorMessage message={`Error: An error occured!`} />;
+  }
 
   return (
     <Container>

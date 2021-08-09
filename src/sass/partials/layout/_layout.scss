@@ -77,6 +77,12 @@ button:focus,
   background-color: rgba(215, 182, 0, 0.8);
   color: $colour-secondary;
   border: 1px solid rgba(215, 182, 0, 0.8);
+  box-shadow: none;
+}
+
+.btn-warning:focus,
+.btn-warning.focus {
+  box-shadow: none;
 }
 
 input:-internal-autofill-selected {

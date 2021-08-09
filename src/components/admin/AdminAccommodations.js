@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import Spinner from "react-bootstrap/Spinner";
+import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 import axios from "axios";
 import { BASE_URL } from "../../constants/api";
 import Heading from "../layout/Heading";
@@ -37,16 +38,13 @@ function AdminAccommodations() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (loading)
-    return (
-      <div>
-        <Spinner animation="border" role="status" variant="success">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      </div>
-    );
+  if (loading) {
+    return <Loader />;
+  }
 
-  if (error) return <div>{}</div>;
+  if (error) {
+    return <ErrorMessage message={`Error: An error occured!`} />;
+  }
 
   return (
     <div className="admin" style={{ backgroundImage: `url(${bg})` }}>
@@ -56,7 +54,7 @@ function AdminAccommodations() {
           <Row>
             {accomoddations.map((accomoddation) => {
               return (
-                <Col sm={12} md={6} lg={4} key={accomoddation.id}>
+                <Col sm={12} md={6} lg={3} key={accomoddation.id}>
                   <Card>
                     <Card.Img
                       variant="top"

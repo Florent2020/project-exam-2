@@ -2,22 +2,24 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 import { BASE_URL } from "../../constants/api";
 import SubHeading from "../layout/SubHeading";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-// import bg from "../../images/bg_texture1.png";
 import SearchBox from "../search/SearchBox";
 import Star from "../home/Star";
+import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 
-function AccommodationList() {
+function AccommodationList(props) {
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchField, setSearchField] = useState("");
+
+  const [favourites, setFavourites] = useState([]);
 
   const url = BASE_URL + `/accommodations`;
 
@@ -41,20 +43,28 @@ function AccommodationList() {
     [url]
   );
 
-  if (loading)
-    return (
-      <div>
-        <Spinner animation="border" role="status" variant="success">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      </div>
-    );
+  if (loading) {
+    return <Loader />;
+  }
 
-  if (error) return <div>{}</div>;
+  if (error) {
+    return <ErrorMessage message={`Error: An error occured!`} />;
+  }
 
   const filteredHotel = accommodations.filter((item) =>
     item.name.toLowerCase().includes(searchField.toLowerCase())
   );
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("trips", JSON.stringify(items));
+  };
+
+  const favoriteTrips = (trip) => {
+    console.log(trip);
+    const newFavouriteList = [...favourites, trip];
+    setFavourites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList);
+  };
 
   return (
     // <div className="admin">
@@ -73,7 +83,11 @@ function AccommodationList() {
                   <div className="col-md-5 col-12">
                     <Card.Text className="type">{accommodation.type}</Card.Text>
                     <Card.Text className="trips">
-                      <i className="far fa-heart"></i>
+                      <i
+                        className="far fa-heart"
+                        value="addTrips"
+                        onClick={() => favoriteTrips(accommodation)}
+                      ></i>
                     </Card.Text>
                     <Card.Img variant="top" src={accommodation.image_url} />
                   </div>

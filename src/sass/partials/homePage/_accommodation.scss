@@ -155,6 +155,35 @@ body.dark .dark--card {
       background-color: $colour-secondary;
     }
   }
+
+  & .remove {
+    margin: 0 15px 20px;
+    padding: 0.6rem 0.75rem !important;
+    border-radius: 0;
+    display: none;
+
+    & i {
+      margin-right: 10px;
+    }
+  }
+}
+
+.favorites {
+  & h1 {
+    font-size: 20px;
+    margin: 30px 0 60px;
+  }
+  & .pages .trips {
+    display: none;
+  }
+  & .pages .remove {
+    display: block;
+    background-color: $colour-secondary;
+  }
+
+  & .pages .accommodation--button {
+    padding-bottom: 10px;
+  }
 }
 
 body.dark {
@@ -164,5 +193,22 @@ body.dark {
 
   .pages .type {
     color: $colour-primary;
+  }
+
+  .favorites {
+    & h1 {
+      color: $colour-heading;
+    }
+    & .pages .remove {
+      border-color: $colour-primary;
+    }
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .favorites {
+    & h1 {
+      font-size: 35px;
+    }
   }
 }

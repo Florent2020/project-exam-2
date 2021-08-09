@@ -1,70 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Heading from "../layout/Heading";
-import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import Star from "./Star";
 
-function FavoriteTripsPage({ trips }) {
-  //   const [trips, setTrips] = useState([]);
+import AccommodationList from "./AccommodationList";
 
-  // const favoriteTrips = (accommodation) => {
-  //   // this.classList.toggle("fa");
-  //   // this.classList.toggle("far");
-  //   setTrips([...trips, accommodation]);
-  // };
+function FavoriteTripsPage() {
+  const [favourites, setFavourites] = useState([]);
+
+  useEffect(() => {
+    const accommodationFavourites = JSON.parse(localStorage.getItem("trips"));
+
+    setFavourites(accommodationFavourites);
+    if (accommodationFavourites) {
+      setFavourites(accommodationFavourites);
+    }
+  }, []);
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("trips", JSON.stringify(items));
+  };
+
+  const removeFavouriteAccommodation = (trip) => {
+    const newFavouriteList = favourites.filter(
+      (favourite) => favourite.id !== trip.id
+    );
+
+    setFavourites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList);
+  };
 
   return (
-    <>
+    <div className="favorites">
       <Container>
         <Heading content="Favorite Trips Page" />
-        <div className="tripsss">
-          aloooo
-          {trips &&
-            trips.map((accommodation) => {
-              return (
-                <div
-                  className="col-lg-4 col-md-6 col-12"
-                  key={accommodation.id}
-                >
-                  <Card className="dark--card">
-                    <Card.Text className="type">{accommodation.type}</Card.Text>
-                    <Card.Text
-                      className="trips"
-                      // onClick={() => favoriteTrips(accommodation.id)}
-                    >
-                      <i className="far fa-heart"></i>
-                      <i className="fas fa-heart"></i>
-                    </Card.Text>
-                    <Card.Img variant="top" src={accommodation.image_url} />
-                    <Card.Title>
-                      <h5>{accommodation.name}</h5>
-                    </Card.Title>
-                    <Card.Text className="location">
-                      <i className="fas fa-map-marker-alt"></i>
-                      {accommodation.location}
-                    </Card.Text>
-
-                    <Star stars={accommodation.star}></Star>
-
-                    <Card.Text className="stay">{accommodation.stay}</Card.Text>
-                    <Card.Text className="price">
-                      NOK {accommodation.price}
-                    </Card.Text>
-                    <Link
-                      to={`/accommodation/detail/${accommodation.id}`}
-                      className="accommodation--button"
-                    >
-                      <Button variant="primary">View More!</Button>
-                    </Link>
-                  </Card>
-                </div>
-              );
-            })}
-        </div>
+        {favourites.length === 0 && <div>No favourite accommodation yet!</div>}
+        <AccommodationList
+          accommodations={favourites}
+          favoriteTrips={removeFavouriteAccommodation}
+        >
+          <Button variant="primary">Remove</Button>
+        </AccommodationList>
       </Container>
-    </>
+    </div>
   );
 }
 

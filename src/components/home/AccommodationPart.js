@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import SubHeading from "../layout/SubHeading";
 
-function AccommodationList() {
+function AccommodationPart() {
   return (
     <div className="accommodation--list">
       <Container>
@@ -14,4 +14,4 @@ function AccommodationList() {
   );
 }
 
-export default AccommodationList;
+export default AccommodationPart;

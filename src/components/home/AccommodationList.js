@@ -1,34 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Star from "./Star";
 
-function AccommodationList({ accommodations }) {
-  const [trips, setTrips] = useState([]);
-
-  const favoriteTrips = (accommodation) => {
-    // this.classList.toggle("fa");
-    // this.classList.toggle("far");
-    console.log(accommodation);
-    setTrips([...trips, accommodation]);
-  };
-
+function AccommodationList(props) {
   return (
     <>
       <div className="pages">
-        {accommodations.map((accommodation) => {
+        {props.accommodations.map((accommodation) => {
           return (
             <div className="col-lg-4 col-md-6 col-12" key={accommodation.id}>
               <Card className="dark--card">
                 <Card.Text className="type">{accommodation.type}</Card.Text>
-                <Card.Text
-                  className="trips"
-                  value="addTrips"
-                  onClick={() => favoriteTrips(accommodation)}
-                >
+                <Card.Text className="trips">
                   {/* <i className="far fa-heart"></i> */}
-                  <i className="fas fa-heart"></i>
+                  <i
+                    className="fas fa-heart"
+                    value="addTrips"
+                    onClick={() => props.favoriteTrips(accommodation)}
+                  ></i>
                 </Card.Text>
                 <Card.Img variant="top" src={accommodation.image_url} />
                 <Card.Title>
@@ -51,6 +42,14 @@ function AccommodationList({ accommodations }) {
                 >
                   <Button variant="primary">View More!</Button>
                 </Link>
+                <Button
+                  variant="dark"
+                  className="remove"
+                  onClick={() => props.favoriteTrips(accommodation)}
+                >
+                  <i className="fas fa-trash"></i>
+                  Remove
+                </Button>
               </Card>
             </div>
           );

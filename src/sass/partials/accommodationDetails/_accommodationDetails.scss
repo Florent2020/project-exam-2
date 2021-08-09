@@ -57,7 +57,6 @@
     & .title--detail {
       display: flex;
       flex-direction: column;
-      // align-items: center;
       justify-content: space-between;
       margin-bottom: 25px;
 
@@ -94,6 +93,11 @@
       font-size: 16px;
     }
 
+    .sticky--detail {
+      display: flex;
+      flex-direction: column;
+    }
+
     & .fa-utensils {
       font-size: 16px;
     }
@@ -104,6 +108,10 @@
 
     & .fa-parking {
       font-size: 17px;
+    }
+
+    & .fitness {
+      flex: 1 0 auto;
     }
 
     & .stay {
@@ -181,8 +189,14 @@
       }
 
       & .map {
-        margin-top: 0;
+        margin-top: 0 !important;
       }
+    }
+  }
+
+  @media (min-width: 772px) and (max-width: 992px) {
+    .details--info .map {
+      margin-top: 0 !important;
     }
   }
 }
@@ -214,11 +228,3 @@ body.dark {
   content: none;
   width: 0 !important;
 }
-
-// .details--info {
-//   background: $colour-heading;
-//   padding: 25px;
-//   margin: 70px 0;
-//   box-shadow: 0 3px 10px;
-//   border-radius: 5px;
-//   color: $colour-secondary;

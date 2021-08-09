@@ -5,6 +5,7 @@
 .bg-dark {
   background-color: $dark-background-color !important;
   border-top: 1px solid #2c2c2c;
+  border-bottom: 1px solid #2c2c2c;
 }
 
 .logo {
@@ -33,6 +34,13 @@
     color: $colour-secondary;
     font-weight: 700;
     width: inherit;
+
+    // padding: 7px 17px;
+    // color: $colour-heading;
+    // width: inherit;
+    // border-bottom: 3px solid $colour-primary;
+    // border-top: 3px solid $colour-primary;
+    // border-radius: 50%;
 
     &:hover {
       color: $colour-heading;

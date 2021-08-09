@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Heading from "../layout/Heading";
-// import SubHeading from "../layout/SubHeading";
-import Spinner from "react-bootstrap/Spinner";
+import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 import axios from "axios";
 import { BASE_URL } from "../../constants/api";
 import Col from "react-bootstrap/Col";
@@ -15,7 +15,7 @@ import Card from "react-bootstrap/Card";
 import Star from "./Star";
 import Map from "./Map";
 
-export default function AccommodationDetail() {
+export default function AccommodationDetail({ currentAccommodations }) {
   const [accommodation, setAccommodation] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -50,16 +50,13 @@ export default function AccommodationDetail() {
     setIndex(selectedIndex);
   };
 
-  if (loading)
-    return (
-      <div>
-        <Spinner animation="border" role="status" variant="success">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      </div>
-    );
+  if (loading) {
+    return <Loader />;
+  }
 
-  if (error) return <div>{}</div>;
+  if (error) {
+    return <ErrorMessage message={`Error: An error occured!`} />;
+  }
 
   return (
     <div className="detail--page">
@@ -117,7 +114,7 @@ export default function AccommodationDetail() {
             {accommodation.description}
           </Card.Text>
           <Row>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={6} className="sticky--detail">
               <Card.Text className="breakfast">
                 <i className="fas fa-utensils"></i>
                 {accommodation.breakfast}

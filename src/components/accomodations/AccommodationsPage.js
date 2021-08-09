@@ -1,14 +1,14 @@
-import React from 'react';
-import AccommodationsList from './AccommodationsList';
+import React from "react";
+import AccommodationsList from "./AccommodationsList";
 import JumbotronAccommodations from "./JumbotronAccommodations";
 
 function AccommodationsPage() {
-    return (
-        <div>
-            <JumbotronAccommodations />
-            <AccommodationsList  />
-        </div>
-    )
+  return (
+    <div>
+      <JumbotronAccommodations />
+      <AccommodationsList />
+    </div>
+  );
 }
 
-export default AccommodationsPage
+export default AccommodationsPage;

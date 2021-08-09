@@ -181,6 +181,7 @@
 
       & span {
         font-weight: 600;
+        text-transform: capitalize;
       }
     }
 
@@ -200,6 +201,7 @@
     }
 
     & .delete--enquiry {
+      width: 100%;
       background-color: $colour-error;
       border: 2px solid $colour-error;
       color: $colour-heading;
@@ -222,6 +224,10 @@
     & .view--enquiry__page {
       padding: 50px;
       min-height: auto;
+    }
+
+    & form .delete--enquiry {
+      width: auto;
     }
   }
 }

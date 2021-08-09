@@ -9,9 +9,9 @@ function Nav() {
 
   const history = useHistory();
 
-  if (!auth) {
-    history.push("/");
-  }
+  // if (!auth) {
+  //   history.push("/");
+  // }
 
   function logout() {
     setAuth(null);

@@ -6,7 +6,7 @@ const Star = (props) => {
     for (let i = 0; i <= props.stars - 1; i++) {
       list.push(<i className="fas fa-star" key={i}></i>);
     }
-    return <div className="hotel--stars d-flex"> {list}</div>;
+    return <div className="hotel--stars d-flex">{list}</div>;
   };
 
   return starView();

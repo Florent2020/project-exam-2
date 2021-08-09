@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import JumbotronPage from "./Jumbotron";
 import AccommodationPart from "./AccommodationPart";
 import axios from "axios";
@@ -13,7 +14,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-function HomePage({ favoriteTrips }) {
+function HomePage() {
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -21,11 +22,13 @@ function HomePage({ favoriteTrips }) {
   const [accommodationsPerPage] = useState(6);
 
   const url = BASE_URL + `/accommodations`;
-  const [searchByCriteria, setsearchByCriteria] = useState("");
+  const [searchByCriteria, setSearchByCriteria] = useState("");
+
+  const [favourites, setFavourites] = useState([]);
 
   useEffect(
     function () {
-      async function getHotel() {
+      async function getAccommodation() {
         try {
           const response = await axios.get(url + searchByCriteria);
           console.log("response", response);
@@ -38,7 +41,7 @@ function HomePage({ favoriteTrips }) {
         }
       }
 
-      getHotel();
+      getAccommodation();
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
     [url, searchByCriteria]
@@ -49,7 +52,7 @@ function HomePage({ favoriteTrips }) {
   }
 
   if (error) {
-    return <ErrorMessage message={`Error: ${error}`} />;
+    return <ErrorMessage message={`Error: An error occured!`} />;
   }
 
   const indexOfLastAccommodation = currentPage * accommodationsPerPage;
@@ -62,12 +65,33 @@ function HomePage({ favoriteTrips }) {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const getHotelList = async ({ searchBy }) => {
-    setsearchByCriteria("/?_q=" + searchBy);
+  const getAccommodationList = async ({ searchBy }) => {
+    setSearchByCriteria("/?_q=" + searchBy);
+  };
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("trips", JSON.stringify(items));
+  };
+
+  const favoriteTrips = (trip) => {
+    console.log(trip);
+    const newFavouriteList = [...favourites, trip];
+    setFavourites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList);
   };
 
   return (
     <>
+      <Helmet>
+        <title>
+          Holidaze.com | A website for Hotel Reservations from Luxury Hotels to
+          Budget Accommodations
+        </title>
+        <meta
+          name="description"
+          content="A great page where you can find easy your accommodation!"
+        />
+      </Helmet>
       <JumbotronPage />
       <AccommodationPart />
       <Container className="home--container">
@@ -78,7 +102,9 @@ function HomePage({ favoriteTrips }) {
               type="search"
               className="search"
               placeholder="Search accommodation ..."
-              onChange={(e) => getHotelList({ searchBy: e.target.value })}
+              onChange={(e) =>
+                getAccommodationList({ searchBy: e.target.value })
+              }
             />
           </Form.Group>
           <Button variant="primary" type="submit">

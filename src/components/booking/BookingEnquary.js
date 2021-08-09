@@ -11,6 +11,8 @@ import bg from "../../images/bg_form.png";
 import { Card } from "react-bootstrap";
 import axios from "axios";
 import { BASE_URL } from "../../constants/api";
+import ErrorMessage from "../layout/ErrorMessage";
+import Loader from "../layout/Loader";
 
 function Booking() {
   const { id } = useParams();
@@ -19,6 +21,8 @@ function Booking() {
 
   const emptyInit = {};
   const [accommodation, setAccommodation] = useState(emptyInit);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(
     function () {
@@ -28,10 +32,10 @@ function Booking() {
           console.log("response", response.data);
           setAccommodation(response.data);
         } catch (error) {
-          // console.log(error);
-          // setError(error.toString());
+          console.log(error);
+          setError(error.toString());
         } finally {
-          // setLoading(false);
+          setLoading(false);
         }
       }
       getDetail();
@@ -39,6 +43,14 @@ function Booking() {
     // eslint-disable-next-line
     []
   );
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <ErrorMessage message={`Error: An error occured!`} />;
+  }
 
   return (
     <div className="booking" style={{ backgroundImage: `url(${bg})` }}>

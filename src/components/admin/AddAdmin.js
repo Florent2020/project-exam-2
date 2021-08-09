@@ -1,12 +1,9 @@
 import React from "react";
 import Heading from "../layout/Heading";
-// import { NavLink } from "react-router-dom";
-// import Nav from 'react-bootstrap/Nav';
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import bg from "../../images/bg_form.png";
-// import Button from 'react-bootstrap/Button';
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";

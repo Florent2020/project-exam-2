@@ -1,18 +1,14 @@
-// import React from 'react';
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
-// import Card from 'react-bootstrap/Card';
-import Spinner from "react-bootstrap/Spinner";
-// import axios from "axios";
 import { BASE_URL } from "../../constants/api";
 import Heading from "../layout/Heading";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-// import Row from 'react-bootstrap/Row';
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import bg from "../../images/bg_form.png";
 import Alert from "react-bootstrap/Alert";
+import ErrorMessage from "../layout/ErrorMessage";
+import Loader from "../layout/Loader";
 
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -30,7 +26,7 @@ const schema = yup.object().shape({
 function EditHotel() {
   const [accommodation, setAccomodation] = useState(null);
   const [updated, setUpdated] = useState(false);
-  const [fetchingHotel, setFetchingAccommodation] = useState(true);
+  const [fetchingAccommodation, setFetchingAccommodation] = useState(true);
   const [updatingAccommodation, setUpdatingAccommodation] = useState(false);
   const [updateError, setUpdateError] = useState(null);
   const [fetchError, setFetchError] = useState(null);
@@ -88,16 +84,13 @@ function EditHotel() {
     }
   }
 
-  if (fetchingHotel)
-    return (
-      <div>
-        <Spinner animation="border" role="status" variant="success">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      </div>
-    );
+  if (fetchingAccommodation) {
+    return <Loader />;
+  }
 
-  if (fetchError) return <div>{}</div>;
+  if (fetchError) {
+    return <ErrorMessage message={`Error: An error occured!`} />;
+  }
 
   return (
     <div
@@ -147,15 +140,8 @@ function EditHotel() {
                 </Col>
 
                 <Col className="edit--line">
-                  {/* <Form.Group>
-                                            <Form.Label>Type of accommodation</Form.Label>
-                                            <Form.Control name="type" defaultValue={accommodation.type} placeholder="Type" {...register("type")} />
-                                            {errors.type && <ValidationError>{errors.type.message}</ValidationError>}
-                                        </Form.Group> */}
-
                   <Form.Group>
                     <Form.Label>Type of accommodation</Form.Label>
-                    {/* <Form.Control name="type" defaultValue={submitting.type} placeholder="Type" {...register("type")} /> */}
                     <Form.Control
                       name="type"
                       defaultValue={accommodation.type}

@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import Spinner from "react-bootstrap/Spinner";
 import { BASE_URL } from "../../../constants/api";
 import Heading from "../../layout/Heading";
 import Container from "react-bootstrap/Container";
-// import Button from 'react-bootstrap/Button';
 import bg from "../../../images/bg_form.png";
 import Nav from "react-bootstrap/Nav";
 import DeleteEnquiries from "./DeleteEnquiry";
-
+import Loader from "../../layout/Loader";
+import ErrorMessage from "../../layout/ErrorMessage";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAxios from "../../../hooks/UseAxios";
@@ -18,10 +17,9 @@ import useAxios from "../../../hooks/UseAxios";
 // });
 
 function ViewEnquiries() {
-  const [hotels, setHotels] = useState(null);
-  // const [updated, setUpdated] = useState(false);
-  const [fetchingHotels, setFetchingHotels] = useState(true);
-  const [updatingHotels, setUpdatingHotels] = useState(false);
+  const [accommodations, setAccommodations] = useState(null);
+  const [fetchingAccommodations, setFetchingAccommodations] = useState(true);
+  const [updatingAccommodations, setUpdatingAccommodations] = useState(false);
   const [updateError, setUpdateError] = useState(null);
   const [fetchError, setFetchError] = useState(null);
   // const [loading, setLoading] = useState(true);
@@ -40,12 +38,12 @@ function ViewEnquiries() {
       try {
         const response = await http.get(url);
         console.log("response", response.data);
-        setHotels(response.data);
+        setAccommodations(response.data);
       } catch (error) {
         console.log(error);
         setFetchError(error.toString());
       } finally {
-        setFetchingHotels(false);
+        setFetchingAccommodations(false);
       }
     }
 
@@ -54,7 +52,7 @@ function ViewEnquiries() {
   }, []);
 
   async function onSubmit(data) {
-    setUpdatingHotels(true);
+    setUpdatingAccommodations(true);
     setUpdateError(null);
     // setUpdated(false);
 
@@ -68,26 +66,23 @@ function ViewEnquiries() {
       console.log("error", error);
       setUpdateError(error.toString());
     } finally {
-      setUpdatingHotels(false);
+      setUpdatingAccommodations(false);
     }
   }
 
-  if (fetchingHotels)
-    return (
-      <div>
-        <Spinner animation="border" role="status" variant="success">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      </div>
-    );
+  if (fetchingAccommodations) {
+    return <Loader />;
+  }
 
-  if (fetchError) return <div>{}</div>;
+  if (fetchError) {
+    return <ErrorMessage message={`Error: An error occured!`} />;
+  }
 
   const format = { year: "numeric", month: "short", day: "numeric" };
   const newFormat = new Intl.DateTimeFormat("en-GB", format);
-  const checkIn = new Date(hotels.checkIn);
-  const checkOut = new Date(hotels.checkOut);
-  const createdAt = new Date(hotels.created_at);
+  const checkIn = new Date(accommodations.checkIn);
+  const checkOut = new Date(accommodations.checkOut);
+  const createdAt = new Date(accommodations.created_at);
   const newCheckIn = newFormat.format(checkIn);
   const newCheckOut = newFormat.format(checkOut);
   const newCreatedAt = newFormat.format(createdAt);
@@ -107,9 +102,10 @@ function ViewEnquiries() {
 
           <div className="enquiry--detail">
             <h4>
-              <span>{hotels.full_name}</span> made the reservation at the:
+              <span>{accommodations.full_name}</span> made the reservation at
+              the:
               <br />
-              <span>"{hotels.AccomodationName}"</span>
+              <span>"{accommodations.AccomodationName}"</span>
             </h4>
             <h6>
               Check In: <span>{newCheckIn}</span>
@@ -122,16 +118,7 @@ function ViewEnquiries() {
             </h6>
           </div>
 
-          <button
-            className="reply--message"
-            title="reply"
-            href={`mailto:${hotels.email}`}
-          >
-            <i className="fas fa-reply"></i>
-            Reply
-          </button>
-
-          <DeleteEnquiries id={hotels.id} />
+          <DeleteEnquiries id={accommodations.id} />
         </form>
       </Container>
     </div>
