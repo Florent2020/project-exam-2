@@ -14,6 +14,8 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+import SearchBox from "../search/SearchBox";
+
 function HomePage() {
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,7 +24,8 @@ function HomePage() {
   const [accommodationsPerPage] = useState(6);
 
   const url = BASE_URL + `/accommodations`;
-  const [searchByCriteria, setSearchByCriteria] = useState("");
+  // const [searchByCriteria, setSearchByCriteria] = useState("");
+  const [searchField, setSearchField] = useState("");
 
   const [favourites, setFavourites] = useState([]);
 
@@ -30,7 +33,7 @@ function HomePage() {
     function () {
       async function getAccommodation() {
         try {
-          const response = await axios.get(url + searchByCriteria);
+          const response = await axios.get(url);
           console.log("response", response);
           setAccommodations(response.data);
         } catch (error) {
@@ -44,7 +47,7 @@ function HomePage() {
       getAccommodation();
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    [url, searchByCriteria]
+    [url]
   );
 
   if (loading) {
@@ -65,9 +68,13 @@ function HomePage() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const getAccommodationList = async ({ searchBy }) => {
-    setSearchByCriteria("/?_q=" + searchBy);
-  };
+  // const getAccommodationList = async ({ searchBy }) => {
+  //   setSearchByCriteria("/?_q=" + searchBy);
+  // };
+
+  const filteredAccommodation = accommodations.filter((item) =>
+    item.name.toLowerCase().includes(searchField.toLowerCase())
+  );
 
   const saveToLocalStorage = (items) => {
     localStorage.setItem("trips", JSON.stringify(items));
@@ -96,7 +103,7 @@ function HomePage() {
       <AccommodationPart />
       <Container className="home--container">
         <div className="search--home">
-          <Form.Group>
+          {/* <Form.Group>
             <i className="fas fa-search"></i>
             <Form.Control
               type="search"
@@ -106,10 +113,14 @@ function HomePage() {
                 getAccommodationList({ searchBy: e.target.value })
               }
             />
-          </Form.Group>
-          <Button variant="primary" type="submit">
+          </Form.Group> */}
+          <SearchBox
+            placeholder="Search accommodation ..."
+            handleChange={(e) => setSearchField(e.target.value)}
+          />
+          {/* <Button variant="primary" type="submit">
             Search
-          </Button>
+          </Button> */}
         </div>
 
         <Pagination
@@ -119,7 +130,7 @@ function HomePage() {
           pageIndex={currentPage}
         />
         <AccommodationList
-          accommodations={currentAccommodations}
+          accommodations={(currentAccommodations, filteredAccommodation)}
           favoriteTrips={favoriteTrips}
         />
         <Pagination

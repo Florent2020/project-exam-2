@@ -3,18 +3,29 @@ import { Helmet } from "react-helmet";
 import Container from "react-bootstrap/Container";
 import Heading from "../layout/Heading";
 import Button from "react-bootstrap/Button";
+import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 
 import AccommodationList from "./AccommodationList";
 
 function FavoriteTripsPage() {
   const [favourites, setFavourites] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const accommodationFavourites = JSON.parse(localStorage.getItem("trips"));
+    try {
+      const accommodationFavourites = JSON.parse(localStorage.getItem("trips"));
 
-    setFavourites(accommodationFavourites);
-    if (accommodationFavourites) {
       setFavourites(accommodationFavourites);
+      if (accommodationFavourites) {
+        setFavourites(accommodationFavourites);
+      }
+    } catch (error) {
+      console.log(error);
+      setError(error.toString());
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -30,6 +41,14 @@ function FavoriteTripsPage() {
     setFavourites(newFavouriteList);
     saveToLocalStorage(newFavouriteList);
   };
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <ErrorMessage message={`Error: An error occured!`} />;
+  }
 
   return (
     <>

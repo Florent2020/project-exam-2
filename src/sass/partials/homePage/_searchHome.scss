@@ -2,6 +2,10 @@
   display: flex;
   margin: 0 0 25px;
 
+  .search--div {
+    display: flex;
+  }
+
   & .form-group {
     background-color: $colour-secondary;
     padding: 4px;
