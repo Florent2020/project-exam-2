@@ -12,12 +12,24 @@ import Loader from "../../layout/Loader";
 import ErrorMessage from "../../layout/ErrorMessage";
 import bg from "../../../images/bg_form.png";
 
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import AuthContext from "../../../context/AuthContext";
+
 function MessagesAdmin() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const url = BASE_URL + `/messages`;
+
+  const [auth] = useContext(AuthContext);
+
+  const history = useHistory();
+
+  if (!auth) {
+    history.push("/");
+  }
 
   useEffect(function () {
     async function getMessage() {
@@ -46,7 +58,7 @@ function MessagesAdmin() {
   }
 
   return (
-    <>
+    <main>
       <Helmet>
         <title>Messages Page | Holidaze!</title>
         <meta name="description" content="Messages Page | Holidaze!" />
@@ -94,7 +106,7 @@ function MessagesAdmin() {
           </Row>
         </Container>
       </div>
-    </>
+    </main>
   );
 }
 

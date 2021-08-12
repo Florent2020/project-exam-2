@@ -11,6 +11,10 @@ import { useForm } from "react-hook-form";
 import useAxios from "../../../hooks/UseAxios";
 import DeleteMessages from "./DeleteMessage";
 
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import AuthContext from "../../../context/AuthContext";
+
 function ViewMessages() {
   const [message, setMessage] = useState(null);
   const [updated, setUpdated] = useState(false);
@@ -20,6 +24,14 @@ function ViewMessages() {
   const [fetchError, setFetchError] = useState(null);
   // const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(null);
+
+  const [auth] = useContext(AuthContext);
+
+  const history = useHistory();
+
+  if (!auth) {
+    history.push("/");
+  }
 
   const { handleSubmit } = useForm();
 
@@ -75,7 +87,7 @@ function ViewMessages() {
   }
 
   return (
-    <div
+    <main
       className="admin view--message"
       style={{ backgroundImage: `url(${bg})` }}
     >
@@ -109,7 +121,7 @@ function ViewMessages() {
           <DeleteMessages id={message.id} />
         </form>
       </Container>
-    </div>
+    </main>
   );
 }
 

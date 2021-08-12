@@ -5,7 +5,7 @@ import JumbotronAccommodations from "./JumbotronAccommodations";
 
 function AccommodationsPage() {
   return (
-    <div>
+    <main>
       <Helmet>
         <title>
           Book Accommodations | Cancel Free on Most Accommodations | at
@@ -18,7 +18,7 @@ function AccommodationsPage() {
       </Helmet>
       <JumbotronAccommodations />
       <AccommodationsList />
-    </div>
+    </main>
   );
 }
 

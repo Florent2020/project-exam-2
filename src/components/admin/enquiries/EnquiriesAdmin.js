@@ -14,12 +14,24 @@ import DeleteEnquiry from "./DeleteEnquiry";
 import Loader from "../../layout/Loader";
 import ErrorMessage from "../../layout/ErrorMessage";
 
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import AuthContext from "../../../context/AuthContext";
+
 function EnquiriesAdmin() {
   const [enquiries, setEnquiries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const url = BASE_URL + `/enquiries`;
+
+  const [auth] = useContext(AuthContext);
+
+  const history = useHistory();
+
+  if (!auth) {
+    history.push("/");
+  }
 
   useEffect(function () {
     async function getMessage() {
@@ -48,7 +60,7 @@ function EnquiriesAdmin() {
   }
 
   return (
-    <>
+    <main>
       <Helmet>
         <title>Enquiries Page | Holidaze!</title>
         <meta name="description" content="Enquiries Page | Holidaze!" />
@@ -113,7 +125,7 @@ function EnquiriesAdmin() {
           </Row>
         </Container>
       </div>
-    </>
+    </main>
   );
 }
 

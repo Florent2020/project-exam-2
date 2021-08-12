@@ -14,6 +14,9 @@ import ValidationForm from "../forms/ValidationError";
 import useAxios from "../../hooks/UseAxios";
 import { BASE_URL } from "../../constants/api";
 
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
+
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
   description: yup.string().required("Description is required"),
@@ -29,6 +32,12 @@ function AddAccommodation() {
 
   const history = useHistory();
   const http = useAxios();
+
+  const [auth] = useContext(AuthContext);
+
+  if (!auth) {
+    history.push("/");
+  }
 
   const {
     register,
@@ -57,7 +66,7 @@ function AddAccommodation() {
   }
 
   return (
-    <>
+    <main>
       <Helmet>
         <title>Add Page | Holidaze!</title>
         <meta name="description" content="Add Page | Holidaze!" />
@@ -399,7 +408,7 @@ function AddAccommodation() {
           </form>
         </Container>
       </div>
-    </>
+    </main>
   );
 }
 

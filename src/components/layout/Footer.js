@@ -31,7 +31,7 @@ function Footer() {
         </div>
         <div className="develop_author">
           Design & Development by <span>Florent Hajdari.</span> All rights
-          reserved.
+          reserved!
         </div>
       </div>
     </footer>

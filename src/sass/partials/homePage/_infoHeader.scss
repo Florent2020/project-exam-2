@@ -66,6 +66,13 @@ body.dark .info--header {
   }
 }
 
+button.badge {
+  background-color: #f04040;
+  border: none;
+  color: #ffffff;
+  width: 1.5rem;
+}
+
 @media (min-width: $tablet-width) {
   .info--header {
     display: block;

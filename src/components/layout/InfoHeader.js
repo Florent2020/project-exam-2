@@ -3,7 +3,8 @@ import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import DarkMode from "./DarkMode";
 
-function InfoHeader() {
+function InfoHeader(props) {
+  const { countTrips } = props;
   return (
     <div className="info--header">
       <Container>
@@ -17,7 +18,15 @@ function InfoHeader() {
         </div>
         <nav className="nav--info">
           <div className="favorites__link">
-            <i className="far fa-heart"></i>
+            <i className="far fa-heart">
+              {""}
+              {countTrips ? (
+                <button className="badge">{countTrips}</button>
+              ) : (
+                ""
+              )}
+            </i>
+            {""}
             <Link to="/favoriteTrips" className="nav-link">
               Trips
             </Link>

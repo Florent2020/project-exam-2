@@ -11,6 +11,10 @@ import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAxios from "../../../hooks/UseAxios";
 
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import AuthContext from "../../../context/AuthContext";
+
 // const schema = yup.object().shape({
 // 	name: yup.string().required("Name is required"),
 //     description: yup.string().required("Description is required"),
@@ -24,6 +28,14 @@ function ViewEnquiries() {
   const [fetchError, setFetchError] = useState(null);
   // const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(null);
+
+  const [auth] = useContext(AuthContext);
+
+  const history = useHistory();
+
+  if (!auth) {
+    history.push("/");
+  }
 
   const { handleSubmit } = useForm();
 
@@ -88,7 +100,7 @@ function ViewEnquiries() {
   const newCreatedAt = newFormat.format(createdAt);
 
   return (
-    <div
+    <main
       className="admin view--enquiry"
       style={{ backgroundImage: `url(${bg})` }}
     >
@@ -121,7 +133,7 @@ function ViewEnquiries() {
           <DeleteEnquiries id={accommodations.id} />
         </form>
       </Container>
-    </div>
+    </main>
   );
 }
 

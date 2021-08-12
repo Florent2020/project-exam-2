@@ -14,6 +14,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import bg from "../../images/bg_form.png";
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 function AdminAccommodations() {
   const [accommodations, setAccommodations] = useState([]);
@@ -22,6 +25,14 @@ function AdminAccommodations() {
   const [searchField, setSearchField] = useState("");
 
   const url = BASE_URL + `/accommodations`;
+
+  const [auth] = useContext(AuthContext);
+
+  const history = useHistory();
+
+  if (!auth) {
+    history.push("/");
+  }
 
   useEffect(function () {
     async function getAccommodation() {
@@ -54,7 +65,7 @@ function AdminAccommodations() {
   );
 
   return (
-    <>
+    <main>
       <Helmet>
         <title>Dashboard Page | Holidaze!</title>
         <meta name="description" content="Dashboard Page | Holidaze!" />
@@ -98,7 +109,7 @@ function AdminAccommodations() {
           </div>
         </Container>
       </div>
-    </>
+    </main>
   );
 }
 

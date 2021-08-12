@@ -51,7 +51,7 @@ function FavoriteTripsPage() {
   }
 
   return (
-    <>
+    <main>
       <Helmet>
         <title>Favorites Page | Holidaze!</title>
         <meta name="description" content="Favorites Page | Holidaze!" />
@@ -70,7 +70,7 @@ function FavoriteTripsPage() {
           </AccommodationList>
         </Container>
       </div>
-    </>
+    </main>
   );
 }
 

@@ -11,10 +11,8 @@ import Pagination from "./Pagination";
 import OurGuarantees from "./OurGuarantees";
 import ThingsToDo from "./ThingsToDo";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
-import SearchBox from "../search/SearchBox";
+import Form from "react-bootstrap/Form";
 
 function HomePage() {
   const [accommodations, setAccommodations] = useState([]);
@@ -24,8 +22,7 @@ function HomePage() {
   const [accommodationsPerPage] = useState(6);
 
   const url = BASE_URL + `/accommodations`;
-  // const [searchByCriteria, setSearchByCriteria] = useState("");
-  const [searchField, setSearchField] = useState("");
+  const [searchByCriteria, setSearchByCriteria] = useState("");
 
   const [favourites, setFavourites] = useState([]);
 
@@ -33,7 +30,7 @@ function HomePage() {
     function () {
       async function getAccommodation() {
         try {
-          const response = await axios.get(url);
+          const response = await axios.get(url + searchByCriteria);
           console.log("response", response);
           setAccommodations(response.data);
         } catch (error) {
@@ -47,7 +44,7 @@ function HomePage() {
       getAccommodation();
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    [url]
+    [searchByCriteria]
   );
 
   if (loading) {
@@ -68,13 +65,9 @@ function HomePage() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // const getAccommodationList = async ({ searchBy }) => {
-  //   setSearchByCriteria("/?_q=" + searchBy);
-  // };
-
-  const filteredAccommodation = accommodations.filter((item) =>
-    item.name.toLowerCase().includes(searchField.toLowerCase())
-  );
+  const getAccommodationList = async ({ searchBy }) => {
+    setSearchByCriteria("/?_q=" + searchBy);
+  };
 
   const saveToLocalStorage = (items) => {
     localStorage.setItem("trips", JSON.stringify(items));
@@ -88,7 +81,7 @@ function HomePage() {
   };
 
   return (
-    <>
+    <main>
       <Helmet>
         <title>
           Holidaze | A website for Hotel Reservations from Luxury Hotels to
@@ -103,7 +96,7 @@ function HomePage() {
       <AccommodationPart />
       <Container className="home--container">
         <div className="search--home">
-          {/* <Form.Group>
+          <Form.Group>
             <i className="fas fa-search"></i>
             <Form.Control
               type="search"
@@ -113,14 +106,10 @@ function HomePage() {
                 getAccommodationList({ searchBy: e.target.value })
               }
             />
-          </Form.Group> */}
-          <SearchBox
-            placeholder="Search accommodation ..."
-            handleChange={(e) => setSearchField(e.target.value)}
-          />
-          {/* <Button variant="primary" type="submit">
+          </Form.Group>
+          <Button variant="primary" type="submit">
             Search
-          </Button> */}
+          </Button>
         </div>
 
         <Pagination
@@ -130,7 +119,7 @@ function HomePage() {
           pageIndex={currentPage}
         />
         <AccommodationList
-          accommodations={(currentAccommodations, filteredAccommodation)}
+          accommodations={currentAccommodations}
           favoriteTrips={favoriteTrips}
         />
         <Pagination
@@ -142,7 +131,7 @@ function HomePage() {
       </Container>
       <OurGuarantees />
       <ThingsToDo />
-    </>
+    </main>
   );
 }
 

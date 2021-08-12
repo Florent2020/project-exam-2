@@ -21,7 +21,7 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="admin" style={{ backgroundImage: `url(${bg})` }}>
+    <main className="admin" style={{ backgroundImage: `url(${bg})` }}>
       <Row>
         <Col sm={12} md={12} className="accommodations--admin">
           <Container>
@@ -39,6 +39,6 @@ export default function AdminPage() {
           </Container>
         </Col>
       </Row>
-    </div>
+    </main>
   );
 }

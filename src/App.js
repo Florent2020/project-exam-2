@@ -1,16 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import NavLink from "react-bootstrap/NavLink";
-import Logo from "./images/logo_.png";
-import Image from "react-bootstrap/Image";
 import { AuthProvider } from "./context/AuthContext";
 import HomePage from "./components/home/HomePage";
 import AccommodationsDetail from "./components/home/AccommodationsDetail";
 import BookingEnquiry from "./components/booking/BookingEnquary";
-import Nav from "./components/layout/Nav";
-import InfoHeader from "./components/layout/InfoHeader";
 import AdminPage from "./components/admin/AdminPage";
 import AccommodationsPage from "./components/accomodations/AccommodationsPage";
 import Contact from "./components/contact/Contact";
@@ -26,6 +19,7 @@ import AdminAccommodations from "./components/admin/AdminAccommodations";
 import EditAccommodation from "./components/admin/Edit";
 import Footer from "./components/layout/Footer";
 import "./sass/style.scss";
+import Header from "./components/layout/Header";
 
 function App() {
   return (
@@ -33,22 +27,7 @@ function App() {
       <div className="bg">
         <div className="wrapper">
           <Router>
-            <div className="header">
-              <InfoHeader />
-              <Navbar bg="dark" variant="dark" expand="lg">
-                <Container>
-                  <NavLink href="/" className="nav--logo">
-                    <Navbar.Brand>
-                      <Image src={Logo} className="logo" alt="logo" />
-                    </Navbar.Brand>
-                  </NavLink>
-                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                  <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav />
-                  </Navbar.Collapse>
-                </Container>
-              </Navbar>
-            </div>
+            <Header />
             <Switch>
               <Route path="/" exact>
                 <HomePage />

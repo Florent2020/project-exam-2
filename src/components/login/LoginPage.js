@@ -11,7 +11,7 @@ import Image from "react-bootstrap/Image";
 
 export default function LoginPage() {
   return (
-    <>
+    <main>
       <Helmet>
         <title>Login | Holidaze</title>
         <meta name="description" content="Login | Holidaze" />
@@ -32,6 +32,6 @@ export default function LoginPage() {
           </Row>
         </Container>
       </div>
-    </>
+    </main>
   );
 }

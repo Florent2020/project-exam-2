@@ -19,6 +19,10 @@ import ValidationError from "../forms/ValidationError";
 import useAxios from "../../hooks/UseAxios";
 import DeleteAccommodation from "./Delete";
 
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
+
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
   description: yup.string().required("Description is required"),
@@ -33,6 +37,14 @@ function EditHotel() {
   const [fetchError, setFetchError] = useState(null);
   // const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(null);
+
+  const [auth] = useContext(AuthContext);
+
+  const history = useHistory();
+
+  if (!auth) {
+    history.push("/");
+  }
 
   const {
     register,
@@ -94,7 +106,7 @@ function EditHotel() {
   }
 
   return (
-    <>
+    <main>
       <Helmet>
         <title>Edit Page | Holidaze!</title>
         <meta name="description" content="Edit Page | Holidaze!" />
@@ -419,7 +431,7 @@ function EditHotel() {
           </form>
         </Container>
       </div>
-    </>
+    </main>
   );
 }
 

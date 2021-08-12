@@ -10,7 +10,7 @@ import Nav from "react-bootstrap/Nav";
 
 function Contact() {
   return (
-    <>
+    <main>
       <Helmet>
         <title>Contact | Holidaze!</title>
         <meta
@@ -48,7 +48,7 @@ function Contact() {
           </Row>
         </Container>
       </div>
-    </>
+    </main>
   );
 }
 
