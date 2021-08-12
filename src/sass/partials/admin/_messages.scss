@@ -5,9 +5,14 @@
 
   & .messages--page {
     background-color: rgba(38, 38, 38, 0.7);
-    padding: 50px;
+    padding: 25px;
     border-radius: 5px;
     min-height: 100vh;
+  }
+
+  & .row {
+    padding-left: 15px;
+    margin-top: 40px;
   }
 
   & .messages--width {
@@ -62,6 +67,7 @@
     padding: 25px;
     box-shadow: 0 0px 2px #c0c0c0;
     color: $colour-heading;
+    margin-top: 40px;
 
     & a {
       color: $colour-heading;
@@ -116,6 +122,10 @@
     padding: 70px 0;
     & .messages--page {
       min-height: auto;
+    }
+
+    & .messages--page {
+      padding: 50px;
     }
   }
 

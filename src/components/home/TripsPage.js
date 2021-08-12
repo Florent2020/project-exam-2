@@ -56,9 +56,9 @@ function FavoriteTripsPage() {
         <title>Favorites Page | Holidaze!</title>
         <meta name="description" content="Favorites Page | Holidaze!" />
       </Helmet>
-      <div className="favorites">
+      <div className="favourites">
         <Container>
-          <Heading content="Favorite Trips Page" />
+          <Heading content="Favourite Trips Page" />
           {favourites.length === 0 && (
             <div>No favourite accommodation yet!</div>
           )}
