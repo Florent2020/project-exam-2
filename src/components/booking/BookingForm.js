@@ -29,8 +29,11 @@ const schema = yup.object().shape({
 
 function BookingForm({ accName }) {
   const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [serverError, setServerError] = useState(null);
+  const [setSubmitting] = useState(false);
+  const [setServerError] = useState(null);
+
+  // const [submitting, setSubmitting] = useState(false);
+  // const [serverError, setServerError] = useState(null);
 
   const url = BASE_URL + `/enquiries`;
 

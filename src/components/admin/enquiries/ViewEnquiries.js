@@ -10,24 +10,19 @@ import ErrorMessage from "../../layout/ErrorMessage";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAxios from "../../../hooks/UseAxios";
-
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext";
 
-// const schema = yup.object().shape({
-// 	name: yup.string().required("Name is required"),
-//     description: yup.string().required("Description is required"),
-// });
-
 function ViewEnquiries() {
   const [accommodations, setAccommodations] = useState(null);
   const [fetchingAccommodations, setFetchingAccommodations] = useState(true);
+  const [fetchError, setFetchError] = useState(null);
   const [updatingAccommodations, setUpdatingAccommodations] = useState(false);
   const [updateError, setUpdateError] = useState(null);
-  const [fetchError, setFetchError] = useState(null);
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null);
+
+  // console.log(updatingAccommodations);
+  // console.log(updateError);
 
   const [auth] = useContext(AuthContext);
 
@@ -49,7 +44,7 @@ function ViewEnquiries() {
     async function getEnquiry() {
       try {
         const response = await http.get(url);
-        console.log("response", response.data);
+        // console.log("response", response.data);
         setAccommodations(response.data);
       } catch (error) {
         console.log(error);
@@ -68,7 +63,7 @@ function ViewEnquiries() {
     setUpdateError(null);
     // setUpdated(false);
 
-    console.log(data);
+    // console.log(data);
 
     try {
       const response = await http.put(url, data);

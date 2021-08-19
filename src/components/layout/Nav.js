@@ -34,10 +34,6 @@ function Nav() {
                   <i className="fas fa-tachometer-alt"></i>
                   Dashboard
                 </NavLink>
-                <NavLink to="/admin/overview" activeClassName="active">
-                  <i className="fas fa-hotel"></i>
-                  Overview
-                </NavLink>
                 <NavLink to="/admin/add" activeClassName="active">
                   <i className="fas fa-plus-square"></i>
                   Add
@@ -57,10 +53,6 @@ function Nav() {
               <NavLink to="/admin/dashboard">
                 <i className="fas fa-tachometer-alt"></i>
                 Dashboard
-              </NavLink>
-              <NavLink to="/admin/overview" activeClassName="active">
-                <i className="fas fa-hotel"></i>
-                Overview
               </NavLink>
               <NavLink to="/admin/add" activeClassName="active">
                 <i className="fas fa-plus-square"></i>

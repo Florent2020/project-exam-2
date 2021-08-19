@@ -13,7 +13,6 @@ import bg from "../../../images/bg_form.png";
 import DeleteEnquiry from "./DeleteEnquiry";
 import Loader from "../../layout/Loader";
 import ErrorMessage from "../../layout/ErrorMessage";
-
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext";
@@ -92,7 +91,6 @@ function EnquiriesAdmin() {
               const newCreatedAt = newFormat.format(createdAt);
 
               return (
-                // <div  className="enqyery--id ">
                 <Col
                   sm={12}
                   md={6}
@@ -116,10 +114,8 @@ function EnquiriesAdmin() {
                       </Link>
                       <DeleteEnquiry id={enquiry.id} />
                     </FormGroup>
-                    {/* <Button href={`/admin/viewEnquiries/${enquiry.id}`} className="enquirie--link" variant="info" type="submit">View details</Button> */}
                   </Col>
                 </Col>
-                // {/* </div> */}
               );
             })}
           </Row>

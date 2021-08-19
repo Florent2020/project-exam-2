@@ -13,13 +13,17 @@ import Star from "../home/Star";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../layout/ErrorMessage";
 
-function AccommodationList(props) {
+// const accommodationFromLocalStorage = JSON.parse(
+//   localStorage.getItem("accommodations") || "[]"
+// );
+
+function AccommodationList() {
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchField, setSearchField] = useState("");
 
-  const [favourites, setFavourites] = useState([]);
+  // const [favourites, setFavourites] = useState(accommodationFromLocalStorage);
 
   const url = BASE_URL + `/accommodations`;
 
@@ -55,16 +59,23 @@ function AccommodationList(props) {
     item.name.toLowerCase().includes(searchField.toLowerCase())
   );
 
-  const saveToLocalStorage = (items) => {
-    localStorage.setItem("trips", JSON.stringify(items));
-  };
+  // const favoriteTrips = (trip) => {
+  //   console.log(trip);
+  //   const newFavouriteList = [...favourites, trip];
+  //   setFavourites(newFavouriteList);
+  //   // saveToLocalStorage(newFavouriteList);
+  // };
 
-  const favoriteTrips = (trip) => {
-    console.log(trip);
-    const newFavouriteList = [...favourites, trip];
-    setFavourites(newFavouriteList);
-    saveToLocalStorage(newFavouriteList);
-  };
+  // const saveToLocalStorage = (items) => {
+  //   localStorage.setItem("trips", JSON.stringify(items));
+  // };
+
+  // const favoriteTrips = (trip) => {
+  //   console.log(trip);
+  //   const newFavouriteList = [...favourites, trip];
+  //   setFavourites(newFavouriteList);
+  //   saveToLocalStorage(newFavouriteList);
+  // };
 
   return (
     // <div className="admin">
@@ -86,7 +97,7 @@ function AccommodationList(props) {
                       <i
                         className="far fa-heart"
                         value="addTrips"
-                        onClick={() => favoriteTrips(accommodation)}
+                        // onClick={() => favoriteTrips(accommodation)}
                       ></i>
                     </Card.Text>
                     <Card.Img variant="top" src={accommodation.image_url} />

@@ -13,7 +13,7 @@ function Header() {
       <InfoHeader />
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
-          <NavLink href="/" className="nav--logo">
+          <NavLink className="nav--logo">
             <Navbar.Brand>
               <Image src={Logo} className="logo" alt="logo" />
             </Navbar.Brand>

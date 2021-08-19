@@ -14,6 +14,10 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+const accommodationFromLocalStorage = JSON.parse(
+  localStorage.getItem("accommodation") || "[]"
+);
+
 function HomePage() {
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,10 +28,11 @@ function HomePage() {
   const url = BASE_URL + `/accommodations`;
   const [searchByCriteria, setSearchByCriteria] = useState("");
 
-  const [favourites, setFavourites] = useState([]);
+  const [favourites, setFavourites] = useState(accommodationFromLocalStorage);
 
   useEffect(
     function () {
+      localStorage.setItem("accommodation", JSON.stringify(favourites));
       async function getAccommodation() {
         try {
           const response = await axios.get(url + searchByCriteria);
@@ -44,7 +49,7 @@ function HomePage() {
       getAccommodation();
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    [searchByCriteria]
+    [url, searchByCriteria, favourites]
   );
 
   if (loading) {
@@ -69,15 +74,15 @@ function HomePage() {
     setSearchByCriteria("/?_q=" + searchBy);
   };
 
-  const saveToLocalStorage = (items) => {
-    localStorage.setItem("trips", JSON.stringify(items));
-  };
+  // const saveToLocalStorage = (items) => {
+  //   localStorage.setItem("trips", JSON.stringify(items));
+  // };
 
   const favoriteTrips = (trip) => {
     console.log(trip);
     const newFavouriteList = [...favourites, trip];
     setFavourites(newFavouriteList);
-    saveToLocalStorage(newFavouriteList);
+    // saveToLocalStorage(newFavouriteList);
   };
 
   return (

@@ -76,7 +76,7 @@ body.dark .dark--card {
   & .type {
     position: absolute;
     padding: 7px 12px;
-    color: #fff;
+    color: $colour-heading;
     font-weight: 500;
     font-size: 18px;
     background-color: rgba(38, 38, 38, 0.7);
@@ -99,6 +99,10 @@ body.dark .dark--card {
       cursor: pointer;
       display: flex;
       align-items: center;
+
+      &:hover {
+        color: $colour-error;
+      }
     }
   }
 

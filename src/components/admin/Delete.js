@@ -33,7 +33,7 @@ export default function DeleteAccommodation({ id }) {
   async function handleDelete() {
     try {
       await http.delete(url);
-      history.push("/admin/accommodations");
+      history.push("/admin/dashboard");
     } catch (error) {
       setError(error);
     }

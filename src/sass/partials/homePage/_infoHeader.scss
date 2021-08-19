@@ -67,9 +67,9 @@ body.dark .info--header {
 }
 
 button.badge {
-  background-color: #f04040;
+  background-color: $colour-error;
   border: none;
-  color: #ffffff;
+  color: $colour-heading;
   width: 1.5rem;
 }
 

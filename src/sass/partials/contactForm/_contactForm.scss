@@ -77,7 +77,6 @@
       border: none;
       position: relative;
       border-left: 3px solid $colour-primary;
-      // color: rgba(255, 255, 255, 0.5);
 
       &:focus,
       :visited,
@@ -115,11 +114,6 @@
 @media (min-width: $tablet-width) {
   .contact {
     padding-top: 100px;
-
-    // & .container {
-    //   padding-right: 0;
-    //   padding-left: 0;
-    // }
 
     & .contact__bg {
       width: 900px;

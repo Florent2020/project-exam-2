@@ -46,6 +46,7 @@ export default function LoginForm() {
       console.log("response", response.data);
       setAuth(response.data);
       history.push("/admin/dashboard");
+      // history.push("/admin/accommodations");
     } catch (error) {
       console.log("error", error);
       setLoginError(error.toString());
@@ -57,7 +58,9 @@ export default function LoginForm() {
   return (
     <div>
       {loginError && (
-        <Alert variant="danger">Username or Password is wrong!!!</Alert>
+        <Alert variant="danger" className="login--alert">
+          Username or Password is wrong!!!
+        </Alert>
       )}
       <Form onSubmit={handleSubmit(onSubmit)}>
         <fieldset disabled={submitting}>

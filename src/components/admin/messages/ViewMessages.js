@@ -10,20 +10,21 @@ import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAxios from "../../../hooks/UseAxios";
 import DeleteMessages from "./DeleteMessage";
-
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext";
 
 function ViewMessages() {
   const [message, setMessage] = useState(null);
-  const [updated, setUpdated] = useState(false);
+  // const [setUpdated] = useState(false);
   const [fetchingMessage, setFetchingMessage] = useState(true);
+  // const [setUpdatingMessage] = useState(false);
+  // const [setUpdateError] = useState(null);
+  const [fetchError, setFetchError] = useState(null);
+
+  const [updated, setUpdated] = useState(false);
   const [updatingMessage, setUpdatingMessage] = useState(false);
   const [updateError, setUpdateError] = useState(null);
-  const [fetchError, setFetchError] = useState(null);
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null);
 
   const [auth] = useContext(AuthContext);
 

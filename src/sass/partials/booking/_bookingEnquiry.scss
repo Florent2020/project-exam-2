@@ -130,33 +130,7 @@
     margin-right: 2px;
     opacity: 0.6;
     filter: invert(0.8);
-    // background-color: rgb(209, 220, 15);
-    // color: rgb(255, 81, 0);
-    // border-color: red;
   }
-
-  //   input[type="date"]::-webkit-calendar-picker-indicator:hover {
-  //     opacity: 1;
-  //     background-color: red;
-  //     color: red;
-  //   }
-
-  //   & input[type="date"]::-webkit-calendar-picker-indicator i {
-  //     cursor: pointer;
-  //     border-radius: 4px;
-  //     margin-right: 2px;
-  //     opacity: 0.6;
-  //     filter: invert(0.8);
-  //     background-color: rgb(209, 220, 15);
-  //     color: rgb(255, 81, 0);
-  //     border-color: red;
-  //   }
-
-  //   input[type="date"]::-webkit-calendar-picker-indicator:hover i {
-  //     opacity: 1;
-  //     background-color: red;
-  //     color: red;
-  //   }
 }
 
 @media (min-width: $tablet-width) {

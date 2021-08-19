@@ -22,6 +22,20 @@ const schema = yup.object().shape({
   description: yup.string().required("Description is required"),
   image_url: yup.string().required("Image is required"),
   image_url2: yup.string().required("Image is required"),
+  image_url3: yup.string().required("Image is required"),
+  price: yup.string().required("Price is required"),
+  type: yup.string().required("Type is required"),
+  location: yup.string().required("Location is required"),
+  phone: yup.string().required("Phone is required"),
+  breakfast: yup.string().required("Breakfast is required"),
+  wifi: yup.string().required("Wifi is required"),
+  stay: yup.string().required("Stay is required"),
+  star: yup.string().required("Star is required"),
+  parking: yup.string().required("Parking is required"),
+  cancellation: yup.string().required("Cancellation is required"),
+  fitness: yup.string().required("Fitness is required"),
+  lat: yup.string().required("Latitude is required"),
+  lng: yup.string().required("Longitude is required"),
 });
 
 function AddAccommodation() {
@@ -56,7 +70,7 @@ function AddAccommodation() {
     try {
       const response = await http.post(url, data);
       console.log("response", response.data);
-      history.push("/admin/accommodations");
+      history.push("/admin/dashboard");
     } catch (error) {
       console.log("error", error);
       setServerError(error.toString());
@@ -375,7 +389,7 @@ function AddAccommodation() {
                     <Form.Control
                       name="lat"
                       defaultValue={submitting.lat}
-                      placeholder="Latitude"
+                      placeholder="Ex. 12.34567"
                       {...register("lat")}
                     />
                     {errors.lat && (
@@ -390,7 +404,7 @@ function AddAccommodation() {
                     <Form.Control
                       name="lng"
                       defaultValue={submitting.lng}
-                      placeholder="Longitude"
+                      placeholder="Ex. 1.23456"
                       {...register("lng")}
                     />
                     {errors.lng && (
