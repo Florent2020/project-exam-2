@@ -14,9 +14,11 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const accommodationFromLocalStorage = JSON.parse(
-  localStorage.getItem("accommodation") || "[]"
-);
+// const accommodationFromLocalStorage = JSON.parse(
+//   localStorage.getItem("accommodation") || "[]" // <--
+// );
+
+// TO DO: When clicking a favorite, add the item to localstorage.
 
 function HomePage() {
   const [accommodations, setAccommodations] = useState([]);
@@ -28,7 +30,7 @@ function HomePage() {
   const url = BASE_URL + `/accommodations`;
   const [searchByCriteria, setSearchByCriteria] = useState("");
 
-  const [favourites, setFavourites] = useState(accommodationFromLocalStorage);
+  const [favourites, setFavourites] = useState([]);
 
   useEffect(
     function () {
@@ -74,15 +76,16 @@ function HomePage() {
     setSearchByCriteria("/?_q=" + searchBy);
   };
 
-  // const saveToLocalStorage = (items) => {
-  //   localStorage.setItem("trips", JSON.stringify(items));
-  // };
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("accommodation", JSON.stringify(items));
+  };
 
   const favoriteTrips = (trip) => {
     console.log(trip);
     const newFavouriteList = [...favourites, trip];
     setFavourites(newFavouriteList);
-    // saveToLocalStorage(newFavouriteList);
+
+    saveToLocalStorage(newFavouriteList);
   };
 
   return (

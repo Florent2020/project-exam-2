@@ -68,7 +68,7 @@ export default function AccommodationDetail({ currentAccommodations }) {
           content="A great place where you can feel like in your home!"
         />
       </Helmet>
-      <div className="detail--page">
+      <main className="detail--page">
         <div className="banner__detail--page">
           <Heading content="… where the soul finds peace!" />
           <div className="shadow"></div>
@@ -161,7 +161,7 @@ export default function AccommodationDetail({ currentAccommodations }) {
             </Row>
           </div>
         </Container>
-      </div>
+      </main>
     </>
   );
 }

@@ -106,7 +106,6 @@ function ViewEnquiries() {
           <Nav.Link href="/admin/enquiries">
             <i className="fas fa-arrow-left"></i> Back to enquiries page
           </Nav.Link>
-
           <div className="enquiry--detail">
             <h4>
               <span>{accommodations.full_name}</span> made the reservation at

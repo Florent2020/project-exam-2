@@ -62,7 +62,7 @@ function Booking() {
           content="Easy Way to Book Accommodations Online at Holidaze!"
         />
       </Helmet>
-      <div className="booking" style={{ backgroundImage: `url(${bg})` }}>
+      <main className="booking" style={{ backgroundImage: `url(${bg})` }}>
         <Container className="booking__bg">
           <Row>
             <Col xs={12} md={5} className="booking__bg--left">
@@ -81,7 +81,7 @@ function Booking() {
             </Col>
           </Row>
         </Container>
-      </div>
+      </main>
     </>
   );
 }

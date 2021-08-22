@@ -45,7 +45,9 @@ function AccommodationList(props) {
                 <Button
                   variant="dark"
                   className="remove"
-                  onClick={() => props.favoriteTrips(accommodation)}
+                  onClick={() =>
+                    props.removeFavouriteAccommodation(accommodation)
+                  }
                 >
                   <i className="fas fa-trash"></i>
                   Remove
