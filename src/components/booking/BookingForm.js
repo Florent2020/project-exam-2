@@ -70,7 +70,7 @@ function BookingForm({ accName }) {
     <Container>
       {submitted && (
         <Alert variant="success">
-          Your booking is made successfully at "{accommodation.name}"!
+          Your booking is made successfully at <br /> "{accName}"!
         </Alert>
       )}
       <Form onSubmit={handleSubmit(onSubmit)}>
