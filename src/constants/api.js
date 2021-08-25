@@ -3,4 +3,3 @@
 export const TOKEN_PATH = "/auth/local";
 
 export const BASE_URL = "https://pure-mountain-97036.herokuapp.com";
-// export const TOKEN_PATH = "/path/to/live/api";
