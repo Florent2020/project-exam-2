@@ -4,6 +4,28 @@ import { Link } from "react-router-dom";
 import DarkMode from "./DarkMode";
 
 function InfoHeader() {
+  const savedAccommodation =
+    JSON.parse(localStorage.getItem("accommodation")) || [];
+
+  // const [favourites] = useState(savedAccommodation);
+
+  // const saveToLocalStorage = (items) => {
+  //   localStorage.setItem("accommodation", JSON.stringify(items));
+  // };
+
+  // const favoriteTrips = (trip) => {
+  //   const newFavouriteList = [
+  //     ...favourites.filter((favourite) => favourite.id !== trip.id),
+  //     trip,
+  //   ];
+  //   favourites.forEach((item) => {
+  //     if (item.id === trip.id) {
+  //       // console.log("Now you can delete");
+  //     }
+  //   });
+  //   setFavourites(newFavouriteList);
+  //   saveToLocalStorage(newFavouriteList);
+  // };
   return (
     <div className="info--header">
       <Container>
@@ -17,9 +39,14 @@ function InfoHeader() {
         </div>
         <nav className="nav--info">
           <div className="favorites__link">
-            <i className="far fa-heart"></i>
             {""}
+            {savedAccommodation.length ? (
+              <span>{savedAccommodation.length}</span>
+            ) : (
+              ""
+            )}
             <Link to="/favoriteTrips" className="nav-link">
+              <i className="far fa-heart"></i>
               Trips
             </Link>
           </div>

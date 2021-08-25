@@ -30,11 +30,14 @@ function HomePage() {
   const url = BASE_URL + `/accommodations`;
   const [searchByCriteria, setSearchByCriteria] = useState("");
 
-  const [favourites, setFavourites] = useState([]);
+  const savedAccommodation =
+    JSON.parse(localStorage.getItem("accommodation")) || [];
+
+  const [favourites, setFavourites] = useState(savedAccommodation);
 
   useEffect(
     function () {
-      localStorage.setItem("accommodation", JSON.stringify(favourites));
+      // localStorage.setItem("accommodation", JSON.stringify(favourites));
       async function getAccommodation() {
         try {
           const response = await axios.get(url + searchByCriteria);
@@ -81,10 +84,19 @@ function HomePage() {
   };
 
   const favoriteTrips = (trip) => {
-    console.log(trip);
-    const newFavouriteList = [...favourites, trip];
+    const newFavouriteList = [
+      ...favourites.filter((favourite) => favourite.id !== trip.id),
+      trip,
+    ];
+    favourites.forEach((item) => {
+      if (item.id === trip.id) {
+        console.log("kthe dicka");
+        //  ? "fas fa-heart active" : "fas fa-heart";
+      } else {
+        console.log("dicka tjeter");
+      }
+    });
     setFavourites(newFavouriteList);
-
     saveToLocalStorage(newFavouriteList);
   };
 

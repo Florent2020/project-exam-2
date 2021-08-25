@@ -120,7 +120,9 @@ input.search--input__search {
   background-size: cover;
 }
 
-main {
-  position: relative;
-  top: 127px;
+@media (min-width: $tablet-width) {
+  main {
+    position: relative;
+    top: 127px;
+  }
 }

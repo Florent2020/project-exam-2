@@ -80,6 +80,7 @@
 
     & p {
       font-size: 12px;
+      line-height: 1.7;
     }
 
     & i {
@@ -115,7 +116,7 @@
     }
 
     & .stay {
-      margin-top: 50px;
+      margin-top: 35px;
       margin-bottom: 5px;
     }
 
@@ -188,6 +189,16 @@
         }
       }
 
+      & .location {
+        & > br {
+          display: none;
+        }
+
+        & .fa-phone-alt {
+          margin-left: 25px;
+        }
+      }
+
       & .map {
         margin-top: 0 !important;
       }
@@ -195,7 +206,7 @@
   }
 
   @media (min-width: 772px) and (max-width: 992px) {
-    .details--info .map {
+    & .details--info .map {
       margin-top: 0 !important;
     }
   }

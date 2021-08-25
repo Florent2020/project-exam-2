@@ -1,5 +1,5 @@
 .login {
-  height: 100vh;
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -87,12 +87,21 @@
   }
 }
 
-.login--alert {
-  position: relative;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
+.login__bg--right {
+  & .login--alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+  }
+
+  & .alert-danger {
+    width: auto;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
 }
 
 @media (min-width: $tablet-width) {

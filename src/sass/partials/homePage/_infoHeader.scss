@@ -15,7 +15,7 @@
   }
 
   & span {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     margin-right: 14px;
   }
@@ -31,14 +31,35 @@
       display: flex;
       align-items: center;
 
+      & span {
+        width: 11px;
+        height: 11px;
+        text-align: center;
+        margin-right: 0;
+        background-color: $colour-error;
+        font-size: 8px;
+        border-radius: 50%;
+        color: #e4e6e8;
+        position: relative;
+        top: -4px;
+        left: 14px;
+        z-index: 7;
+      }
+
       & i,
       a {
         color: $colour-secondary;
         padding-left: 5px;
+        font-size: 11px;
         &:hover {
           color: $colour-heading;
         }
       }
+    }
+
+    & .favorites__link i {
+      margin-right: 5px;
+      position: relative;
     }
   }
 }
@@ -57,20 +78,25 @@ body.dark .info--header {
     transition: color 0.5s ease-out;
   }
 
-  & .nav--info .favorites__link i,
-  .nav--info .favorites__link a,
+  & .nav--info .favorites__link a,
   .nav--info .mode__link i,
   .nav--info .mode__link a {
     color: $colour-primary;
     transition: color 0.5s ease-out;
-  }
-}
 
-button.badge {
-  background-color: $colour-error;
-  border: none;
-  color: $colour-heading;
-  width: 1.5rem;
+    &:hover {
+      color: $colour-heading;
+    }
+  }
+
+  & .nav--info .favorites__link i {
+    color: $colour-primary;
+    transition: color 0.5s ease-out;
+
+    &:hover {
+      color: $colour-heading;
+    }
+  }
 }
 
 @media (min-width: $tablet-width) {
@@ -90,6 +116,20 @@ button.badge {
     & .nav--info {
       margin-right: 0;
       font-size: 14px;
+
+      & .favorites__link span {
+        font-size: 12px;
+        width: 16px;
+        height: 16px;
+      }
+
+      & .favorites__link a {
+        font-size: 14px;
+      }
+
+      & .favorites__link i {
+        font-size: 14px;
+      }
     }
   }
 }

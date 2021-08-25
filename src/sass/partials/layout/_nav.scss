@@ -1,11 +1,3 @@
-.header {
-  height: 125px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9;
-}
-
 .bg-dark {
   background-color: $dark-background-color !important;
   border-top: 1px solid #2c2c2c;
@@ -67,6 +59,13 @@
 }
 
 @media (min-width: $tablet-width) {
+  .header {
+    height: 125px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+  }
   .navbar .container {
     display: flex;
   }

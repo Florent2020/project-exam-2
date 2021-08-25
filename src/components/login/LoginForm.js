@@ -46,7 +46,6 @@ export default function LoginForm() {
       console.log("response", response.data);
       setAuth(response.data);
       history.push("/admin/dashboard");
-      // history.push("/admin/accommodations");
     } catch (error) {
       console.log("error", error);
       setLoginError(error.toString());

@@ -68,7 +68,6 @@ function Nav() {
               </NavLink>
             </div>
 
-            {/* <NavLink to="/admin/dashboard" className="admin--mobile">Admin</NavLink> */}
             <Button
               variant="info"
               type="submit"

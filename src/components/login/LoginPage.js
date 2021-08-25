@@ -9,7 +9,7 @@ import bg from "../../images/bg_form.png";
 import logo from "../../images/logo_.png";
 import Image from "react-bootstrap/Image";
 
-export default function LoginPage() {
+function LoginPage() {
   return (
     <main>
       <Helmet>
@@ -35,3 +35,5 @@ export default function LoginPage() {
     </main>
   );
 }
+
+export default LoginPage;

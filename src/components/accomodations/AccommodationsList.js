@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -28,6 +28,29 @@ function AccommodationList(props) {
   //   saveToLocalStorage(newFavouriteList);
   // };
 
+  const savedAccommodation =
+    JSON.parse(localStorage.getItem("accommodation")) || [];
+
+  const [favourites, setFavourites] = useState(savedAccommodation);
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("accommodation", JSON.stringify(items));
+  };
+
+  const favoriteTrips = (trip) => {
+    const newFavouriteList = [
+      ...favourites.filter((favourite) => favourite.id !== trip.id),
+      trip,
+    ];
+    favourites.forEach((item) => {
+      if (item.id === trip.id) {
+        // console.log("Now you can delete");
+      }
+    });
+    setFavourites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList);
+  };
+
   return (
     <Row>
       <div className="pages">
@@ -39,9 +62,9 @@ function AccommodationList(props) {
                   <Card.Text className="type">{accommodation.type}</Card.Text>
                   <Card.Text className="trips">
                     <i
-                      className="far fa-heart"
+                      className="fas fa-heart"
                       value="addTrips"
-                      // onClick={() => favoriteTrips(accommodation)}
+                      onClick={() => favoriteTrips(accommodation)}
                     ></i>
                   </Card.Text>
                   <Card.Img variant="top" src={accommodation.image_url} />
@@ -70,6 +93,16 @@ function AccommodationList(props) {
                   >
                     <Button variant="primary">View More!</Button>
                   </Link>
+                  <Button
+                    variant="dark"
+                    className="remove"
+                    onClick={() =>
+                      props.removeFavouriteAccommodation(accommodation)
+                    }
+                  >
+                    <i className="fas fa-trash"></i>
+                    Remove
+                  </Button>
                 </div>
               </Card>
             </div>

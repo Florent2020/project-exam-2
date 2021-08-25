@@ -10,7 +10,7 @@ import Nav from "./Nav";
 function Header() {
   return (
     <header className="header">
-      <InfoHeader />
+      <InfoHeader></InfoHeader>
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
           <NavLink className="nav--logo">
