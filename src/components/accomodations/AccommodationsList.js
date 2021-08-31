@@ -37,18 +37,28 @@ function AccommodationList(props) {
     localStorage.setItem("accommodation", JSON.stringify(items));
   };
 
-  const favoriteTrips = (trip) => {
+  const favoriteTrips = (e, trip) => {
+    if (e.target.classList[2] === "fas") {
+      e.currentTarget.classList.remove("fas");
+    } else {
+      e.currentTarget.classList.add("fas");
+    }
+
     const newFavouriteList = [
       ...favourites.filter((favourite) => favourite.id !== trip.id),
       trip,
     ];
-    favourites.forEach((item) => {
-      if (item.id === trip.id) {
-        // console.log("Now you can delete");
-      }
-    });
     setFavourites(newFavouriteList);
     saveToLocalStorage(newFavouriteList);
+
+    favourites.forEach((item) => {
+      if (item.id === trip.id) {
+        const items = JSON.parse(localStorage.getItem("accommodation"));
+        const filtered = [...items.filter((item) => item.id !== trip.id)];
+        setFavourites(filtered);
+        saveToLocalStorage(filtered);
+      }
+    });
   };
 
   return (
@@ -64,7 +74,7 @@ function AccommodationList(props) {
                     <i
                       className="fas fa-heart"
                       value="addTrips"
-                      onClick={() => favoriteTrips(accommodation)}
+                      onClick={(e) => favoriteTrips(e, accommodation)}
                     ></i>
                   </Card.Text>
                   <Card.Img variant="top" src={accommodation.image_url} />
