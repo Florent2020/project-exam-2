@@ -10,24 +10,6 @@ import Star from "../home/Star";
 // );
 
 function AccommodationList(props) {
-  // const favoriteTrips = (trip) => {
-  //   console.log(trip);
-  //   const newFavouriteList = [...favourites, trip];
-  //   setFavourites(newFavouriteList);
-  //   // saveToLocalStorage(newFavouriteList);
-  // };
-
-  // const saveToLocalStorage = (items) => {
-  //   localStorage.setItem("trips", JSON.stringify(items));
-  // };
-
-  // const favoriteTrips = (trip) => {
-  //   console.log(trip);
-  //   const newFavouriteList = [...favourites, trip];
-  //   setFavourites(newFavouriteList);
-  //   saveToLocalStorage(newFavouriteList);
-  // };
-
   const savedAccommodation =
     JSON.parse(localStorage.getItem("accommodation")) || [];
 
@@ -72,7 +54,7 @@ function AccommodationList(props) {
                   <Card.Text className="type">{accommodation.type}</Card.Text>
                   <Card.Text className="trips">
                     <i
-                      className="fas fa-heart"
+                      className="far fa-heart"
                       value="addTrips"
                       onClick={(e) => favoriteTrips(e, accommodation)}
                     ></i>
