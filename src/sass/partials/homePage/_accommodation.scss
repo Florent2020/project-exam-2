@@ -28,6 +28,13 @@
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  transition: transform 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    position: relative;
+    transform: translateY(-15px);
+  }
 }
 
 body.dark .dark--card {
@@ -35,6 +42,13 @@ body.dark .dark--card {
   box-shadow: 0 0 10px #353535;
   color: $colour-heading;
   transition: background-color 0.5s ease-out;
+  transition: transform 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    position: relative;
+    transform: translateY(-15px);
+  }
 }
 
 .card-img,

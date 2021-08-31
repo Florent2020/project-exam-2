@@ -78,6 +78,10 @@
     flex-direction: column;
     margin-right: 15px;
 
+    &:hover {
+      transform: none;
+    }
+
     & .type {
       padding: 7px 12px !important;
     }

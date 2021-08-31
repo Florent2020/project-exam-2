@@ -75,7 +75,7 @@ function Booking() {
             </Col>
             <Col xs={12} md={7} className="booking__bg--right">
               <div className="booking__logo">
-                <Heading content="Booking Enquiry" />
+                <Heading content="Booking page" />
               </div>
               <BookingForm accName={accommodation.name} />
             </Col>
