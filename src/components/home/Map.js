@@ -16,20 +16,18 @@ const MapView = (props) => {
   center.lng = props.lng;
 
   return (
-    <>
-      <div>
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={15}
-          center={center}
-          onClick={(e) => {
-            console.log(e);
-          }}
-        >
-          <Marker position={center} title={props.hotel} />
-        </GoogleMap>
-      </div>
-    </>
+    <div>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={15}
+        center={center}
+        onClick={(e) => {
+          console.log(e);
+        }}
+      >
+        <Marker position={center} title={props.hotel} />
+      </GoogleMap>
+    </div>
   );
 };
 

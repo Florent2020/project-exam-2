@@ -20,7 +20,7 @@ import Form from "react-bootstrap/Form";
 
 // TO DO: When clicking a favorite, add the item to localstorage.
 
-function HomePage() {
+function HomePage(props) {
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -83,21 +83,28 @@ function HomePage() {
     localStorage.setItem("accommodation", JSON.stringify(items));
   };
 
-  const favoriteTrips = (trip) => {
+  const favoriteTrips = (e, trip) => {
+    if (e.target.classList[2] === "fas") {
+      e.currentTarget.classList.remove("fas");
+    } else {
+      e.currentTarget.classList.add("fas");
+    }
+
     const newFavouriteList = [
       ...favourites.filter((favourite) => favourite.id !== trip.id),
       trip,
     ];
-    favourites.forEach((item) => {
-      if (item.id === trip.id) {
-        console.log("kthe dicka");
-        //  ? "fas fa-heart active" : "fas fa-heart";
-      } else {
-        console.log("dicka tjeter");
-      }
-    });
     setFavourites(newFavouriteList);
     saveToLocalStorage(newFavouriteList);
+
+    favourites.forEach((item) => {
+      if (item.id === trip.id) {
+        const items = JSON.parse(localStorage.getItem("accommodation"));
+        const filtered = [...items.filter((item) => item.id !== trip.id)];
+        setFavourites(filtered);
+        saveToLocalStorage(filtered);
+      }
+    });
   };
 
   return (

@@ -49,6 +49,16 @@
   }
 }
 
+body.dark {
+  .messages--admin .messages--table {
+    background-color: #272b30;
+  }
+
+  & .messages--admin .message--link {
+    color: $colour-heading;
+  }
+}
+
 // View Messages page
 
 .view--message {

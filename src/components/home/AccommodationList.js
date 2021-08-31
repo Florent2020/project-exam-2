@@ -1,16 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Star from "./Star";
 
 function AccommodationList(props) {
-  const [switchToggle, setSwitchToggle] = useState(true);
-
-  const ToggleSwitch = () => {
-    setSwitchToggle ? setSwitchToggle(true) : setSwitchToggle(false);
-    console.log(switchToggle);
-  };
   return (
     <>
       <div className="pages">
@@ -21,14 +15,10 @@ function AccommodationList(props) {
                 <Card.Text className="type">{accommodation.type}</Card.Text>
                 <Card.Text className="trips">
                   <i
-                    className={
-                      switchToggle ? "fas fa-heart" : "fas fa-heart active"
-                    }
-                    // className="fas fa-heart"
+                    className="far fa-heart"
                     value="addTrips"
-                    onClick={() => {
-                      props.favoriteTrips(accommodation);
-                      ToggleSwitch();
+                    onClick={(e) => {
+                      props.favoriteTrips(e, accommodation);
                     }}
                   ></i>
                 </Card.Text>

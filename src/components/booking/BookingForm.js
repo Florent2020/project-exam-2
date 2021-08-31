@@ -29,10 +29,10 @@ const schema = yup.object().shape({
 
 function BookingForm({ accName }) {
   const [submitted, setSubmitted] = useState(false);
-  // const [setSubmitting] = useState(false);
-  // const [setServerError] = useState(null);
 
+  // eslint-disable-next-line
   const [submitting, setSubmitting] = useState(false);
+  // eslint-disable-next-line
   const [serverError, setServerError] = useState(null);
 
   const url = BASE_URL + `/enquiries`;

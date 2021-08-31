@@ -8,10 +8,6 @@ import ErrorMessage from "../layout/ErrorMessage";
 
 import AccommodationList from "./AccommodationList";
 
-// const accommodationFromLocalStorage = JSON.parse(
-//   localStorage.getItem("accommodation") || "[]"
-// );
-
 function FavoriteTripsPage() {
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,7 +18,6 @@ function FavoriteTripsPage() {
       const accommodationFavourites = JSON.parse(
         localStorage.getItem("accommodation")
       );
-      // localStorage.setItem("accommodation", JSON.stringify(favourites));
 
       setFavourites(accommodationFavourites);
       if (accommodationFavourites) {

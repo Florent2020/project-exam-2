@@ -88,7 +88,7 @@ body.dark .dark--card {
     right: 4px;
     top: 4px;
     background-color: $colour-heading;
-    opacity: 0.6;
+    opacity: 0.8;
     padding: 4px 7px !important;
     border: 1px solid $colour-secondary;
     border-radius: 5px;
@@ -182,6 +182,6 @@ body.dark {
   }
 }
 
-.fas.fa-heart.active {
-  color: red;
+.fas.fa-heart {
+  color: $colour-error !important;
 }

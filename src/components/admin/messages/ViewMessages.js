@@ -16,14 +16,14 @@ import AuthContext from "../../../context/AuthContext";
 
 function ViewMessages() {
   const [message, setMessage] = useState(null);
-  // const [setUpdated] = useState(false);
   const [fetchingMessage, setFetchingMessage] = useState(true);
-  // const [setUpdatingMessage] = useState(false);
-  // const [setUpdateError] = useState(null);
   const [fetchError, setFetchError] = useState(null);
 
+  // eslint-disable-next-line
   const [updated, setUpdated] = useState(false);
+  // eslint-disable-next-line
   const [updatingMessage, setUpdatingMessage] = useState(false);
+  // eslint-disable-next-line
   const [updateError, setUpdateError] = useState(null);
 
   const [auth] = useContext(AuthContext);

@@ -18,11 +18,10 @@ function ViewEnquiries() {
   const [accommodations, setAccommodations] = useState(null);
   const [fetchingAccommodations, setFetchingAccommodations] = useState(true);
   const [fetchError, setFetchError] = useState(null);
+  // eslint-disable-next-line
   const [updatingAccommodations, setUpdatingAccommodations] = useState(false);
+  // eslint-disable-next-line
   const [updateError, setUpdateError] = useState(null);
-
-  // console.log(updatingAccommodations);
-  // console.log(updateError);
 
   const [auth] = useContext(AuthContext);
 
