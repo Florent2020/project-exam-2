@@ -89,6 +89,7 @@ function EditHotel() {
       const response = await http.put(url, data);
       console.log("response", response.data);
       setUpdated(true);
+      // history.push("/admin/dashboard");
     } catch (error) {
       console.log("error", error);
       setUpdateError(error.toString());
@@ -236,10 +237,16 @@ function EditHotel() {
                   <Form.Control
                     name="breakfast"
                     defaultValue={accommodation.breakfast}
-                    placeholder="Breakfast"
+                    placeholder="Select breakfast"
                     {...register("breakfast")}
-                  />
-                  {errors.breakfast && (
+                    as="select"
+                  >
+                    <option value="">Select breakfast ...</option>
+                    <option value="Breakfast Included">
+                      Breakfast Included
+                    </option>
+                  </Form.Control>
+                  {errors.type && (
                     <ValidationError>
                       {errors.breakfast.message}
                     </ValidationError>
@@ -253,7 +260,11 @@ function EditHotel() {
                     defaultValue={accommodation.wifi}
                     placeholder="Wifi"
                     {...register("wifi")}
-                  />
+                    as="select"
+                  >
+                    <option value="">Select wifi ...</option>
+                    <option value="Wifi">Wifi</option>
+                  </Form.Control>
                   {errors.wifi && (
                     <ValidationError>{errors.wifi.message}</ValidationError>
                   )}
@@ -268,8 +279,18 @@ function EditHotel() {
                     defaultValue={accommodation.stay}
                     placeholder="Stay"
                     {...register("stay")}
-                  />
-                  {errors.stay && (
+                    as="select"
+                  >
+                    <option value="">Select stay ...</option>
+                    <option value="1 night, 2 adults">1 night, 2 adults</option>
+                    <option value="1 night, max 4 persons">
+                      1 night, max 4 persons
+                    </option>
+                    <option value="1 night, max 6 persons">
+                      1 night, max 6 persons
+                    </option>
+                  </Form.Control>
+                  {errors.type && (
                     <ValidationError>{errors.stay.message}</ValidationError>
                   )}
                 </Form.Group>
@@ -281,7 +302,13 @@ function EditHotel() {
                     defaultValue={accommodation.parking}
                     placeholder="Parking"
                     {...register("parking")}
-                  />
+                    as="select"
+                  >
+                    <option value="">Select parking ...</option>
+                    <option value="Paid parking off promises">
+                      Paid parking off promises
+                    </option>
+                  </Form.Control>
                   {errors.parking && (
                     <ValidationError>{errors.parking.message}</ValidationError>
                   )}
@@ -289,15 +316,8 @@ function EditHotel() {
               </Form.Row>
 
               <Form.Row>
-                {/* <Form.Group as={Col}>
-                                        <Form.Label>Star</Form.Label>
-                                        <Form.Control name="star" defaultValue={accommodation.star} placeholder="Star" {...register("star")} />
-                                        {errors.star && <ValidationError>{errors.star.message}</ValidationError>}
-                                    </Form.Group> */}
-
                 <Form.Group as={Col}>
-                  <Form.Label>Select star</Form.Label>
-                  {/* <Form.Control name="type" defaultValue={submitting.type} placeholder="Type" {...register("type")} /> */}
+                  <Form.Label>Star</Form.Label>
                   <Form.Control
                     name="star"
                     defaultValue={accommodation.star}
@@ -305,7 +325,7 @@ function EditHotel() {
                     {...register("star")}
                     as="select"
                   >
-                    <option value="">Star</option>
+                    <option value="">Select star ...</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
@@ -322,7 +342,11 @@ function EditHotel() {
                     defaultValue={accommodation.cancellation}
                     placeholder="Cancellation"
                     {...register("cancellation")}
-                  />
+                    as="select"
+                  >
+                    <option value="">Select cancellation ...</option>
+                    <option value="Free cancellation">Free cancellation</option>
+                  </Form.Control>
                   {errors.cancellation && (
                     <ValidationError>
                       {errors.cancellation.message}
@@ -339,7 +363,11 @@ function EditHotel() {
                     defaultValue={accommodation.fitness}
                     placeholder="Fitness"
                     {...register("fitness")}
-                  />
+                    as="select"
+                  >
+                    <option value="">Select fitness ...</option>
+                    <option value="Fitness Center">Fitness Center</option>
+                  </Form.Control>
                   {errors.fitness && (
                     <ValidationError>{errors.fitness.message}</ValidationError>
                   )}

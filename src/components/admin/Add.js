@@ -206,22 +206,24 @@ function AddAccommodation() {
               </Form.Row>
 
               <Form.Row>
-                <Col>
-                  <Form.Group>
-                    <Form.Label>Breakfast</Form.Label>
-                    <Form.Control
-                      name="breakfast"
-                      defaultValue={submitting.breakfast}
-                      placeholder="Breakfast"
-                      {...register("breakfast")}
-                    />
-                    {errors.breakfast && (
-                      <ValidationForm>
-                        {errors.breakfast.message}
-                      </ValidationForm>
-                    )}
-                  </Form.Group>
-                </Col>
+                <Form.Group as={Col}>
+                  <Form.Label>Breakfast</Form.Label>
+                  <Form.Control
+                    name="breakfast"
+                    defaultValue={submitting.breakfast}
+                    placeholder="Select breakfast"
+                    {...register("breakfast")}
+                    as="select"
+                  >
+                    <option value="">Select ...</option>
+                    <option value="Breakfast Included">
+                      Breakfast Included
+                    </option>
+                  </Form.Control>
+                  {errors.breakfast && (
+                    <ValidationForm>{errors.breakfast.message}</ValidationForm>
+                  )}
+                </Form.Group>
 
                 <Col>
                   <Form.Group>
@@ -231,7 +233,11 @@ function AddAccommodation() {
                       defaultValue={submitting.wifi}
                       placeholder="Wifi"
                       {...register("wifi")}
-                    />
+                      as="select"
+                    >
+                      <option value="">Select wifi ...</option>
+                      <option value="wifi">Wifi</option>
+                    </Form.Control>
                     {errors.wifi && (
                       <ValidationForm>{errors.wifi.message}</ValidationForm>
                     )}
@@ -240,20 +246,28 @@ function AddAccommodation() {
               </Form.Row>
 
               <Form.Row>
-                <Col>
-                  <Form.Group>
-                    <Form.Label>Stay</Form.Label>
-                    <Form.Control
-                      name="stay"
-                      defaultValue={submitting.stay}
-                      placeholder="Stay"
-                      {...register("stay")}
-                    />
-                    {errors.stay && (
-                      <ValidationForm>{errors.stay.message}</ValidationForm>
-                    )}
-                  </Form.Group>
-                </Col>
+                <Form.Group as={Col}>
+                  <Form.Label>Stay</Form.Label>
+                  <Form.Control
+                    name="stay"
+                    defaultValue={submitting.stay}
+                    placeholder="Select stay"
+                    {...register("stay")}
+                    as="select"
+                  >
+                    <option value="">Select ...</option>
+                    <option value="1 night, 2 adults">1 night, 2 adults</option>
+                    <option value="1 night, max 4 persons">
+                      1 night, max 4 persons
+                    </option>
+                    <option value="1 night, max 6 persons">
+                      1 night, max 6 persons
+                    </option>
+                  </Form.Control>
+                  {errors.breakfast && (
+                    <ValidationForm>{errors.stay.message}</ValidationForm>
+                  )}
+                </Form.Group>
 
                 <Col>
                   <Form.Group>
@@ -263,7 +277,13 @@ function AddAccommodation() {
                       defaultValue={submitting.parking}
                       placeholder="Parking"
                       {...register("parking")}
-                    />
+                      as="select"
+                    >
+                      <option value="">Select parking ...</option>
+                      <option value="Paid parking off promises">
+                        Paid parking off promises
+                      </option>
+                    </Form.Control>
                     {errors.parking && (
                       <ValidationForm>{errors.parking.message}</ValidationForm>
                     )}
@@ -275,7 +295,6 @@ function AddAccommodation() {
                 <Col>
                   <Form.Group>
                     <Form.Label>Star</Form.Label>
-                    {/* <Form.Control name="star" defaultValue={submitting.star} placeholder="Star" {...register("star")}  /> */}
                     <Form.Control
                       name="star"
                       defaultValue={submitting.star}
@@ -283,7 +302,7 @@ function AddAccommodation() {
                       {...register("star")}
                       as="select"
                     >
-                      <option value="">Star</option>
+                      <option value="">Select star ...</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
                       <option value="5">5</option>
@@ -302,7 +321,13 @@ function AddAccommodation() {
                       defaultValue={submitting.cancellation}
                       placeholder="Cancellation"
                       {...register("cancellation")}
-                    />
+                      as="select"
+                    >
+                      <option value="">Select cancellation ...</option>
+                      <option value="Free cancellation">
+                        Free cancellation
+                      </option>
+                    </Form.Control>
                     {errors.cancellation && (
                       <ValidationForm>
                         {errors.cancellation.message}
@@ -321,7 +346,11 @@ function AddAccommodation() {
                       defaultValue={submitting.fitness}
                       placeholder="Fitness"
                       {...register("fitness")}
-                    />
+                      as="select"
+                    >
+                      <option value="">Select fitness ...</option>
+                      <option value="Fitness Center">Fitness Center</option>
+                    </Form.Control>
                     {errors.fitness && (
                       <ValidationForm>{errors.fitness.message}</ValidationForm>
                     )}

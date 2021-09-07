@@ -127,7 +127,7 @@ function AdminAccommodations() {
               {filteredAccommodation.map((accommodation) => {
                 return (
                   <Col sm={12} md={6} lg={3} key={accommodation.id}>
-                    <Card>
+                    <Card className="dark--card">
                       <Card.Img
                         variant="top"
                         src={accommodation.image_url}
