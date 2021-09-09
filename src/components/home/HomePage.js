@@ -14,13 +14,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-// const accommodationFromLocalStorage = JSON.parse(
-//   localStorage.getItem("accommodation") || "[]" // <--
-// );
-
-// TO DO: When clicking a favorite, add the item to localstorage.
-
-function HomePage(props) {
+function HomePage() {
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -37,7 +31,6 @@ function HomePage(props) {
 
   useEffect(
     function () {
-      // localStorage.setItem("accommodation", JSON.stringify(favourites));
       async function getAccommodation() {
         try {
           const response = await axios.get(url + searchByCriteria);

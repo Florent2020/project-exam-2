@@ -34,10 +34,13 @@
     font-weight: 600;
   }
 
-  & .card-body {
-    padding: 15px !important;
+  & .card-body,
+  .on--hover {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    color: $colour-secondary;
+    font-style: normal;
   }
 
   & .card-text {
@@ -53,18 +56,33 @@
   & .card-link:hover {
     text-decoration: underline;
   }
+
+  & .card-body:hover,
+  .on--hover:hover {
+    text-decoration: none;
+  }
 }
 
 body.dark {
-  .things--to--do .card-title {
-    font-size: 16px;
-  }
+  .things--to--do {
+    & .card-body,
+    .on--hover {
+      color: $colour-heading;
+    }
+    & .card-title {
+      font-size: 16px;
+    }
+    & .card-link {
+      color: $colour-primary;
+    }
 
-  .things--to--do .card-link {
-    color: $colour-primary;
-  }
+    & .card-link:hover {
+      text-decoration: underline;
+    }
 
-  .things--to--do .card-link:hover {
-    text-decoration: underline;
+    & .card-body:hover,
+    .on--hover:hover {
+      text-decoration: none;
+    }
   }
 }
