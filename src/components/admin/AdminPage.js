@@ -83,7 +83,7 @@ function AdminAccommodations() {
     async function getAccommodation() {
       try {
         const response = await axios.get(url);
-        console.log("response", response);
+        // console.log("response", response);
         setAccommodations(response.data);
       } catch (error) {
         console.log(error);

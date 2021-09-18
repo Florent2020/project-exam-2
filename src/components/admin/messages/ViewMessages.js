@@ -46,7 +46,7 @@ function ViewMessages() {
     async function getMessage() {
       try {
         const response = await http.get(url);
-        console.log("response", response.data);
+        // console.log("response", response.data);
         setMessage(response.data);
       } catch (error) {
         console.log(error);

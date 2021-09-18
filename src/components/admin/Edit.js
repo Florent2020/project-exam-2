@@ -64,7 +64,7 @@ function EditHotel() {
     async function getAccommodation() {
       try {
         const response = await http.get(url);
-        console.log("response", response.data);
+        // console.log("response", response.data);
         setAccomodation(response.data);
       } catch (error) {
         console.log(error);

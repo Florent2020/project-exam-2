@@ -32,25 +32,37 @@
   & .card-title {
     font-size: 16px;
     font-weight: 600;
+    text-transform: none;
   }
 
-  & .card-body,
-  .on--hover {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    color: $colour-secondary;
+  & .on--hover {
+    padding: 0;
     font-style: normal;
   }
 
+  & .card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+
+  & .card-body {
+    color: $colour-secondary;
+  }
+
   & .card-text {
-    flex: 1;
+    flex: 1 0 auto;
     font-size: 14px;
+    text-transform: initial;
+    font-weight: normal;
   }
 
   & .card-link {
+    flex-shrink: 0;
     font-style: italic;
     font-weight: 500;
+    padding-bottom: 20px;
+    padding-left: 20px;
   }
 
   & .card-link:hover {

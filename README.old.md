@@ -1,3 +1,8 @@
+# Login page
+
+Username: Florent
+Password: Admin@1234
+
 # Project Exam 2
 
 There are two options with this Project Exam.

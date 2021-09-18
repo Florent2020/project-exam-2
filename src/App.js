@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import HomePage from "./components/home/HomePage";
+
 import AccommodationsDetail from "./components/home/AccommodationsDetail";
 import BookingEnquiry from "./components/booking/BookingEnquary";
 import AdminPage from "./components/admin/AdminPage";
@@ -18,6 +19,9 @@ import EditAccommodation from "./components/admin/Edit";
 import Footer from "./components/layout/Footer";
 import "./sass/style.scss";
 import Header from "./components/layout/Header";
+import ScrollToTop from "./components/layout/ScrollToTop";
+
+// import PaPagination from "./components/home/PaPagination";
 
 function App() {
   return (
@@ -25,10 +29,12 @@ function App() {
       <div className="bg">
         <div className="wrapper">
           <Router>
+            <ScrollToTop />
             <Header />
             <Switch>
               <Route path="/" exact>
                 <HomePage />
+                {/* <PaPagination /> */}
               </Route>
               <Route path="/accommodation/detail/:id">
                 <AccommodationsDetail />

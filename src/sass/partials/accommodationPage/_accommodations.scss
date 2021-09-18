@@ -212,6 +212,10 @@ body.dark {
     font-size: 21px;
   }
 
+  .accommodations--page .card:hover {
+    transform: none;
+  }
+
   .accommodations--page .card .type {
     color: $colour-primary;
   }

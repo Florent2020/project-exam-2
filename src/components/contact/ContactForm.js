@@ -58,8 +58,9 @@ function ContactForm() {
     setServerError(null);
 
     try {
+      // eslint-disable-next-line
       const response = await axios.post(url, data);
-      console.log("response", response.data);
+      // console.log("response", response.data);
       // history.push("/admin/hotels");
     } catch (error) {
       console.log("error", error);
@@ -69,7 +70,7 @@ function ContactForm() {
     }
   }
 
-  console.log(serverError);
+  // console.log(serverError);
 
   if (submitting) {
     return <Loader />;

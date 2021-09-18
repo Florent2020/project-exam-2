@@ -119,7 +119,7 @@ export default function AccommodationDetail({ currentAccommodations }) {
               <i className="fas fa-map-marker-alt"></i>
               {accommodation.location}
               <br />
-              <i class="fas fa-phone-alt"></i>
+              <i className="fas fa-phone-alt"></i>
               {accommodation.phone}
             </Card.Text>
             <Card.Text className="description">
@@ -144,7 +144,7 @@ export default function AccommodationDetail({ currentAccommodations }) {
                   {accommodation.fitness}
                 </Card.Text>
                 <Card.Text className="ancellation">
-                  <i class="fas fa-check"></i>
+                  <i className="fas fa-check"></i>
                   {accommodation.cancellation}
                 </Card.Text>
                 <Card.Text className="stay">{accommodation.stay}</Card.Text>

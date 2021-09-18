@@ -34,7 +34,7 @@ function HomePage() {
       async function getAccommodation() {
         try {
           const response = await axios.get(url + searchByCriteria);
-          console.log("response", response);
+          // console.log("response", response);
           setAccommodations(response.data);
         } catch (error) {
           console.log(error);

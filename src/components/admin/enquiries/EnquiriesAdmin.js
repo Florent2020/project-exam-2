@@ -36,7 +36,7 @@ function EnquiriesAdmin() {
     async function getMessage() {
       try {
         const response = await axios.get(url);
-        console.log("response", response.data);
+        // console.log("response", response.data);
         setEnquiries(response.data);
       } catch (error) {
         console.log(error);

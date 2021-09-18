@@ -12,7 +12,7 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
 const url = BASE_URL + TOKEN_PATH;
-console.log(url);
+// console.log(url);
 
 const schema = yup.object().shape({
   identifier: yup.string().required("Please enter your username!"),
@@ -33,17 +33,18 @@ export default function LoginForm() {
     resolver: yupResolver(schema),
   });
 
+  // eslint-disable-next-line
   const [auth, setAuth] = useContext(AuthContext);
 
   async function onSubmit(data) {
     setSubmitting(true);
     setLoginError(null);
 
-    console.log(auth);
+    // console.log(auth);
 
     try {
       const response = await axios.post(url, data);
-      console.log("response", response.data);
+      // console.log("response", response.data);
       setAuth(response.data);
       history.push("/admin/dashboard");
     } catch (error) {
