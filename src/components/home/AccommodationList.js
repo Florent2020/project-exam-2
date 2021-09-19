@@ -8,7 +8,7 @@ function AccommodationList(props) {
   return (
     <>
       <div className="pages">
-        {props.accommodations.map((accommodation) => {
+        {props.accommodationsData.map((accommodation) => {
           return (
             <div className="col-lg-4 col-md-6 col-12" key={accommodation.id}>
               <Card className="dark--card">

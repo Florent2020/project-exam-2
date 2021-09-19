@@ -33,13 +33,30 @@
   }
 }
 
+.page-item.active .page-link {
+  background-color: $colour-primary !important;
+  color: $colour-secondary !important;
+  border-color: $colour-primary;
+}
+
+.page-item.disabled .page-link {
+  color: $colour-primary !important;
+  border: 1px solid $colour-secondary !important;
+  background-color: $colour-secondary;
+}
+
 body.dark {
   .pagination .page-link {
     color: $colour-primary;
     border: 1px solid $colour-primary;
   }
 
-  .pagination .page-item .active {
-    color: $colour-secondary;
+  .page-item.disabled .page-link {
+    border: 1px solid $colour-primary !important;
+  }
+
+  .page-item.active .page-link {
+    background-color: $colour-primary !important;
+    color: $colour-secondary !important;
   }
 }
