@@ -72,6 +72,7 @@ function PaginationPage({
       );
     }
     return pages;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalPages, currentPage]);
 
   if (totalPages === 0) return null;

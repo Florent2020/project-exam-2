@@ -5,10 +5,6 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Star from "../home/Star";
 
-// const accommodationFromLocalStorage = JSON.parse(
-//   localStorage.getItem("accommodations") || "[]"
-// );
-
 function AccommodationList(props) {
   const savedAccommodation =
     JSON.parse(localStorage.getItem("accommodation")) || [];
