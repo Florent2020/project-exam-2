@@ -15,7 +15,13 @@ function AccommodationList(props) {
                 <Card.Text className="type">{accommodation.type}</Card.Text>
                 <Card.Text className="trips">
                   <i
-                    className="far fa-heart"
+                    className={
+                      JSON.parse(localStorage.getItem("accommodation")).filter(
+                        (x) => x.id === accommodation.id
+                      ).length === 0
+                        ? "far fa-heart "
+                        : "fas fa-heart "
+                    }
                     value="addTrips"
                     onClick={(e) => {
                       props.favoriteTrips(e, accommodation);

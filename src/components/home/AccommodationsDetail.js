@@ -139,10 +139,16 @@ export default function AccommodationDetail({ currentAccommodations }) {
                   <i className="fas fa-parking"></i>
                   {accommodation.parking}
                 </Card.Text>
-                <Card.Text className="fitness">
-                  <i className="fas fa-dumbbell"></i>
-                  {accommodation.fitness}
-                </Card.Text>
+
+                {accommodation.fitness === "" ? (
+                  ""
+                ) : (
+                  <Card.Text className="fitness">
+                    <i className="fas fa-dumbbell"></i>
+                    {accommodation.fitness}
+                  </Card.Text>
+                )}
+
                 <Card.Text className="ancellation">
                   <i className="fas fa-check"></i>
                   {accommodation.cancellation}

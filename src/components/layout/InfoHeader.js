@@ -21,7 +21,7 @@ function InfoHeader() {
           <div className="favorites__link">
             {""}
             {savedAccommodation.length ? (
-              <span>{savedAccommodation.length}</span>
+              <span id="favorite-counter">{savedAccommodation.length}</span>
             ) : (
               ""
             )}

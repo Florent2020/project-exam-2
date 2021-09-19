@@ -11,8 +11,10 @@ import Pagination from "./Pagination";
 import OurGuarantees from "./OurGuarantees";
 import ThingsToDo from "./ThingsToDo";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+// import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
+
+import AloSearch from "./AloSearch";
 
 function HomePage() {
   const [accommodations, setAccommodations] = useState([]);
@@ -21,8 +23,10 @@ function HomePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [accommodationsPerPage] = useState(6);
 
+  const [search, setSearch] = useState("");
+
   const url = BASE_URL + `/accommodations`;
-  const [searchByCriteria, setSearchByCriteria] = useState("");
+  // const [searchByCriteria, setSearchByCriteria] = useState("");
 
   const savedAccommodation =
     JSON.parse(localStorage.getItem("accommodation")) || [];
@@ -33,7 +37,8 @@ function HomePage() {
     function () {
       async function getAccommodation() {
         try {
-          const response = await axios.get(url + searchByCriteria);
+          // const response = await axios.get(url + searchByCriteria);
+          const response = await axios.get(url);
           // console.log("response", response);
           setAccommodations(response.data);
         } catch (error) {
@@ -47,7 +52,8 @@ function HomePage() {
       getAccommodation();
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    [url, searchByCriteria, favourites]
+    // [url, searchByCriteria, favourites]
+    [url, search, favourites]
   );
 
   if (loading) {
@@ -68,15 +74,20 @@ function HomePage() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const getAccommodationList = async ({ searchBy }) => {
-    setSearchByCriteria("/?_q=" + searchBy);
-  };
+  const filteredAccommodations = accommodations.filter((item) =>
+    item.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  // const getAccommodationList = async ({ searchBy }) => {
+  //   setSearchByCriteria("/?_q=" + searchBy);
+  // };
 
   const saveToLocalStorage = (items) => {
     localStorage.setItem("accommodation", JSON.stringify(items));
   };
 
   const favoriteTrips = (e, trip) => {
+    debugger;
     if (e.target.classList[2] === "fas") {
       e.currentTarget.classList.remove("fas");
     } else {
@@ -98,6 +109,10 @@ function HomePage() {
         saveToLocalStorage(filtered);
       }
     });
+
+    document.getElementById("favorite-counter").innerText = JSON.parse(
+      localStorage.getItem("accommodation")
+    ).length;
   };
 
   return (
@@ -115,22 +130,29 @@ function HomePage() {
       <JumbotronPage />
       <AccommodationPart />
       <Container className="home--container">
-        <div className="search--home">
+        {/* <div className="search--home">
           <Form.Group>
             <i className="fas fa-search"></i>
             <Form.Control
               type="search"
               className="search"
               placeholder="Search accommodation ..."
-              onChange={(e) =>
-                getAccommodationList({ searchBy: e.target.value })
-              }
+              // onChange={(e) =>
+              //   getAccommodationList({ searchBy: e.target.value })
+              // }
             />
           </Form.Group>
           <Button variant="primary" type="submit">
             Search
           </Button>
-        </div>
+        </div> */}
+
+        <AloSearch
+          onSearch={(value) => {
+            setSearch(value);
+            setCurrentPage(1);
+          }}
+        />
 
         <Pagination
           accommodationsPerPage={accommodationsPerPage}
@@ -139,7 +161,8 @@ function HomePage() {
           pageIndex={currentPage}
         />
         <AccommodationList
-          accommodations={currentAccommodations}
+          // accommodations={currentAccommodations}
+          accommodations={filteredAccommodations}
           favoriteTrips={favoriteTrips}
         />
         <Pagination
@@ -156,3 +179,187 @@ function HomePage() {
 }
 
 export default HomePage;
+
+// ========================================================
+
+// import { useState, useEffect, useMemo } from "react";
+// import { Helmet } from "react-helmet";
+// import JumbotronPage from "./Jumbotron";
+// import AccommodationPart from "./AccommodationPart";
+// import axios from "axios";
+// import { BASE_URL } from "../../constants/api";
+// import AccommodationList from "./AccommodationList";
+// import ErrorMessage from "../layout/ErrorMessage";
+// import Loader from "../layout/Loader";
+// import Pagination from "./Pagination";
+// import OurGuarantees from "./OurGuarantees";
+// import ThingsToDo from "./ThingsToDo";
+// import Container from "react-bootstrap/Container";
+// import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
+// import AloSearch from "./AloSearch";
+
+// function HomePage() {
+//   const [accommodations, setAccommodations] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const [accommodationsPerPage] = useState(6);
+
+//   const [totalItems, setTotalItems] = useState(0);
+//   const [currentPage, setCurrentPage] = useState(1);
+//   // const ITEMS_PER_PAGE = 6;
+
+//   const url = BASE_URL + `/accommodations`;
+//   // const [searchByCriteria, setSearchByCriteria] = useState("");
+
+//   const savedAccommodation =
+//     JSON.parse(localStorage.getItem("accommodation")) || [];
+
+//   const [favourites, setFavourites] = useState(savedAccommodation);
+
+//   useEffect(
+//     function () {
+//       async function getAccommodation() {
+//         try {
+//           const response = await axios.get(url);
+//           // console.log("response", response);
+//           setAccommodations(response.data);
+//         } catch (error) {
+//           console.log(error);
+//           setError(error.toString());
+//         } finally {
+//           setLoading(false);
+//         }
+//       }
+
+//       getAccommodation();
+//       // eslint-disable-next-line react-hooks/exhaustive-deps
+//     },
+//     [url, favourites]
+//   );
+
+//   const accommodationsData = useMemo(() => {
+//     let computedAccommodations = accommodations;
+
+//     setTotalItems(computedAccommodations.length);
+
+//     return computedAccommodations.slice(
+//       (currentPage - 1) * accommodationsPerPage,
+//       (currentPage + 1) * accommodationsPerPage + accommodationsPerPage
+//     );
+//   }, [accommodations, currentPage]);
+
+//   if (loading) {
+//     return <Loader />;
+//   }
+
+//   if (error) {
+//     return <ErrorMessage message={`Error: An error occured!`} />;
+//   }
+
+//   const indexOfLastAccommodation = currentPage * accommodationsPerPage;
+//   const indexOfFirstAccommodation =
+//     indexOfLastAccommodation - accommodationsPerPage;
+//   const currentAccommodations = accommodations.slice(
+//     indexOfFirstAccommodation,
+//     indexOfLastAccommodation
+//   );
+
+//   // const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+//   // const getAccommodationList = async ({ searchBy }) => {
+//   //   setSearchByCriteria("/?_q=" + searchBy);
+//   // };
+
+//   const saveToLocalStorage = (items) => {
+//     localStorage.setItem("accommodation", JSON.stringify(items));
+//   };
+
+//   const favoriteTrips = (e, trip) => {
+//     if (e.target.classList[2] === "fas") {
+//       e.currentTarget.classList.remove("fas");
+//     } else {
+//       e.currentTarget.classList.add("fas");
+//     }
+
+//     const newFavouriteList = [
+//       ...favourites.filter((favourite) => favourite.id !== trip.id),
+//       trip,
+//     ];
+//     setFavourites(newFavouriteList);
+//     saveToLocalStorage(newFavouriteList);
+
+//     favourites.forEach((item) => {
+//       if (item.id === trip.id) {
+//         const items = JSON.parse(localStorage.getItem("accommodation"));
+//         const filtered = [...items.filter((item) => item.id !== trip.id)];
+//         setFavourites(filtered);
+//         saveToLocalStorage(filtered);
+//       }
+//     });
+//   };
+
+//   return (
+//     <main>
+//       <Helmet>
+//         <title>
+//           Holidaze | A website for Hotel Reservations from Luxury Hotels to
+//           Budget Accommodations
+//         </title>
+//         <meta
+//           name="description"
+//           content="A great page where you can find easy your accommodation!"
+//         />
+//       </Helmet>
+//       <JumbotronPage />
+//       <AccommodationPart />
+//       <Container className="home--container">
+//         {/* <div className="search--home">
+//           <Form.Group>
+//             <i className="fas fa-search"></i>
+//             <Form.Control
+//               type="search"
+//               className="search"
+//               placeholder="Search accommodation ..."
+//               onChange={(e) =>
+//                 getAccommodationList({ searchBy: e.target.value })
+//               }
+//             />
+//           </Form.Group>
+//           <Button variant="primary" type="submit">
+//             Search
+//           </Button>
+//         </div>
+
+//         <Pagination
+//           accommodationsPerPage={accommodationsPerPage}
+//           totalAccommodations={accommodations.length}
+//           paginate={paginate}
+//           pageIndex={currentPage}
+//         /> */}
+//         <AloSearch />
+//         <Pagination
+//           total={totalItems}
+//           itemsPerPage={accommodationsPerPage}
+//           currentPage={currentPage}
+//           onPageChange={(page) => setCurrentPage(page)}
+//         />
+//         <AccommodationList
+//           accommodations={currentAccommodations}
+//           favoriteTrips={favoriteTrips}
+//         />
+//         <Pagination
+//           total={totalItems}
+//           itemsPerPage={accommodationsPerPage}
+//           currentPage={currentPage}
+//           onPageChange={(page) => setCurrentPage(page)}
+//         />
+//       </Container>
+//       <OurGuarantees />
+//       <ThingsToDo />
+//     </main>
+//   );
+// }
+
+// export default HomePage;
