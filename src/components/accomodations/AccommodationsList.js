@@ -61,7 +61,8 @@ function AccommodationList(props) {
                       className={
                         JSON.parse(
                           localStorage.getItem("accommodation")
-                        ).filter((e) => e.id === accommodation.id).length === 0
+                        ).filter((alo) => alo.id === accommodation.id)
+                          .length === 0
                           ? "far fa-heart "
                           : "fas fa-heart "
                       }
