@@ -16,9 +16,12 @@ function AccommodationList(props) {
                 <Card.Text className="trips">
                   <i
                     className={
-                      JSON.parse(localStorage.getItem("accommodation")).filter(
-                        (x) => x.id === accommodation.id
-                      ).length === 0
+                      localStorage.getItem("accommodation") === null
+                        ? []
+                        : JSON.parse(
+                            localStorage.getItem("accommodation")
+                          ).filter((x) => x.id === accommodation.id).length ===
+                          0
                         ? "far fa-heart "
                         : "fas fa-heart "
                     }
