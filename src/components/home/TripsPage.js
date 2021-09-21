@@ -65,7 +65,8 @@ function FavoriteTripsPage() {
             <div>No favourite accommodation yet!</div>
           )}
           <AccommodationList
-            accommodations={favourites}
+            // accommodations={favourites}
+            accommodationsData={favourites}
             removeFavouriteAccommodation={removeFavouriteAccommodation}
           >
             <Button variant="primary">Remove</Button>
