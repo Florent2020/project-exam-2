@@ -126,6 +126,10 @@
       font-size: 40px;
     }
 
+    & .edit {
+      border: 2px solid $colour-primary;
+    }
+
     & .admin--images {
       height: 200px !important;
     }

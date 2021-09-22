@@ -126,43 +126,45 @@ export default function AccommodationDetail({ currentAccommodations }) {
               {accommodation.description}
             </Card.Text>
             <Row>
-              <Col xs={12} md={6} className="sticky--detail">
-                <Card.Text className="breakfast">
-                  <i className="fas fa-utensils"></i>
-                  {accommodation.breakfast}
-                </Card.Text>
-                <Card.Text className="wifi">
-                  <i className="fas fa-wifi"></i>
-                  {accommodation.wifi}
-                </Card.Text>
-                <Card.Text className="parking">
-                  <i className="fas fa-parking"></i>
-                  {accommodation.parking}
-                </Card.Text>
-
-                {accommodation.fitness === "" ? (
-                  ""
-                ) : (
-                  <Card.Text className="fitness">
-                    <i className="fas fa-dumbbell"></i>
-                    {accommodation.fitness}
+              <Col xs={12} md={6}>
+                <div className="sticky--detail">
+                  <Card.Text className="breakfast">
+                    <i className="fas fa-utensils"></i>
+                    {accommodation.breakfast}
                   </Card.Text>
-                )}
+                  <Card.Text className="wifi">
+                    <i className="fas fa-wifi"></i>
+                    {accommodation.wifi}
+                  </Card.Text>
+                  <Card.Text className="parking">
+                    <i className="fas fa-parking"></i>
+                    {accommodation.parking}
+                  </Card.Text>
 
-                <Card.Text className="ancellation">
-                  <i className="fas fa-check"></i>
-                  {accommodation.cancellation}
-                </Card.Text>
-                <Card.Text className="stay">{accommodation.stay}</Card.Text>
-                <Card.Text className="price">
-                  NOK {accommodation.price}
-                </Card.Text>
-                <Link
-                  to={`/accommodation/booking/${accommodation.id}`}
-                  className="accommodation--button"
-                >
-                  <Button variant="primary">Book Now!</Button>
-                </Link>
+                  {accommodation.fitness === "" ? (
+                    ""
+                  ) : (
+                    <Card.Text className="fitness">
+                      <i className="fas fa-dumbbell"></i>
+                      {accommodation.fitness}
+                    </Card.Text>
+                  )}
+
+                  <Card.Text className="cancellation">
+                    <i className="fas fa-check"></i>
+                    {accommodation.cancellation}
+                  </Card.Text>
+                  <Card.Text className="stay">{accommodation.stay}</Card.Text>
+                  <Card.Text className="price">
+                    NOK {accommodation.price}
+                  </Card.Text>
+                  <Link
+                    to={`/accommodation/booking/${accommodation.id}`}
+                    className="accommodation--button"
+                  >
+                    <Button variant="primary">Book Now!</Button>
+                  </Link>
+                </div>
               </Col>
               <Col xs={12} md={6} className="map">
                 <Map

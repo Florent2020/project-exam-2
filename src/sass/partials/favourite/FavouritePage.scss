@@ -15,6 +15,14 @@
   & .pages .accommodation--button {
     padding-bottom: 10px;
   }
+
+  & .pages .btn-primary {
+    border: 2px solid $colour-primary;
+
+    &:hover {
+      border: 2px solid $colour-secondary;
+    }
+  }
 }
 
 body.dark {

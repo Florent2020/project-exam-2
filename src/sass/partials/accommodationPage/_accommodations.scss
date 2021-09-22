@@ -182,8 +182,12 @@
       // height: 330px;
       border-top-right-radius: 0;
       border-bottom-left-radius: 10px;
-      min-height: 400px;
+      min-height: 420px;
       object-fit: cover;
+    }
+
+    & .col-md-7 {
+      padding-bottom: 0;
     }
 
     & .card-title {
@@ -199,9 +203,18 @@
       }
     }
 
+    & .stay {
+      margin-top: 30px;
+    }
+
     & .pages .accommodation--button button {
       width: 210px;
       margin-bottom: 0;
+      border: 2px solid $colour-primary;
+
+      &:hover {
+        border: 2px solid $colour-secondary;
+      }
     }
   }
 }

@@ -38,7 +38,7 @@ $mobile-width: 768px;
 @import "./partials/contactForm/contactForm";
 @import "./partials/booking/bookingEnquiry";
 @import "./partials/login/login";
-@import "./partials/admin/dashboardMobile";
+@import "./partials/admin/dashboard";
 @import "./partials/admin/adminPage";
 @import "./partials/admin/edit";
 @import "./partials/admin/add";
@@ -50,5 +50,3 @@ $mobile-width: 768px;
 @import "./partials/layout/loader";
 @import "./partials/layout/errorMessage";
 @import "./partials/favourite/FavouritePage";
-
-@import "./partials/homePage/paPagination";

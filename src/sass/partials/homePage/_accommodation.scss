@@ -29,11 +29,15 @@
   flex-direction: column;
   min-height: 100%;
   transition: transform 0.5s;
-  cursor: pointer;
 
   &:hover {
     position: relative;
     transform: translateY(-15px);
+  }
+
+  & button:hover,
+  button:focus {
+    border: 2px solid $colour-secondary;
   }
 }
 
@@ -43,7 +47,6 @@ body.dark .dark--card {
   color: $colour-heading;
   transition: background-color 0.5s ease-out;
   transition: transform 0.5s;
-  cursor: pointer;
 
   &:hover {
     position: relative;
@@ -161,6 +164,11 @@ body.dark .dark--card {
     position: relative;
     padding: 0.6rem 0.75rem !important;
     border-radius: 0;
+    border: 2px solid $colour-primary;
+
+    &:hover {
+      border: 2px solid $colour-secondary;
+    }
 
     &::before {
       display: block;
