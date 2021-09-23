@@ -1,9 +1,8 @@
 # Login page
 
 Username: Florent
-Password: Admin@1234
 
-https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places
+Password: Admin@1234
 
 # Project Exam 2
 
