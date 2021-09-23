@@ -10,7 +10,6 @@ import bg from "../../images/bg_form.png";
 import Alert from "react-bootstrap/Alert";
 import ErrorMessage from "../layout/ErrorMessage";
 import Loader from "../layout/Loader";
-
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -18,7 +17,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import ValidationError from "../forms/ValidationError";
 import useAxios from "../../hooks/UseAxios";
 import DeleteAccommodation from "./Delete";
-
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
@@ -35,8 +33,6 @@ function EditHotel() {
   const [updatingAccommodation, setUpdatingAccommodation] = useState(false);
   const [updateError, setUpdateError] = useState(null);
   const [fetchError, setFetchError] = useState(null);
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null);
 
   const [auth] = useContext(AuthContext);
 

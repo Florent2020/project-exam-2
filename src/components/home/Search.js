@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-function AloSearch({ onSearch }) {
+function Search({ onSearch }) {
   const [search, setSearch] = useState("");
 
   const onInputChange = (value) => {
@@ -28,4 +28,4 @@ function AloSearch({ onSearch }) {
   );
 }
 
-export default AloSearch;
+export default Search;

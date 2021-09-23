@@ -110,15 +110,6 @@ function ViewMessages() {
             </p>
           </div>
 
-          {/* <button
-            className="reply--message"
-            title="reply"
-            href={`mailto:${message.email}`}
-          >
-            <i className="fas fa-reply"></i>
-            Reply
-          </button> */}
-
           <DeleteMessages id={message.id} />
         </form>
       </Container>

@@ -64,8 +64,6 @@ function BookingForm({ accName }) {
     }
   }
 
-  // console.log(errors);
-
   return (
     <Container>
       {submitted && (

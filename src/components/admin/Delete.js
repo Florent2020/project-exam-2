@@ -40,10 +40,6 @@ export default function DeleteAccommodation({ id }) {
   }
 
   return (
-    // <button type="button" className="delete" onClick={handleDelete}>
-    // 	{error ? "Error" : "Delete"}
-    // </button>
-
     <Button
       variant="warning"
       type="submit"

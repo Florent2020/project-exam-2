@@ -61,7 +61,6 @@ function ContactForm() {
       // eslint-disable-next-line
       const response = await axios.post(url, data);
       // console.log("response", response.data);
-      // history.push("/admin/hotels");
     } catch (error) {
       console.log("error", error);
       setServerError(error.toString());

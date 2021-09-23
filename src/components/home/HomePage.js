@@ -11,7 +11,7 @@ import PaginationPage from "./Pagination";
 import OurGuarantees from "./OurGuarantees";
 import ThingsToDo from "./ThingsToDo";
 import Container from "react-bootstrap/Container";
-import AloSearch from "./AloSearch";
+import Search from "./Search";
 
 function HomePage() {
   const [accommodations, setAccommodations] = useState([]);
@@ -124,7 +124,7 @@ function HomePage() {
       <JumbotronPage />
       <AccommodationPart />
       <Container className="home--container">
-        <AloSearch
+        <Search
           onSearch={(value) => {
             setSearch(value);
             setCurrentPage(1);

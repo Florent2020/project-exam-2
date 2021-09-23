@@ -5,7 +5,6 @@ import Heading from "../layout/Heading";
 import Button from "react-bootstrap/Button";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../layout/ErrorMessage";
-
 import AccommodationList from "./AccommodationList";
 
 function FavoriteTripsPage() {
