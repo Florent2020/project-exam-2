@@ -30,7 +30,7 @@ export default function AccommodationDetail({ currentAccommodations }) {
       async function getDetail() {
         try {
           const response = await axios.get(url);
-          console.log("response", response.data);
+          // console.log("response", response.data);
           setAccommodation(response.data);
         } catch (error) {
           console.log(error);
