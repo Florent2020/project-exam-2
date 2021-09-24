@@ -2,6 +2,12 @@
   h1 {
     font-size: 40px !important;
   }
+
+  .accommodations--banner {
+    & p {
+      font-size: 19px;
+    }
+  }
 }
 
 .accommodations--page {
@@ -157,6 +163,12 @@
   .page {
     h1 {
       font-size: 50px !important;
+    }
+
+    .accommodations--banner {
+      & p {
+        font-size: 21px;
+      }
     }
   }
 
