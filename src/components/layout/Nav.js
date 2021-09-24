@@ -9,14 +9,9 @@ function Nav() {
 
   const history = useHistory();
 
-  // if (!auth) {
-  //   history.push("/");
-  // }
-
   function logout() {
     setAuth(null);
     history.push("/");
-    // window.localStorage.clear();
   }
 
   return (

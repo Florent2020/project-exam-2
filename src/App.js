@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import HomePage from "./components/home/HomePage";
-
 import AccommodationsDetail from "./components/home/AccommodationsDetail";
 import BookingEnquiry from "./components/booking/BookingEnquary";
 import AdminPage from "./components/admin/AdminPage";
@@ -21,8 +20,6 @@ import "./sass/style.scss";
 import Header from "./components/layout/Header";
 import ScrollToTop from "./components/layout/ScrollToTop";
 
-// import PaPagination from "./components/home/PaPagination";
-
 function App() {
   return (
     <AuthProvider>
@@ -34,7 +31,6 @@ function App() {
             <Switch>
               <Route path="/" exact>
                 <HomePage />
-                {/* <PaPagination /> */}
               </Route>
               <Route path="/accommodation/detail/:id">
                 <AccommodationsDetail />
@@ -42,7 +38,6 @@ function App() {
               <Route path="/accommodation/booking/:id">
                 <BookingEnquiry />
               </Route>
-
               <Route path="/accommodations">
                 <AccommodationsPage />
               </Route>

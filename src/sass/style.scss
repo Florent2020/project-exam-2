@@ -4,8 +4,6 @@ $colour-header: #002039;
 $colour-heading: #e4e6e8;
 $colour-error: #c53131;
 
-// $colour-primary: #f8dc27;
-
 $light-background-color: #fff;
 $light-text-color: #262626;
 
@@ -14,7 +12,6 @@ $dark-text-color: #fff;
 
 $heading-font-family: "Notable", sans-serif;
 $SubHeading-font-family: "Marcellus", serif;
-// $body-font-family: "Montserrat", sans-serif;
 $body-font-family: "Gotu", sans-serif;
 
 $tablet-width: 992px;
@@ -46,7 +43,6 @@ $mobile-width: 768px;
 @import "./partials/admin/enquiries";
 @import "./partials/admin/deleteAlertButton";
 @import "./partials/layout/footer";
-@import "./partials/layout/stars";
 @import "./partials/layout/loader";
 @import "./partials/layout/errorMessage";
 @import "./partials/favourite/FavouritePage";
